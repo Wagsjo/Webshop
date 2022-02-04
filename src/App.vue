@@ -16,17 +16,17 @@
   <nav>
     <ul>
       <li>
-        <RouterLink to="/">Hem</RouterLink>
+        <RouterLink to='/'>Hem</RouterLink>
       </li>
       <li>
-        <RouterLink to="/about">Om</RouterLink>
+        <RouterLink to='/about'>Om</RouterLink>
       </li>
       <li>
-        <RouterLink to="/contact">Kontakt</RouterLink>
+        <RouterLink to='/contact'>Kontakt</RouterLink>
       </li>
     </ul>
   </nav>
-  <HelloWorld msg="Hello World!" />
+  <HelloWorld msg='Hello World!' />
   <CitiesList />
   <CounterButton />
   <main>
