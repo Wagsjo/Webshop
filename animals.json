@@ -1,0 +1,52 @@
+{
+  "animals": {
+    "dogs": {
+      "info": [
+        {
+          "id": 1,
+          "name": "strösslet",
+          "age": 4,
+          "color": "black",
+          "race": "labrador",
+          "weight": 30,
+          "height": 40
+        },
+        {
+          "id": 1,
+          "name": "strösslet",
+          "age": 4,
+          "color": "black",
+          "race": "labrador",
+          "weight": 30,
+          "height": 40
+        }
+      ]
+    },
+    "cats": {
+      "info": [
+        {
+          "id": "1",
+          "name": "strösslet",
+          "age": 4,
+          "color": "black",
+          "race": "labrador",
+          "weight": 30,
+          "height": 40
+        }
+      ]
+    },
+    "birds": {
+      "info": [
+        {
+          "id": "1",
+          "name": "strösslet",
+          "age": 4,
+          "color": "black",
+          "race": "labrador",
+          "weight": 30,
+          "height": 40
+        }
+      ]
+    }
+  }
+}
