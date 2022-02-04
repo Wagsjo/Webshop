@@ -4,22 +4,125 @@
       "info": [
         {
           "id": 1,
-          "name": "strösslet",
-          "age": 4,
-          "color": "black",
-          "race": "labrador",
-          "weight": 30,
-          "height": 40
+          "name": "Tzouras",
+          "image":"tzour.png",
+          "age": 5,
+          "color": "white beige",
+          "race": "mixed race",
+          "weight": "8 kg",
+          "height": 30,
+          "length": 55,
+          "castrated": "yes"
         },
         {
-          "id": 1,
+          "id": 2,
           "name": "strösslet",
+          "image":"",
           "age": 4,
           "color": "black",
           "race": "labrador",
           "weight": 30,
-          "height": 40
+          "height": 40,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": 3,
+          "name": "strösslet",
+          "image":"",
+          "age": 5,
+          "color": "white-beige",
+          "race": "somthing",
+          "weight": 8,
+          "height": 30,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": 4,
+          "name": "strösslet",
+          "image":"",
+          "age": 5,
+          "color": "white-beige",
+          "race": "somthing",
+          "weight": 8,
+          "height": 30,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": 5,
+          "name": "strösslet",
+          "image":"",
+          "age": 5,
+          "color": "white-beige",
+          "race": "somthing",
+          "weight": 8,
+          "height": 30,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": 6,
+          "name": "strösslet",
+          "image":"",
+          "age": 5,
+          "color": "white-beige",
+          "race": "somthing",
+          "weight": 8,
+          "height": 30,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": 7,
+          "name": "strösslet",
+          "image":"",
+          "age": 5,
+          "color": "white-beige",
+          "race": "somthing",
+          "weight": 8,
+          "height": 30,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": 8,
+          "name": "strösslet",
+          "image":"",
+          "age": 5,
+          "color": "white-beige",
+          "race": "somthing",
+          "weight": 8,
+          "height": 30,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": 9,
+          "name": "strösslet",
+          "image":"",
+          "age": 5,
+          "color": "white-beige",
+          "race": "somthing",
+          "weight": 8,
+          "height": 30,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": 10,
+          "name": "strösslet",
+          "image":"",
+          "age": 5,
+          "color": "white-beige",
+          "race": "somthing",
+          "weight": 8,
+          "height": 30,
+          "length": 55,
+          "castrated": "yes"
         }
+
       ]
     },
     "cats": {
@@ -27,11 +130,122 @@
         {
           "id": "1",
           "name": "strösslet",
+          "image":"",
           "age": 4,
           "color": "black",
           "race": "labrador",
           "weight": 30,
-          "height": 40
+          "height": 40,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": "2",
+          "name": "strösslet",
+          "image":"",
+          "age": 4,
+          "color": "black",
+          "race": "labrador",
+          "weight": 30,
+          "height": 40,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": "3",
+          "name": "strösslet",
+          "image":"",
+          "age": 4,
+          "color": "black",
+          "race": "labrador",
+          "weight": 30,
+          "height": 40,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": "4",
+          "name": "strösslet",
+          "image":"",
+          "age": 4,
+          "color": "black",
+          "race": "labrador",
+          "weight": 30,
+          "height": 40,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": "5",
+          "name": "strösslet",
+          "image":"",
+          "age": 4,
+          "color": "black",
+          "race": "labrador",
+          "weight": 30,
+          "height": 40,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": "6",
+          "name": "strösslet",
+          "image":"",
+          "age": 4,
+          "color": "black",
+          "race": "labrador",
+          "weight": 30,
+          "height": 40,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": "7",
+          "name": "strösslet",
+          "image":"",
+          "age": 4,
+          "color": "black",
+          "race": "labrador",
+          "weight": 30,
+          "height": 40,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": "8",
+          "name": "strösslet",
+          "image":"",
+          "age": 4,
+          "color": "black",
+          "race": "labrador",
+          "weight": 30,
+          "height": 40,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": "9",
+          "name": "strösslet",
+          "image":"",
+          "age": 4,
+          "color": "black",
+          "race": "labrador",
+          "weight": 30,
+          "height": 40,
+          "length": 55,
+          "castrated": "yes"
+        },
+        {
+          "id": "10",
+          "name": "strösslet",
+          "image":"",
+          "age": 4,
+          "color": "black",
+          "race": "labrador",
+          "weight": 30,
+          "height": 40,
+          "length": 55,
+          "castrated": "yes"
         }
       ]
     },
@@ -40,11 +254,14 @@
         {
           "id": "1",
           "name": "strösslet",
+          "image":"",
           "age": 4,
           "color": "black",
           "race": "labrador",
           "weight": 30,
-          "height": 40
+          "height": 40,
+          "length": 55,
+          "castrated": "yes"
         }
       ]
     }
