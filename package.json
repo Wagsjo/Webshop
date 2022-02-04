@@ -1,20 +1,32 @@
 {
   "dependencies": {
-    "vue": "^3.2.25",
+    "mdue": "^0.1.4",
+    "sass": "^1.49.0",
+    "vue": "^3.2.27",
     "vue-router": "^4.0.12",
-    "vuex": "^4.0.2"
+    "vuex": "^4.0.2",
+    "wretch": "^1.7.7"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",
-    "eslint": "^8.5.0",
-    "eslint-plugin-vue": "^8.2.0",
+    "eslint": "^8.7.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.3.0",
+    "prettier": "2.5.1",
     "vite": "^2.7.2"
   },
-  "name": "Raining Cats and Dogs & Bird",
+  "name": "Its Raining Cats and Dogs & Bird",
   "scripts": {
+    "lint": "eslint --ext .js,.vue src",
+    "lint:fix": "eslint --ext .js,.vue src --fix",
+    "format": "prettier .  --write",
     "build": "vite build",
     "dev": "vite",
     "preview": "vite preview"
   },
-  "version": "0.0.0"
+  "version": "0.0.1",
+  "description": "SchoolTask",
+  "main": "vite.config.js",
+  "license": "ISC"
 }
