@@ -1,4 +1,5 @@
 <script>
+  import NavBar from "./components/NavBar.vue"
   import CitiesList from "./components/CitiesList.vue"
   import CounterButton from "./components/CounterButton.vue"
   import HelloWorld from "./components/HelloWorld.vue"
@@ -7,13 +8,15 @@
     components: {
       CitiesList,
       CounterButton,
-      HelloWorld
+      HelloWorld,
+      NavBar
     }
   }
 </script>
 
 <template>
   <nav>
+    <NavBar />
     <ul>
       <li>
         <RouterLink to="/">Hem</RouterLink>
