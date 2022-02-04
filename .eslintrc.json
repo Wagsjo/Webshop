@@ -7,9 +7,9 @@
     "plugin:vue/base",
     "plugin:vue/vue3-essential",
     "plugin:vue/vue3-strongly-recommended",
-    "prettier"
+    "plugin:prettier/recommended"
   ],
-  "plugins": ["prettier"],
+
   "root": true,
   "rules": {
     "vue/html-self-closing": [
