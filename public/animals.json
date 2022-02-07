@@ -5,7 +5,7 @@
         {
           "id": 1,
           "name": "Tzouras",
-          "image":"tzour.png",
+          "image": "favicon-196.png",
           "age": 5,
           "color": "white beige",
           "race": "mixed race",
@@ -17,7 +17,7 @@
         {
           "id": 2,
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 4,
           "color": "black",
           "race": "labrador",
@@ -29,7 +29,7 @@
         {
           "id": 3,
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 5,
           "color": "white-beige",
           "race": "somthing",
@@ -41,7 +41,7 @@
         {
           "id": 4,
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 5,
           "color": "white-beige",
           "race": "somthing",
@@ -53,7 +53,7 @@
         {
           "id": 5,
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 5,
           "color": "white-beige",
           "race": "somthing",
@@ -65,7 +65,7 @@
         {
           "id": 6,
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 5,
           "color": "white-beige",
           "race": "somthing",
@@ -77,7 +77,7 @@
         {
           "id": 7,
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 5,
           "color": "white-beige",
           "race": "somthing",
@@ -89,7 +89,7 @@
         {
           "id": 8,
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 5,
           "color": "white-beige",
           "race": "somthing",
@@ -101,7 +101,7 @@
         {
           "id": 9,
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 5,
           "color": "white-beige",
           "race": "somthing",
@@ -113,7 +113,7 @@
         {
           "id": 10,
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 5,
           "color": "white-beige",
           "race": "somthing",
@@ -122,7 +122,6 @@
           "length": 55,
           "castrated": "yes"
         }
-
       ]
     },
     "cats": {
@@ -130,7 +129,7 @@
         {
           "id": "1",
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 4,
           "color": "black",
           "race": "labrador",
@@ -142,7 +141,7 @@
         {
           "id": "2",
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 4,
           "color": "black",
           "race": "labrador",
@@ -154,7 +153,7 @@
         {
           "id": "3",
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 4,
           "color": "black",
           "race": "labrador",
@@ -166,7 +165,7 @@
         {
           "id": "4",
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 4,
           "color": "black",
           "race": "labrador",
@@ -178,7 +177,7 @@
         {
           "id": "5",
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 4,
           "color": "black",
           "race": "labrador",
@@ -190,7 +189,7 @@
         {
           "id": "6",
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 4,
           "color": "black",
           "race": "labrador",
@@ -202,7 +201,7 @@
         {
           "id": "7",
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 4,
           "color": "black",
           "race": "labrador",
@@ -214,7 +213,7 @@
         {
           "id": "8",
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 4,
           "color": "black",
           "race": "labrador",
@@ -226,7 +225,7 @@
         {
           "id": "9",
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 4,
           "color": "black",
           "race": "labrador",
@@ -238,7 +237,7 @@
         {
           "id": "10",
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 4,
           "color": "black",
           "race": "labrador",
@@ -254,7 +253,7 @@
         {
           "id": "1",
           "name": "strösslet",
-          "image":"",
+          "image": "",
           "age": 4,
           "color": "black",
           "race": "labrador",

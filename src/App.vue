@@ -1,22 +1,25 @@
 <script>
   import NavBar from "./components/NavBar.vue"
-  import CitiesList from "./components/CitiesList.vue"
+  import AnimalsList from "./components/AnimalsList.vue"
   import CounterButton from "./components/CounterButton.vue"
   import HelloWorld from "./components/HelloWorld.vue"
   import Footer from "./components/PageFooter.vue"
+  import DogsViewVue from "./views/DogsView.vue"
 
   export default {
     components: {
-      CitiesList,
+      AnimalsList,
       CounterButton,
       HelloWorld,
       NavBar,
+      DogsViewVue,
       Footer
     }
   }
 </script>
 
 <template>
+  <AnimalsList></AnimalsList>
   <nav>
     <NavBar />
     <ul>
