@@ -3,13 +3,15 @@
   import CitiesList from "./components/CitiesList.vue"
   import CounterButton from "./components/CounterButton.vue"
   import HelloWorld from "./components/HelloWorld.vue"
+  import Footer from "./components/PageFooter.vue"
 
   export default {
     components: {
       CitiesList,
       CounterButton,
       HelloWorld,
-      NavBar
+      NavBar,
+      Footer
     }
   }
 </script>
@@ -36,4 +38,8 @@
   <main>
     <RouterView />
   </main>
+
+  <footer>
+    <Footer />
+  </footer>
 </template>
