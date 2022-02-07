@@ -24,6 +24,11 @@
     ],
     "vue/max-attributes-per-line": "off",
     "vue/singleline-html-element-content-newline": "off",
-    "prettier/prettier": ["error"]
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   }
 }
