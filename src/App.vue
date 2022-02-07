@@ -27,11 +27,12 @@
       <li>
         <RouterLink to="/contact">Kontakt</RouterLink>
       </li>
+      <li>
+        <RouterLink to="/login">logga in</RouterLink>
+      </li>
     </ul>
   </nav>
-  <HelloWorld msg="Hello World!" />
-  <CitiesList />
-  <CounterButton />
+
   <main>
     <RouterView />
   </main>
