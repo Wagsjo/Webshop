@@ -25,6 +25,7 @@
     margin-right: auto;
   }
   .btn-primary {
+    margin-top: 1em;
     color: black;
     background-color: #babfda;
   }
