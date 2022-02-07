@@ -1,6 +1,5 @@
 <script>
   import NavBar from "./components/NavBar.vue"
-  import AnimalsList from "./components/AnimalsList.vue"
   import CounterButton from "./components/CounterButton.vue"
   import HelloWorld from "./components/HelloWorld.vue"
   import Footer from "./components/PageFooter.vue"
@@ -8,7 +7,6 @@
 
   export default {
     components: {
-      AnimalsList,
       CounterButton,
       HelloWorld,
       NavBar,
@@ -19,7 +17,7 @@
 </script>
 
 <template>
-  <AnimalsList></AnimalsList>
+  <DogsViewVue />
   <nav>
     <NavBar />
     <ul>
@@ -45,4 +43,6 @@
   <footer>
     <Footer />
   </footer>
+  <HelloWorld />
+  <CounterButton />
 </template>

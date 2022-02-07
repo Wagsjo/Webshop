@@ -18,7 +18,7 @@
 
 <template>
   <h6 v-if="json !== null">
-    <p v-for="(value, name) in json.animals.dogs.info">
+    <p v-for="(value, name) in json.animals.dogs.info" :key="value.name">
       {{ name }} - Name: {{ value.name }} | Age: {{ value.age }} | Color:
       {{ value.color }} | Race: {{ value.race }} Weight: {{ value.weight }} |
       Heigth: {{ value.height }} | Length: {{ value.length }} | Castrated:
