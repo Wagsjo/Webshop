@@ -7,6 +7,10 @@ import RegisteringView from "./views/RegisteringView.vue"
 import LoginView from "./views/LoginView.vue"
 import MinasidorView from "./views/MinasidorView.vue"
 import RedigeraMinasidor from "./views/RedigeraMinasidorView.vue"
+import AdoptionsView from "./views/AdoptionsView.vue"
+import DogsView from "./views/DogsView.vue"
+import CatsView from "./views/CatsView.vue"
+import BirdView from "./views/BirdView.vue"
 export default createRouter({
   history: createWebHashHistory(),
   routes: [
@@ -37,6 +41,22 @@ export default createRouter({
     {
       component: RedigeraMinasidor,
       path: "/redigeraMinasidor"
+    },
+    {
+      component: AdoptionsView,
+      path: "/adoptions"
+    },
+    {
+      component: DogsView,
+      path: "/dogs"
+    },
+    {
+      component: CatsView,
+      path: "/cats"
+    },
+    {
+      component: BirdView,
+      path: "/bird"
     }
   ]
 })
