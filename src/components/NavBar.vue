@@ -40,9 +40,9 @@
           </a>
 
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Hund</a>
-            <a class="dropdown-item" href="#">Katt</a>
-            <a class="dropdown-item" href="#">Fågel</a>
+            <RouterLink class="dropdown-item" to="/dogs">Hundar</RouterLink>
+            <RouterLink class="dropdown-item" to="/cats">Katt</RouterLink>
+            <RouterLink class="dropdown-item" to="/bird">Fågel</RouterLink>
           </div>
         </li>
 
