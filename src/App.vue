@@ -31,7 +31,7 @@
     console.log(dogList)
     return dogList
   }
-  async function getDogs(db) {
+  async function getUsers(db) {
     let dogs = collection(db, "dogs")
     let dogSnapshot = await getDocs(dogs)
     let dogList = dogSnapshot.docs.map((doc) => doc.data())
@@ -39,21 +39,25 @@
     return dogList
   }
 
-<<<<<<< HEAD
   getUsers(db)
-=======
->>>>>>> c5b79de27cef2cef84a1a176a20fc677d612c437
   getDogs(db)
+
+  import DogsViewVue from "./views/DogsView.vue"
+  import SplashScreen from "./components/SplashScreen.vue"
 
   export default {
     components: {
       NavBar,
-      Footer
+      Footer,
+      DogsViewVue,
+      SplashScreen
     }
   }
 </script>
 
 <template>
+  <SplashScreen />
+  <DogsViewVue />
   <nav>
     <NavBar />
     <ul>
