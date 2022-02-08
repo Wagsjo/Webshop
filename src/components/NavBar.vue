@@ -19,13 +19,10 @@
       </button>
     </form>
     <div
-      class="collapse navbar-collapse justify-content-between"
+      class="collapse navbar-collapse justify-content-between ml-3"
       id="navbarSupportedContent"
     >
       <ul class="navbar-nav">
-    <div class="collapse navbar-collapse justify-content-between ml-3" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-
         <li class="nav-item">
           <a class="nav-link disabled" href="#">Disabled</a>
         </li>
@@ -102,10 +99,6 @@
       min-width: 100%;
     }
 
-    }
-    form {
-    min-width: 100%;
-  }
     .dropdown-menu {
       right: auto;
     }
