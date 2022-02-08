@@ -48,11 +48,15 @@
   #MinaInfo {
     background-color: #c4c4c4;
     font-weight: 500;
-    padding: 1em;
+
     max-width: 400px;
   }
   #MinaInfo > ul {
     list-style: none;
+    margin: 1em;
+  }
+  #MinaInfo > ul > li {
+    margin: 1em;
   }
   #minaFavoriter {
     margin-top: 2em;
