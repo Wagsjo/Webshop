@@ -24,12 +24,12 @@
   const app = initializeApp(firebaseConfig)
   const db = getFirestore(app)
 
-  async function getUsers(db) {
-    let users = collection(db, "users")
-    let userSnapshot = await getDocs(users)
-    let userList = userSnapshot.docs.map((doc) => doc.data())
-    console.log(userList)
-    return userList
+  async function getDogs(db) {
+    let dogs = collection(db, "dogs")
+    let dogSnapshot = await getDocs(dogs)
+    let dogList = dogSnapshot.docs.map((doc) => doc.data())
+    console.log(dogList)
+    return dogList
   }
   async function getDogs(db) {
     let dogs = collection(db, "dogs")
@@ -39,7 +39,10 @@
     return dogList
   }
 
+<<<<<<< HEAD
   getUsers(db)
+=======
+>>>>>>> c5b79de27cef2cef84a1a176a20fc677d612c437
   getDogs(db)
 
   export default {
