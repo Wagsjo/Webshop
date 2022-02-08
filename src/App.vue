@@ -42,19 +42,15 @@
   getUsers(db)
   getDogs(db)
 
-  import DogsViewVue from "./views/DogsView.vue"
-
   export default {
     components: {
       NavBar,
-      Footer,
-      DogsViewVue
+      Footer
     }
   }
 </script>
 
 <template>
-  <DogsViewVue />
   <nav>
     <NavBar />
     <ul>
