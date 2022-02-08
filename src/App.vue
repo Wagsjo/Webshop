@@ -1,6 +1,5 @@
 <script>
   import NavBar from "./components/NavBar.vue"
-  import HelloWorld from "./components/HelloWorld.vue"
   import Footer from "./components/PageFooter.vue"
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "firebase/app"
@@ -32,12 +31,19 @@
     console.log(userList)
     return userList
   }
+  async function getDogs(db) {
+    let dogs = collection(db, "dogs")
+    let dogSnapshot = await getDocs(dogs)
+    let dogList = dogSnapshot.docs.map((doc) => doc.data())
+    console.log(dogList)
+    return dogList
+  }
 
   getUsers(db)
+  getDogs(db)
 
   export default {
     components: {
-      HelloWorld,
       NavBar,
       Footer
     }
@@ -70,6 +76,4 @@
   <footer>
     <Footer />
   </footer>
-  <HelloWorld />
-  <CounterButton />
 </template>
