@@ -43,20 +43,17 @@
   getDogs(db)
 
   import DogsViewVue from "./views/DogsView.vue"
-  import SplashScreen from "./components/SplashScreen.vue"
 
   export default {
     components: {
       NavBar,
       Footer,
-      DogsViewVue,
-      SplashScreen
+      DogsViewVue
     }
   }
 </script>
 
 <template>
-  <SplashScreen />
   <DogsViewVue />
   <nav>
     <NavBar />

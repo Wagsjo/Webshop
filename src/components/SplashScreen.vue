@@ -2,7 +2,7 @@
   #splashCarousel .carousel-item img {
     object-fit: cover;
     object-position: center;
-    height: 50vh;
+    height: 40vh;
     overflow: hidden;
     filter: blur(1px);
   }
@@ -34,13 +34,13 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="/assets/animals.jpg" class="d-block w-100" alt="..." />
+        <img src="/assets/animals.jpg" class="d-block w-100" alt="animal" />
       </div>
       <div class="carousel-item">
-        <img src="/assets/fox.jpeg" class="d-block w-100" alt="..." />
+        <img src="/assets/fox.jpeg" class="d-block w-100" alt="animal" />
       </div>
       <div class="carousel-item">
-        <img src="/assets/animals.jpg" class="d-block w-100" alt="..." />
+        <img src="/assets/animals.jpg" class="d-block w-100" alt="animal" />
       </div>
     </div>
     <button
