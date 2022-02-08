@@ -15,6 +15,8 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Skapa profil</button>
+    <br />
+    <RouterLink to="/registering">Skapa ett konto hos oss</RouterLink>
   </form>
 </template>
 

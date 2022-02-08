@@ -2,30 +2,37 @@
   <nav
     class="navbar navbar-expand-lg navbar-light bg-light bg-warning text-dark"
   >
-    <a class="navbar-brand" href="#">Logo</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon" />
-    </button>
+    <RouterLink to="/" class="nav-link navbar-brand">Logo</RouterLink>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#"
-            >Home <span class="sr-only">(current)</span></a
-          >
+    <form class="form-inline">
+      <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button
+        class="btn btn-outline-success my-2 my-sm-0 search-button"
+        type="submit"
+      >
+        Search
+      </button>
+    </form>
+    <div
+      class="collapse navbar-collapse justify-content-between ml-3"
+      id="navbarSupportedContent"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <RouterLink to="/contact" class="nav-link">Kontakt</RouterLink>
         </li>
-        <!-- DROPDOWN -->
+        <li class="nav-item">
+          <RouterLink to="/about" class="nav-link">Om</RouterLink>
+        </li>
+
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -33,37 +40,35 @@
             id="navbarDropdown"
             role="button"
             data-bs-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
           >
             Djur
           </a>
-
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <RouterLink class="dropdown-item" to="/dogs">Hundar</RouterLink>
             <RouterLink class="dropdown-item" to="/cats">Katt</RouterLink>
             <RouterLink class="dropdown-item" to="/bird">Fågel</RouterLink>
           </div>
         </li>
-
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0 ms-auto">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button
-          class="btn btn-outline-success my-2 my-sm-0 search-button"
-          type="submit"
-        >
-          Search
-        </button>
-      </form>
+
+      <RouterLink to="/login" class="nav-link" style="">Logga in</RouterLink>
+    </div>
+    <div class="nav-item dropright">
+      <button
+        class="navbar-toggler dropdown"
+        data-bs-toggle="dropdown"
+        type="button"
+        aria-expanded="false"
+        aria-haspopup="true"
+        id="responsiveDropdown"
+      >
+        <span class="navbar-toggler-icon" />
+      </button>
+      <div class="dropdown-menu" aria-labelledby="responsiveDropdown">
+        <RouterLink to="/login" class="dropdown-item">Logga in</RouterLink>
+        <RouterLink to="/about" class="dropdown-item">Om</RouterLink>
+        <RouterLink to="/contact" class="dropdown-item">Kontakt</RouterLink>
+      </div>
     </div>
   </nav>
 </template>
@@ -79,5 +84,23 @@
   }
   .search-button {
     margin-left: 10px;
+    margin-right: 4em;
+  }
+  .dropdown-menu {
+    right: 0px;
+    left: auto;
+    top: auto;
+  }
+  @media screen and (max-width: 502px) {
+    .navbar {
+      justify-content: center;
+    }
+    form {
+      min-width: 100%;
+    }
+
+    .dropdown-menu {
+      right: auto;
+    }
   }
 </style>

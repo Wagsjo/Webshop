@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "esbuild-windows-64": "^0.14.20",
     "firebase": "^9.6.6",
     "firebase-admin": "^10.0.2",
     "mdue": "^0.1.4",

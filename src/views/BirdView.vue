@@ -21,8 +21,8 @@
     <h1 class="text-center mb-5">Fågel</h1>
     <ul v-if="json !== null" style="list-style: none">
       <li
-        class="text-uppercase display-4 fs-2"
-        v-for="(value, name) in json.animals.birds.info"
+        class="text-uppercase display-4 fs-2 text-center"
+        v-for="value in json.animals.birds.info"
         :key="value.name"
       >
         {{ value.name }}

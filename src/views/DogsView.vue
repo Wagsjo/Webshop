@@ -25,8 +25,8 @@
       class="list-unstyled card-columns"
     >
       <li
-        class="text-uppercase display-4 fs-2 mb-4"
-        v-for="(value, name) in json.animals.dogs.info"
+        class="text-uppercase display-4 fs-2 mb-4 text-center"
+        v-for="value in json.animals.dogs.info"
         :key="value.name"
       >
         {{ value.name }}
