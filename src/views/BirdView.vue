@@ -17,12 +17,16 @@
 </script>
 
 <template>
-  <h6 v-if="json !== null">
-    <p v-for="(value, name) in json.animals.birds.info" :key="value.name">
-      {{ name }} - Name: {{ value.name }} | Age: {{ value.age }} | Color:
-      {{ value.color }} | Race: {{ value.race }} Weight: {{ value.weight }} |
-      Heigth: {{ value.height }} | Length: {{ value.length }} | Castrated:
-      {{ value.castrated }}
-    </p>
-  </h6>
+  <main class="container-md mb-5 mt-5">
+    <h1 class="text-center mb-5">Fågel</h1>
+    <ul v-if="json !== null" style="list-style: none">
+      <li
+        class="text-uppercase display-4 fs-2"
+        v-for="(value, name) in json.animals.birds.info"
+        :key="value.name"
+      >
+        {{ value.name }}
+      </li>
+    </ul>
+  </main>
 </template>
