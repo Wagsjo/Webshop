@@ -31,6 +31,7 @@
     console.log(dogList)
     return dogList
   }
+
   async function getUsers(db) {
     let dogs = collection(db, "dogs")
     let dogSnapshot = await getDocs(dogs)
@@ -51,6 +52,7 @@
 </script>
 
 <template>
+  <div>techonolollol{{ dogList }}</div>
   <nav>
     <NavBar />
     <ul>
