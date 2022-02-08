@@ -2,7 +2,6 @@
   import NavBar from "./components/NavBar.vue"
   import HelloWorld from "./components/HelloWorld.vue"
   import Footer from "./components/PageFooter.vue"
-  import DogsViewVue from "./views/DogsView.vue"
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "firebase/app"
   import { getFirestore, collection, getDocs } from "firebase/firestore/lite"
@@ -40,14 +39,12 @@
     components: {
       HelloWorld,
       NavBar,
-      DogsViewVue,
       Footer
     }
   }
 </script>
 
 <template>
-  <DogsViewVue />
   <nav>
     <NavBar />
     <ul>
