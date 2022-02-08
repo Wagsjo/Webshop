@@ -11,6 +11,6 @@
 <template>
   <main>
     <loginForm />
-    <p><RouterLink to="/registering">Skapa ett konto hos oss</RouterLink></p>
+    <p />
   </main>
 </template>

@@ -3,7 +3,7 @@
     <h1>Mina Sidor</h1>
     <form id="RedigeraForm">
       <h1>Redigera ditt profil</h1>
-      <div>
+      <div class="form-group">
         <label for="FirstName">förnamn</label>
         <input
           type="text"

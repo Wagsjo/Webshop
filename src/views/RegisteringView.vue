@@ -12,7 +12,7 @@
   <main>
     <RegisteringForm />
 
-    <p>Har du redan ett konto <RouterLink to="/login">logga in</RouterLink></p>
-    <p><RouterLink to="/minasidor">Mina sidor</RouterLink></p>
+    <!-- <p>Har du redan ett konto <RouterLink to="/login">logga in</RouterLink></p> -->
+    <button><RouterLink to="/minasidor">Mina sidor</RouterLink></button>
   </main>
 </template>
