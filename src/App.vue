@@ -11,17 +11,17 @@
 </script>
 
 <template>
-  <DogsViewVue />
+  <div class="container-fluid p-0 d-flex flex-column min-vh-100">
+    <nav>
+      <NavBar />
+    </nav>
 
-  <nav>
-    <NavBar />
-  </nav>
+    <main class="flex-grow-1">
+      <RouterView />
+    </main>
 
-  <main>
-    <RouterView />
-  </main>
-
-  <footer>
-    <Footer />
-  </footer>
+    <footer>
+      <Footer />
+    </footer>
+  </div>
 </template>
