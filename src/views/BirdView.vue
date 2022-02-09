@@ -25,8 +25,23 @@
         v-for="value in json.animals.birds.info"
         :key="value.name"
       >
-        {{ value.name }}
+        <!--Placeholder Bild-->
+        <img
+          class="birdBild mb-3"
+          @click="viewDog(dog.id)"
+          src="/assets/fox.jpeg"
+          alt="Bild"
+        />
+        <p>{{ value.name }}</p>
       </li>
     </ul>
   </main>
 </template>
+
+<style lang="sass" scoped>
+  .birdBild
+    border-radius: 50%
+    width: 5em
+    height: 5em
+    box-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.52)
+</style>
