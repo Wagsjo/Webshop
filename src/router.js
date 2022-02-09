@@ -11,6 +11,7 @@ import AdoptionsView from "./views/AdoptionsView.vue"
 import DogsView from "./views/DogsView.vue"
 import CatsView from "./views/CatsView.vue"
 import BirdView from "./views/BirdView.vue"
+
 export default createRouter({
   history: createWebHistory(),
   routes: [

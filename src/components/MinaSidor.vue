@@ -20,7 +20,9 @@
           <li>Efternamn</li>
           <li>E-post</li>
           <li>Lösenord</li>
-          <li><RouterLink to="/RedigeraMinasidor"> Redigera</RouterLink></li>
+          <li>
+            <RouterLink to="/RedigeraMinasidor"> Redigera</RouterLink>
+          </li>
         </ul>
 
         <!-- <input type="button" value="Redigera" /> -->
@@ -51,19 +53,23 @@
 
     max-width: 400px;
   }
+
   #MinaInfo > ul {
     list-style: none;
     margin: 1em;
   }
+
   #MinaInfo > ul > li {
     margin: 1em;
   }
+
   #minaFavoriter {
     margin-top: 2em;
     background-color: #c4c4c4;
     height: auto;
     max-width: 400px;
   }
+
   .animalBox ul {
     list-style: none;
   }
@@ -76,6 +82,7 @@
       justify-content: space-around;
       height: 30em;
     }
+
     #MinaInfo {
       width: 40%;
       margin-left: auto;
@@ -93,6 +100,7 @@
       margin-bottom: 2em;
     }
   }
+
   @media (max-width: 600px) {
     #MinaInfo {
       width: 80%;
@@ -106,6 +114,7 @@
       margin-left: auto;
       margin-right: auto;
     }
+
     .animalBox {
       width: 50%;
       margin-left: auto;

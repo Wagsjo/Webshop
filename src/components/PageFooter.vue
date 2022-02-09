@@ -46,12 +46,15 @@
   .footer {
     background-color: $footer-primary;
     color: $footer-text;
+
     h3 {
       color: $footer-heading;
     }
+
     .icons {
       font-size: 1.5rem;
     }
+
     .copyright {
       font-size: 0.7rem;
     }

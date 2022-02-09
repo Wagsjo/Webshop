@@ -77,6 +77,7 @@
   form {
     display: flex;
   }
+
   .search-button {
     margin-left: 10px;
   }

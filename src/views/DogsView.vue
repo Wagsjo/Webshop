@@ -75,11 +75,13 @@
 <style lang="sass" scoped>
   .card-columns
     column-count: 2
+
   .dogs-view
     &__dog-table
       &__body
         &__row
           cursor: pointer
+
           &:hover
             background-color: lightslategray
 </style>
