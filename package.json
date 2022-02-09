@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "firebase": "^9.6.6",
-    "firebase-admin": "^10.0.2",
     "mdue": "^0.1.4",
     "sass": "^1.49.0",
     "vue": "^3.2.27",
