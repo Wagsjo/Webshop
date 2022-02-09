@@ -1,1 +1,13 @@
-<template><h1>Om</h1></template>
+<script>
+  import AboutUs from "../components/AboutUs.vue"
+
+  export default {
+    components: {
+      AboutUs
+    }
+  }
+</script>
+
+<template>
+  <AboutUs />
+</template>
