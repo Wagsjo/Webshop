@@ -1,9 +1,9 @@
 <script>
-  import { getDogs } from "../firebase"
+  import { getAnimals } from "../firebase"
 
   export default {
     created() {
-      getDogs()
+      getAnimals("dog")
         .then((dogList) => {
           this.dogs = dogList
         })
