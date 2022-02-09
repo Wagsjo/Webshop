@@ -12,7 +12,6 @@
 
 <template>
   <DogsViewVue />
-
   <nav>
     <NavBar />
   </nav>
