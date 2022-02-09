@@ -1,26 +1,49 @@
-<script></script>
+<script>
+  export default {
+    methods: {
+      handlesubmit() {
+        const data = {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          password: this.password
+        }
+        console.log("Du är inloggad")
+        console.log(data)
+      }
+    },
+    data() {
+      return {
+        firstName: null,
+        lastName: null,
+        email: null,
+        password: null
+      }
+    }
+  }
+</script>
 
 <template>
-  <form id="RegForm">
+  <form id="RegForm" @submit.prevent="handlesubmit">
     <h1>Skapa ett konto</h1>
     <div class="form-group">
       <label for="FirstName">Förnamn</label>
-      <input type="text" class="form-control" />
+      <input type="text" class="form-control" v-model="firstName" />
     </div>
 
     <div class="form-group">
       <label for="LastName">Efternamn</label>
-      <input type="text" class="form-control" />
+      <input type="text" class="form-control" v-model="lastName" />
     </div>
 
     <div class="form-group">
       <label for="Email">Epost</label>
-      <input type="text" class="form-control" />
+      <input type="text" class="form-control" v-model="email" />
     </div>
 
     <div class="form-group">
       <label for="Password">Lösenord</label>
-      <input type="text" class="form-control" />
+      <input type="text" class="form-control" v-model="password" />
     </div>
 
     <button type="submit" class="btn btn-primary">Skapa profil</button>
