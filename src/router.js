@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from "vue-router"
+import { createRouter, createWebHistory } from "vue-router"
 
 import AboutView from "./views/AboutView.vue"
 import ContactView from "./views/ContactView.vue"
@@ -11,8 +11,9 @@ import AdoptionsView from "./views/AdoptionsView.vue"
 import DogsView from "./views/DogsView.vue"
 import CatsView from "./views/CatsView.vue"
 import BirdView from "./views/BirdView.vue"
+
 export default createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: [
     {
       component: AboutView,
@@ -49,6 +50,10 @@ export default createRouter({
     {
       component: DogsView,
       path: "/dogs"
+    },
+    {
+      component: DogsView,
+      path: "/dogs/:id"
     },
     {
       component: CatsView,
