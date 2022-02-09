@@ -25,7 +25,10 @@
 
     <button type="submit" class="btn btn-primary">Skapa profil</button>
     <br />
-    <p>Har du redan ett konto <RouterLink to="/login">logga in</RouterLink></p>
+    <p>
+      Har du redan ett konto
+      <RouterLink to="/login">logga in</RouterLink>
+    </p>
   </form>
 </template>
 
@@ -35,14 +38,17 @@
     margin-left: auto;
     margin-right: auto;
   }
+
   .btn-primary {
     margin-top: 1em;
     color: black;
     background-color: #babfda;
   }
+
   .form-group input {
     background-color: #c4c4c4;
   }
+
   @media (max-width: 700px) {
   }
 </style>

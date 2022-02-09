@@ -49,11 +49,13 @@
     margin-left: auto;
     margin-right: auto;
   }
+
   .btn-primary {
     margin-top: 1em;
     color: black;
     background-color: #babfda;
   }
+
   @media (max-width: 700px) {
   }
 </style>
