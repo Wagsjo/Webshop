@@ -4,7 +4,7 @@
   <form id="RegForm">
     <h1>Skapa ett konto</h1>
     <div class="form-group">
-      <label for="FirstName">förnamn</label>
+      <label for="FirstName">Förnamn</label>
       <input type="text" class="form-control" />
     </div>
 
