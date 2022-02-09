@@ -5,7 +5,13 @@
         MinaInfo: "MinaInfo",
         animalBox: "animalBox",
         minaFavoriter: "minaFavoriter",
-        firstcontainerinMinasidor: "firstcontainerinMinasidor"
+        firstcontainerinMinasidor: "firstcontainerinMinasidor",
+        firstName: "Anna",
+        lastName: "Andersson",
+        eMail: "anna.andersson@hotmail.com",
+        passWord: "********",
+        animalNameFirst: "Nisse",
+        animalNameSecond: "Misse"
       }
     }
   }
@@ -16,12 +22,14 @@
     <div :id="firstcontainerinMinasidor">
       <section :id="MinaInfo">
         <ul>
-          <li>Namn</li>
-          <li>Efternamn</li>
-          <li>E-post</li>
-          <li>Lösenord</li>
+          <li><span>Namn:</span> {{ firstName }}</li>
+          <li><span>Efternamn:</span> {{ lastName }}</li>
+          <li><span>E-post:</span> {{ eMail }}</li>
+          <li><span>Lösenord:</span> {{ passWord }}</li>
           <li>
-            <RouterLink to="/RedigeraMinasidor"> Redigera</RouterLink>
+            <RouterLink to="/RedigeraMinasidor">
+              <i class="icons bi-pencil-square"
+            /></RouterLink>
           </li>
         </ul>
 
@@ -31,14 +39,16 @@
         <h2>Mina favoriter</h2>
         <section :class="animalBox">
           <ul>
-            <li>Djurens bild</li>
-            <li>Djurens namn</li>
+            <li><img src="/assets/animals.jpg" alt="animal" /></li>
+            <li>{{ animalNameFirst }}</li>
+            <li class="remove-favorite">Ta bort <i class="bi-x-lg" /></li>
           </ul>
         </section>
         <section :class="animalBox">
           <ul>
-            <li>Djurens bild</li>
-            <li>Djurens namn</li>
+            <li><img src="/assets/fox.jpeg" alt="animal" /></li>
+            <li>{{ animalNameSecond }}</li>
+            <li class="remove-favorite">Ta bort <i class="bi-x-lg" /></li>
           </ul>
         </section>
       </section>
@@ -46,11 +56,33 @@
   </main>
 </template>
 
-<style>
-  #MinaInfo {
-    background-color: #c4c4c4;
-    font-weight: 500;
+<style scoped>
+  main {
+    margin: 2rem;
+  }
 
+  h1 {
+    text-align: center;
+  }
+
+  span {
+    font-weight: 800;
+  }
+
+  .icons {
+    font-size: 1.5rem;
+  }
+
+  .remove-favorite {
+    font-size: 0.6rem;
+    color: #003fb9;
+  }
+
+  #MinaInfo {
+    background-color: rgba(196, 196, 196, 0.43);
+    font-weight: 500;
+    border-radius: 5px;
+    padding: 2rem;
     max-width: 400px;
   }
 
@@ -65,19 +97,30 @@
 
   #minaFavoriter {
     margin-top: 2em;
-    background-color: #c4c4c4;
+    background-color: rgba(196, 196, 196, 0.43);
     height: auto;
+    border-radius: 5px;
+    padding: 2rem;
     max-width: 400px;
+  }
+
+  #minaFavoriter h2 {
+    text-align: center;
   }
 
   .animalBox ul {
     list-style: none;
   }
 
+  img {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+  }
+
   @media (min-width: 600px) {
     #firstcontainerinMinasidor {
       display: flex;
-
       flex-direction: row;
       justify-content: space-around;
       height: 30em;

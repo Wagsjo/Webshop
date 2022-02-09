@@ -41,6 +41,7 @@
           <th class="dogs-view__dog-table__header__row--age">Ålder</th>
           <th class="dogs-view__dog-table__header__row--weight">Vikt</th>
           <th class="dogs-view__dog-table__header__row--height">Mankhöjd</th>
+          <th class="dogs-view__dog-table__header__row--description">Om</th>
           <th class="dogs-view__dog-table__header__row--selected-demo" />
         </tr>
       </thead>
@@ -65,6 +66,9 @@
           </td>
           <td class="dogs-view__dog-table__body__row--height">
             {{ dog.height ?? "-" }}
+          </td>
+          <td class="dogs-view__dog-table__body__row--description">
+            {{ dog.description ?? "-" }}
           </td>
         </tr>
       </tbody>

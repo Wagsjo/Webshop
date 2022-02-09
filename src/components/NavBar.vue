@@ -51,7 +51,12 @@
         </li>
       </ul>
 
-      <RouterLink to="/login" class="nav-link" style="">Logga in</RouterLink>
+      <div class="d-flex align-items-center">
+        <RouterLink to="/login" class="nav-link">Logga in</RouterLink>
+        <RouterLink to="/minasidor" class="nav-link"
+          ><i class="icons bi-person-fill"
+        /></RouterLink>
+      </div>
     </div>
     <div class="nav-item dropright">
       <button
@@ -66,6 +71,9 @@
       </button>
       <div class="dropdown-menu" aria-labelledby="responsiveDropdown">
         <RouterLink to="/login" class="dropdown-item">Logga in</RouterLink>
+        <RouterLink to="/minasidor" class="dropdown-item"
+          >Mina sidor</RouterLink
+        >
         <RouterLink to="/about" class="dropdown-item">Om</RouterLink>
         <RouterLink to="/contact" class="dropdown-item">Kontakt</RouterLink>
       </div>
@@ -91,6 +99,10 @@
     right: 0px;
     left: auto;
     top: auto;
+  }
+
+  .icons {
+    font-size: 1.5rem;
   }
   @media screen and (max-width: 502px) {
     .navbar {
