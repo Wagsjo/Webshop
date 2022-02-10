@@ -18,7 +18,8 @@
       return {
         dogs: null,
         loading: true,
-        error: false
+        error: false,
+        animal: null
       }
     },
     methods: {
@@ -41,7 +42,7 @@
           <img
             class="hundBild mb-3"
             @click="viewDog(dog.id)"
-            src="/assets/fox.jpeg"
+            :src="dogs.profileImage ?? '/public/favicon-196.png'"
             alt="Bild"
           />
           <p @click="viewDog(dog.id)" class="Hundar text-uppercase display-4">

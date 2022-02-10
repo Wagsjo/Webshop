@@ -14,7 +14,7 @@
             <img
               :src="animal.profileImage ?? '/public/favicon-196.png'"
               class="img rounded-circle animal-details-view__profile__image"
-              alt="Svea"
+              alt="svea"
             />
           </div>
         </div>
