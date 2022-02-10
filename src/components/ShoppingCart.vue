@@ -10,11 +10,7 @@
   <button class="btn btn-primary" type="submit">Betala</button>
 </template>
 
-<script>
-  export default {
-    name: CartVue
-  }
-</script>
+<script></script>
 
 <style lang="scss" scoped>
   h3 {
