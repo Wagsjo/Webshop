@@ -23,9 +23,7 @@
     },
     methods: {
       viewDog(dogId) {
-        this.$router.push(`/dogs/${dogId}/info`)
-        let modal = document.getElementById("DogsSida")
-        modal.style.display = "none"
+        this.$router.push(`/dogs/${dogId}`)
       }
     }
   }
