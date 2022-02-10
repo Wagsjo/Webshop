@@ -58,12 +58,6 @@
   </div>
 </template>
 
-<!-- TODO
-* Kontaktuppgifter
-* Sociala medier
-* Ingen footer?
- -->
-
 <style lang="scss" scoped>
   $primary: #c4c4c4;
   $secondary: #002dcb;
@@ -82,6 +76,7 @@
   .icons {
     font-size: 1.5rem;
   }
+
   .bgimage {
     width: 100%;
     height: 40vh;
@@ -89,8 +84,8 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    /* background-attachment: fixed; */
   }
+
   .intro {
     background-color: $primary;
     text-align: center;

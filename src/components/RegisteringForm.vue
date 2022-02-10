@@ -60,10 +60,12 @@
     max-width: 300px;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 5em;
+    padding-bottom: 5em;
   }
 
   .btn-primary {
-    margin-top: 1em;
+    margin-top: 2em;
     color: black;
     background-color: #babfda;
   }

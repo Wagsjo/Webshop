@@ -1,11 +1,12 @@
 <script>
-  import { getDogs } from "../firebase"
+  import { getAnimals } from "../firebase"
 
   export default {
     created() {
-      getDogs()
+      getAnimals("dog")
         .then((dogList) => {
           this.dogs = dogList
+          console.log(this.dogs)
         })
         .catch((error) => {
           console.error(error)
@@ -30,58 +31,37 @@
 
 <template>
   <main class="container-md mb-5 mt-5">
-    <h1 class="text-center mb-5">Hundar</h1>
-    <p v-if="loading">Laddar hunden</p>
-    <p v-else-if="error">ERROR!!!1</p>
-    <table v-else-if="dogs" class="dogs-view__dog-table">
-      <thead class="dogs-view__dog-table__header">
-        <tr class="dogs-view__dog-table__header__row">
-          <th class="dogs-view__dog-table__header__row--name">Namn</th>
-          <th class="dogs-view__dog-table__header__row--breed">Ras</th>
-          <th class="dogs-view__dog-table__header__row--age">Ålder</th>
-          <th class="dogs-view__dog-table__header__row--weight">Vikt</th>
-          <th class="dogs-view__dog-table__header__row--height">Mankhöjd</th>
-          <th class="dogs-view__dog-table__header__row--selected-demo" />
-        </tr>
-      </thead>
-      <tbody class="table dogs-view__dog-table__body">
-        <tr
-          class="dogs-view__dog-table__body__row"
-          v-for="dog in dogs"
-          :key="dog.id"
-          @click="viewDog(dog.id)"
-        >
-          <td class="dogs-view__dog-table__body__row--name">
+    <div id="DogsSida">
+      <h1 class="text-center mb-5">Hundar</h1>
+      <p v-if="loading">Laddar hunden</p>
+      <p v-else-if="error">ERROR!!!1</p>
+      <ul style="list-style: none" class="card-columns">
+        <li class="fs-2 mb-5 text-center" v-for="dog in dogs" :key="dog.id">
+          <!--Placeholder Bild-->
+          <img
+            class="hundBild mb-3"
+            @click="viewDog(dog.id)"
+            src="/assets/fox.jpeg"
+            alt="Bild"
+          />
+          <p @click="viewDog(dog.id)" class="Hundar text-uppercase display-4">
             {{ dog.name ?? "Okänd" }}
-          </td>
-          <td class="dogs-view__dog-table__body__row--breed">
-            {{ dog.breed ?? "Okänd" }}
-          </td>
-          <td class="dogs-view__dog-table__body__row--age">
-            {{ dog.age ?? "-" }}
-          </td>
-          <td class="dogs-view__dog-table__body__row--weight">
-            {{ dog.weight ?? "-" }}
-          </td>
-          <td class="dogs-view__dog-table__body__row--height">
-            {{ dog.height ?? "-" }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </p>
+        </li>
+      </ul>
+    </div>
+    <RouterView />
   </main>
 </template>
 
 <style lang="sass" scoped>
   .card-columns
     column-count: 2
-
-  .dogs-view
-    &__dog-table
-      &__body
-        &__row
-          cursor: pointer
-
-          &:hover
-            background-color: lightslategray
+  .Hundar:hover
+    color: blue
+  .hundBild
+    border-radius: 100%
+    width: 6em
+    height: 6em
+    box-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.52)
 </style>

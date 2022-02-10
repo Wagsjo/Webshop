@@ -45,13 +45,15 @@
 </template>
 <style>
   #RedigeraForm {
+    padding-top: 5em;
+    padding-bottom: 5em;
     max-width: 300px;
     margin-left: auto;
     margin-right: auto;
   }
 
   .btn-primary {
-    margin-top: 1em;
+    margin-top: 2em;
     color: black;
     background-color: #babfda;
   }

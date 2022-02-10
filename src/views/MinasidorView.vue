@@ -8,5 +8,5 @@
   }
 </script>
 <template>
-  <minaSidor />
+  <MinaSidor />
 </template>

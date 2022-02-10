@@ -1,6 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app"
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite"
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+  getDoc,
+  doc
+} from "firebase/firestore/lite"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -20,23 +28,28 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
+const animals = collection(db, "animals")
 
-export async function getDogs() {
-  let dogs = collection(db, "dogs")
-  let dogSnapshot = await getDocs(dogs)
-  let dogList = dogSnapshot.docs.map((doc) => {
-    const dog = doc.data()
-    dog.id = doc.id
-    return dog
+export async function getAnimals(type) {
+  let animalQuery
+  if (type) {
+    animalQuery = query(animals, where("type", "==", type))
+  } else {
+    animalQuery = query(animals)
+  }
+  const animalSnapshot = await getDocs(animalQuery)
+  let animalList = animalSnapshot.docs.map((doc) => {
+    const animal = doc.data()
+    animal.id = doc.id
+    return animal
   })
-  console.log(dogList)
-  return dogList
+  console.log(animalList)
+  return animalList
 }
 
-export async function getUsers() {
-  let dogs = collection(db, "dogs")
-  let dogSnapshot = await getDocs(dogs)
-  let dogList = dogSnapshot.docs.map((doc) => doc.data())
-  console.log(dogList)
-  return dogList
+export async function getAnimal(id) {
+  const animalSnapshot = await getDoc(doc(db, `/animals/${id}`))
+  const animalData = animalSnapshot.data()
+  console.log(animalData)
+  return animalData
 }
