@@ -63,7 +63,11 @@
             </div>
             <div class="row">
               <div class="col fw-bold">Kön</div>
-              <div class="col">{{ realSex }}</div>
+              <div class="col text-capitalize">{{ realSex }}</div>
+            </div>
+            <div class="row">
+              <div class="col fw-bold">Kastrerad</div>
+              <div class="col text-capitalize">{{ realCast }}</div>
             </div>
           </div>
         </div>
@@ -169,6 +173,12 @@
           return "Okänt"
         }
         return this.animal.sex
+      },
+      realCast() {
+        if (this.animal.castrated === true) {
+          return "ja"
+        }
+        return "nej"
       }
     },
     methods: {
