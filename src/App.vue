@@ -12,7 +12,7 @@
 
 <template>
   <div class="container-fluid p-0 d-flex flex-column min-vh-100">
-    <nav>
+    <nav v-if="$route.path != '/login'">
       <NavBar />
     </nav>
 
@@ -20,7 +20,8 @@
       <RouterView />
     </main>
 
-    <footer>
+    <footer v-if="$route.path != '/login'">
+      //footer och navbar syns inte på /login
       <Footer />
     </footer>
   </div>

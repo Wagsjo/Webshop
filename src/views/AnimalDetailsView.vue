@@ -99,7 +99,10 @@
             </button>
           </div>
           <div class="col-12 col-md-6 d-inline-flex">
-            <button class="btn btn-outline-dark flex-fill">
+            <button
+              class="btn btn-outline-dark flex-fill"
+              @click="addToFavorite"
+            >
               Lägg till i favoriter
             </button>
           </div>
@@ -122,13 +125,16 @@
       return {
         loading: true,
         error: false,
-        animal: null
+        animal: null,
+        animalId: null,
+        favorites: []
       }
     },
     created() {
       const id = this.$route.params.id
       getAnimal(id).then((animalData) => {
         this.animal = animalData
+        this.animalId = id
       })
     },
     computed: {
@@ -156,16 +162,33 @@
       },
       realSex() {
         if (this.animal.sex === "female") {
-          return "hona"
+          return "Tik"
         } else if (this.animal.sex === "male") {
-          return "hane"
+          return "Hane"
         } else if (this.animal.sex == null) {
-          return "okänt"
+          return "Okänt"
         }
         return this.animal.sex
       }
     },
-    methods: {}
+    methods: {
+      addToFavorite() {
+        if (localStorage.getItem("favoritesStored") === null) {
+          this.favorites.push(this.animal)
+          localStorage.setItem(
+            "favoritesStored",
+            JSON.stringify(this.favorites)
+          )
+        } else {
+          this.favorites = JSON.parse(localStorage.getItem("favoritesStored"))
+          this.favorites.push(this.animal)
+          localStorage.setItem(
+            "favoritesStored",
+            JSON.stringify(this.favorites)
+          )
+        }
+      }
+    }
   }
 </script>
 
