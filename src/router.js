@@ -13,7 +13,6 @@ import CatsView from "./views/CatsView.vue"
 import BirdView from "./views/BirdView.vue"
 import AnimalDetailsView from "./views/AnimalDetailsView.vue"
 
-
 export default createRouter({
   history: createWebHistory(),
   routes: [
@@ -55,10 +54,8 @@ export default createRouter({
       name: "dogsMain"
     },
     {
-     
       component: AnimalDetailsView,
-      path: "/animals/:id"
-
+      path: "/dogs/:id"
     },
     {
       component: CatsView,
