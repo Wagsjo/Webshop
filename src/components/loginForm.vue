@@ -29,11 +29,13 @@
     padding-bottom: 5em;
     height: auto;
     position: relative;
+
     h1 {
       color: #003fb9;
       font-family: Encode Sans;
 
       font-weight: bold;
+
       span {
         color: black;
         font-weight: 400px;
@@ -41,10 +43,12 @@
       }
     }
   }
+
   #loginForm {
     max-width: 300px;
     margin-left: auto;
     margin-right: auto;
+
     .form-control {
       background-color: white;
     }

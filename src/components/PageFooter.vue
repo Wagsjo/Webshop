@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <p class="copyright p-2">{{ copy }}</p>
+    <p class="copyright p-2 m-0">{{ copy }}</p>
   </div>
 </template>
 
