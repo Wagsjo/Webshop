@@ -50,7 +50,8 @@ export default createRouter({
     },
     {
       component: DogsView,
-      path: "/dogs"
+      path: "/dogs",
+      name: "dogsMain"
     },
     {
       component: AnimalDetailsView,

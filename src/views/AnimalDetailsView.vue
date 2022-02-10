@@ -175,10 +175,12 @@
       &__image
         width: 200px
         height: 200px
+
     &__bottom__images
       img
         width: 128px
         height: 128px
+
   @media screen and (max-width: 455px)
     .animal-details-view__bottom__images
       img
