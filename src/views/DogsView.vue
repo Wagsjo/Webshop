@@ -6,7 +6,7 @@
       getAnimals("dog")
         .then((dogList) => {
           this.dogs = dogList
-          console.log(this.dogs)
+          console.log(this.dogs[0])
         })
         .catch((error) => {
           console.error(error)
@@ -31,7 +31,7 @@
 </script>
 
 <template>
-  <main class="container-md mb-5 mt-5">
+  <main class="container-fluid mb-5 mt-5">
     <div id="DogsSida">
       <h1 class="text-center mb-5">Hundar</h1>
       <p v-if="loading">Laddar hunden</p>
@@ -60,9 +60,11 @@
     column-count: 2
   .Hundar:hover
     color: blue
+    cursor: pointer
   .hundBild
     border-radius: 100%
     width: 6em
     height: 6em
     box-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.52)
+    cursor: pointer
 </style>
