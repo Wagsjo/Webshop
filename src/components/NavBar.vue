@@ -46,7 +46,9 @@
             Djur
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <RouterLink class="dropdown-item" to="/dogs">Hundar</RouterLink>
+            <RouterLink class="dropdown-item" :to="{ name: 'dogsMain' }"
+              >Hundar</RouterLink
+            >
             <RouterLink class="dropdown-item" to="/cats">Katt</RouterLink>
             <RouterLink class="dropdown-item" to="/bird">Fågel</RouterLink>
           </div>
@@ -74,10 +76,13 @@
       <div class="dropdown-menu" aria-labelledby="responsiveDropdown">
         <RouterLink to="/login" class="dropdown-item">Logga in</RouterLink>
         <RouterLink to="/minasidor" class="dropdown-item"
-          >Mina sidor</RouterLink
-        >
+          >Mina sidor
+        </RouterLink>
         <RouterLink to="/about" class="dropdown-item">Om</RouterLink>
         <RouterLink to="/contact" class="dropdown-item">Kontakt</RouterLink>
+        <RouterLink to="/adoptions" class="dropdown-item"
+          >Adoptioner</RouterLink
+        >
       </div>
     </div>
   </nav>
@@ -97,6 +102,7 @@
     margin-left: 10px;
     margin-right: 4em;
   }
+
   .dropdown-menu {
     right: 0px;
     left: auto;
@@ -106,10 +112,12 @@
   .icons {
     font-size: 1.5rem;
   }
+
   @media screen and (max-width: 502px) {
     .navbar {
       justify-content: center;
     }
+
     form {
       min-width: 100%;
     }

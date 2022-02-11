@@ -76,6 +76,7 @@
   .icons {
     font-size: 1.5rem;
   }
+
   .bgimage {
     width: 100%;
     height: 40vh;
@@ -84,6 +85,7 @@
     background-position: center;
     background-size: cover;
   }
+
   .intro {
     background-color: $primary;
     text-align: center;

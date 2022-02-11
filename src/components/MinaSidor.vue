@@ -28,8 +28,8 @@
           <li><span>Lösenord:</span> {{ passWord }}</li>
           <li>
             <RouterLink to="/RedigeraMinasidor">
-              <i class="icons bi-pencil-square"
-            /></RouterLink>
+              <i class="icons bi-pencil-square" />Redigera</RouterLink
+            >
           </li>
         </ul>
 
@@ -56,7 +56,7 @@
   </main>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   main {
     margin: 2rem;
   }
@@ -81,9 +81,9 @@
   #MinaInfo {
     background-color: rgba(196, 196, 196, 0.43);
     font-weight: 500;
+
     border-radius: 5px;
     padding: 2rem;
-    max-width: 400px;
   }
 
   #MinaInfo > ul {
@@ -101,15 +101,25 @@
     height: auto;
     border-radius: 5px;
     padding: 2rem;
-    max-width: 400px;
+    h2 {
+      text-align: center;
+    }
   }
 
-  #minaFavoriter h2 {
-    text-align: center;
-  }
+  .animalBox {
+    ul {
+      background-color: #c4c4c4;
+      list-style: none;
+      padding: 0;
 
-  .animalBox ul {
-    list-style: none;
+      li {
+        width: auto;
+        display: flex;
+        justify-content: center;
+
+        padding-left: 0;
+      }
+    }
   }
 
   img {
@@ -118,7 +128,7 @@
     width: 100px;
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: 820px) {
     #firstcontainerinMinasidor {
       display: flex;
       flex-direction: row;
@@ -131,7 +141,8 @@
       margin-left: auto;
       margin-right: auto;
       padding: 1em;
-      height: 15em;
+      height: 20em;
+      max-width: 600px;
       margin-top: 5em;
     }
 
@@ -139,17 +150,22 @@
       width: 30%;
       margin-left: auto;
       margin-right: auto;
-      height: auto;
+      min-height: 500px;
       margin-bottom: 2em;
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 820px) {
     #MinaInfo {
       width: 80%;
       margin-left: auto;
       margin-right: auto;
       padding: 1em;
+      max-width: 400px;
+      font-size: 12px;
+      ul {
+        padding-left: 0;
+      }
     }
 
     #minaFavoriter {
