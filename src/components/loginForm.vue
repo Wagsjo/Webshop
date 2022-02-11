@@ -1,7 +1,8 @@
 <script></script>
 
 <template>
-  <main>
+  <div id="loginsidan">
+    <RouterLink to="/"><i class="bi bi-x-lg" /></RouterLink>
     <form id="loginForm">
       <h1>Logga in <span>på ditt konto</span></h1>
 
@@ -19,17 +20,31 @@
       <br />
       <RouterLink to="/registering">Skapa ett konto hos oss</RouterLink>
     </form>
-  </main>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-  main {
+  #loginsidan {
     background-color: #babfda;
-    padding-top: 5em;
-    padding-bottom: 5em;
-    height: auto;
-    position: relative;
+    height: 1000px;
+  }
+  .bi-x-lg {
+    position: absolute;
+    right: 1%;
+    color: black;
+    font-size: 2em;
+  }
 
+  #loginForm {
+    background-color: #babfda;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2em;
+
+    margin-left: auto;
+    margin-right: auto;
     h1 {
       color: #003fb9;
       font-family: Encode Sans;
@@ -42,12 +57,6 @@
         font-weight: normal;
       }
     }
-  }
-
-  #loginForm {
-    max-width: 300px;
-    margin-left: auto;
-    margin-right: auto;
 
     .form-control {
       background-color: white;
@@ -59,6 +68,7 @@
     font-weight: 900;
     font-size: 24px;
     line-height: 32px;
+    margin-bottom: 1em;
 
     width: 205px;
     height: 46px;

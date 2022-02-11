@@ -2,7 +2,9 @@
   <nav
     class="navbar navbar-expand-lg navbar-light bg-light bg-warning text-dark"
   >
-    <RouterLink to="/" class="nav-link navbar-brand">Logo</RouterLink>
+    <RouterLink to="/" class="nav-link navbar-brand"
+      ><img src="../../public/minisven.jpg" alt="Sven hittar inte hem"
+    /></RouterLink>
 
     <form class="form-inline">
       <input

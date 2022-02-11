@@ -14,7 +14,7 @@
             <img
               :src="animal.profileImage ?? '/public/favicon-196.png'"
               class="img rounded-circle animal-details-view__profile__image"
-              alt="Svea"
+              alt="svea"
             />
           </div>
         </div>
@@ -63,7 +63,11 @@
             </div>
             <div class="row">
               <div class="col fw-bold">Kön</div>
-              <div class="col">{{ realSex }}</div>
+              <div class="col text-capitalize">{{ realSex }}</div>
+            </div>
+            <div class="row">
+              <div class="col fw-bold">Kastrerad</div>
+              <div class="col text-capitalize">{{ realCast }}</div>
             </div>
           </div>
         </div>
@@ -99,7 +103,10 @@
             </button>
           </div>
           <div class="col-12 col-md-6 d-inline-flex">
-            <button class="btn btn-outline-dark flex-fill">
+            <button
+              class="btn btn-outline-dark flex-fill"
+              @click="addToFavorite"
+            >
               Lägg till i favoriter
             </button>
           </div>
@@ -122,13 +129,16 @@
       return {
         loading: true,
         error: false,
-        animal: null
+        animal: null,
+        animalId: null,
+        favorites: []
       }
     },
     created() {
       const id = this.$route.params.id
       getAnimal(id).then((animalData) => {
         this.animal = animalData
+        this.animalId = id
       })
     },
     computed: {
@@ -156,16 +166,39 @@
       },
       realSex() {
         if (this.animal.sex === "female") {
-          return "hona"
+          return "Tik"
         } else if (this.animal.sex === "male") {
-          return "hane"
+          return "Hane"
         } else if (this.animal.sex == null) {
-          return "okänt"
+          return "Okänt"
         }
         return this.animal.sex
+      },
+      realCast() {
+        if (this.animal.castrated === true) {
+          return "ja"
+        }
+        return "nej"
       }
     },
-    methods: {}
+    methods: {
+      addToFavorite() {
+        if (localStorage.getItem("favoritesStored") === null) {
+          this.favorites.push(this.animal)
+          localStorage.setItem(
+            "favoritesStored",
+            JSON.stringify(this.favorites)
+          )
+        } else {
+          this.favorites = JSON.parse(localStorage.getItem("favoritesStored"))
+          this.favorites.push(this.animal)
+          localStorage.setItem(
+            "favoritesStored",
+            JSON.stringify(this.favorites)
+          )
+        }
+      }
+    }
   }
 </script>
 
