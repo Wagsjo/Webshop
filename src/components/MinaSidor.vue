@@ -1,4 +1,6 @@
 <script>
+  import { getAnimal } from "../firebase"
+
   export default {
     data() {
       return {
@@ -11,8 +13,17 @@
         eMail: "anna.andersson@hotmail.com",
         passWord: "********",
         animalNameFirst: "Nisse",
-        animalNameSecond: "Misse"
+        animalNameSecond: "Misse",
+        favorites: null
       }
+    },
+    created() {
+      this.favorites = JSON.parse(localStorage.getItem("favoritesStored"))
+      console.log(this.favorites[0])
+      const id = this.favorites[0]
+      getAnimal(id).then((animalData) => {
+        this.animal = animalData
+      })
     }
   }
 </script>
@@ -39,8 +50,13 @@
         <h2>Mina favoriter</h2>
         <section :class="animalBox">
           <ul>
-            <li><img src="/assets/animals.jpg" alt="animal" /></li>
-            <li>{{ animalNameFirst }}</li>
+            <li>
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/cats-dogs-bird.appspot.com/o/Hebbe1.png?alt=media&token=0b45a92c-045b-4a99-9fac-77558fee9d52"
+                alt="animal"
+              />
+            </li>
+            <li>{{ animal.name }}</li>
             <li class="remove-favorite">Ta bort <i class="bi-x-lg" /></li>
           </ul>
         </section>
