@@ -6,6 +6,7 @@ import HomeView from "./views/HomeView.vue"
 import RegisteringView from "./views/RegisteringView.vue"
 import LoginView from "./views/LoginView.vue"
 import MinasidorView from "./views/MyPagesView.vue"
+import RedigeraMinasidorView from "./views/RedigeraMinasidorView.vue"
 import AdoptionsView from "./views/AdoptionsView.vue"
 import DogsView from "./views/DogsView.vue"
 import CatsView from "./views/CatsView.vue"
@@ -39,6 +40,10 @@ export default createRouter({
     {
       component: MinasidorView,
       path: "/minasidor"
+    },
+    {
+      component: RedigeraMinasidorView,
+      path: "/RedigeraMinasidor"
     },
     {
       component: AdoptionsView,

@@ -28,8 +28,8 @@
           <li><span>Lösenord:</span> {{ passWord }}</li>
           <li>
             <RouterLink to="/RedigeraMinasidor">
-              <i class="icons bi-pencil-square" />Redigera</RouterLink
-            >
+              <i class="icons bi-pencil-square" />Redigera
+            </RouterLink>
           </li>
         </ul>
 
