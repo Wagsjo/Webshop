@@ -2,7 +2,7 @@
 
 <template>
   <div id="loginsidan">
-    <span id="kryss"><RouterLink to="/">Home</RouterLink></span>
+    <RouterLink to="/"><i class="bi bi-x-lg" /></RouterLink>
     <form id="loginForm">
       <h1>Logga in <span>på ditt konto</span></h1>
 
@@ -28,9 +28,11 @@
     background-color: #babfda;
     height: 1000px;
   }
-  #kryss {
+  .bi-x-lg {
     position: absolute;
     right: 1%;
+    color: black;
+    font-size: 2em;
   }
 
   #loginForm {

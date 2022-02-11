@@ -25,7 +25,6 @@
     </main>
 
     <footer v-if="$route.path != '/login'">
-      //footer och navbar syns inte på /login
       <Footer />
     </footer>
   </div>
