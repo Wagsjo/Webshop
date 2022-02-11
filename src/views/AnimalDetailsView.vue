@@ -184,14 +184,16 @@
     methods: {
       addToFavorite() {
         if (localStorage.getItem("favoritesStored") === null) {
-          this.favorites.push(this.animal)
+          this.favorites.push(this.animalId)
           localStorage.setItem(
             "favoritesStored",
             JSON.stringify(this.favorites)
           )
-        } else {
+        } else if (
+          !localStorage.getItem("favoritesStored").includes(this.animalId)
+        ) {
           this.favorites = JSON.parse(localStorage.getItem("favoritesStored"))
-          this.favorites.push(this.animal)
+          this.favorites.push(this.animalId)
           localStorage.setItem(
             "favoritesStored",
             JSON.stringify(this.favorites)
