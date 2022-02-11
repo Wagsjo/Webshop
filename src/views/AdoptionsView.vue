@@ -4,8 +4,7 @@
     <ul style="list-style: none" class="text-center">
       <li>
         <RouterLink class="adoptionLink" to="/dogs">
-          <!--Placeholder Bild-->
-          <img class="djurBild mb-3" src="/assets/fox.jpeg" alt="Bild" />
+          <img class="djurBild mb-3" src="/assets/dogs.jpg" alt="Bild" />
           <p>Hundar</p></RouterLink
         >
       </li>
@@ -13,7 +12,7 @@
         <RouterLink class="adoptionLink" to="/cats"
           ><!--Placeholder Bild--><img
             class="djurBild mb-3"
-            src="/assets/fox.jpeg"
+            src="/assets/cats.png"
             alt="Bild"
           />
           <p>Katter</p></RouterLink
@@ -22,7 +21,7 @@
       <li>
         <RouterLink class="adoptionLink" to="/bird"
           ><!--Placeholder Bild-->
-          <img class="djurBild mb-3" src="/assets/fox.jpeg" alt="Bild" />
+          <img class="djurBild mb-3" src="../../public/sven.jpg" alt="Bild" />
           <p>Fågel</p></RouterLink
         >
       </li>
@@ -33,8 +32,8 @@
 <style lang="sass" scoped>
   .djurBild
     border-radius: 50%
-    width: 8em
-    height: 8em
+    width: 10em
+    height: 10em
     box-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.52)
   .adoptionLink
     text-decoration: none

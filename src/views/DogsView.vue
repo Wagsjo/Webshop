@@ -42,7 +42,7 @@
           <img
             class="hundBild mb-3"
             @click="viewDog(dog.id)"
-            :src="dogs.profileImage ?? '/public/favicon-196.png'"
+            :src="dog.profileImage ?? '/assets/fox.jpeg'"
             alt="Bild"
           />
           <p @click="viewDog(dog.id)" class="Hundar text-uppercase display-4">
