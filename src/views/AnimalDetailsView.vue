@@ -30,7 +30,7 @@
         <div class="row justify-content-center">
           <div class="col-8 col-s-6 col-md col-lg-6">
             <div class="row">
-              <div class="col fw-bold">Namn</div>
+              <div class="col fw-bold">Namn TESTOBRANCHO</div>
               <div class="col text-capitalize">
                 {{ animal.name ?? "okänd" }}
               </div>
