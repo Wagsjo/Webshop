@@ -55,7 +55,7 @@
   </form>
 </template>
 
-<style>
+<style scoped>
   #RegForm {
     max-width: 300px;
     margin-left: auto;

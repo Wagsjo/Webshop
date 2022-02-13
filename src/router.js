@@ -6,12 +6,14 @@ import HomeView from "./views/HomeView.vue"
 import RegisteringView from "./views/RegisteringView.vue"
 import LoginView from "./views/LoginView.vue"
 import MinasidorView from "./views/MyPagesView.vue"
+import RedigeraMinasidorView from "./views/RedigeraMinasidorView.vue"
 import AdoptionsView from "./views/AdoptionsView.vue"
 import DogsView from "./views/DogsView.vue"
 import CatsView from "./views/CatsView.vue"
 import BirdView from "./views/BirdView.vue"
 import AnimalDetailsView from "./views/AnimalDetailsView.vue"
 import CartView from "./views/CartView.vue"
+import AddingAnimals from "./components/AddingAnimals.vue"
 
 export default createRouter({
   history: createWebHistory(),
@@ -41,6 +43,10 @@ export default createRouter({
       path: "/minasidor"
     },
     {
+      component: RedigeraMinasidorView,
+      path: "/RedigeraMinasidor"
+    },
+    {
       component: AdoptionsView,
       path: "/adoptions"
     },
@@ -51,7 +57,7 @@ export default createRouter({
     },
     {
       component: AnimalDetailsView,
-      path: "/dogs/:id"
+      path: "/animals/:id"
     },
     {
       component: CatsView,
@@ -61,6 +67,7 @@ export default createRouter({
       component: BirdView,
       path: "/bird"
     },
-    { component: CartView, path: "/cart" }
+    { component: CartView, path: "/cart" },
+    { component: AddingAnimals, path: "/adding" }
   ]
 })

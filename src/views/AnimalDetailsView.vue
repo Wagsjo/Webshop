@@ -12,7 +12,7 @@
         <div class="row text-center">
           <div class="col">
             <img
-              :src="animal.profileImage ?? '/public/favicon-196.png'"
+              :src="animal.profileImage ?? '/public/sven196.jpg'"
               class="img rounded-circle animal-details-view__profile__image"
               alt="svea"
             />
@@ -76,21 +76,21 @@
         <div class="row my-4 animal-details-view__bottom__images">
           <div class="col">
             <img
-              :src="animal.image1 ?? '/public/favicon-196.png'"
+              :src="animal.image1 ?? '/public/sven196.jpg'"
               class="rounded-circle"
               alt="Svea"
             />
           </div>
           <div class="col">
             <img
-              :src="animal.image2 ?? '/public/favicon-196.png'"
+              :src="animal.image2 ?? '/public/sven196.jpg'"
               class="rounded-circle"
               alt="Svea"
             />
           </div>
           <div class="col">
             <img
-              :src="animal.image3 ?? '/public/favicon-196.png'"
+              :src="animal.image3 ?? '/public/sven196.jpg'"
               class="rounded-circle"
               alt="Svea"
             />
@@ -184,14 +184,16 @@
     methods: {
       addToFavorite() {
         if (localStorage.getItem("favoritesStored") === null) {
-          this.favorites.push(this.animal)
+          this.favorites.push(this.animalId)
           localStorage.setItem(
             "favoritesStored",
             JSON.stringify(this.favorites)
           )
-        } else {
+        } else if (
+          !localStorage.getItem("favoritesStored").includes(this.animalId)
+        ) {
           this.favorites = JSON.parse(localStorage.getItem("favoritesStored"))
-          this.favorites.push(this.animal)
+          this.favorites.push(this.animalId)
           localStorage.setItem(
             "favoritesStored",
             JSON.stringify(this.favorites)

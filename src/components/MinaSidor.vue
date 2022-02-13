@@ -1,4 +1,7 @@
 <script>
+  import { getAnimal } from "../firebase"
+  import { getAuth } from "firebase/auth"
+
   export default {
     data() {
       return {
@@ -11,25 +14,39 @@
         eMail: "anna.andersson@hotmail.com",
         passWord: "********",
         animalNameFirst: "Nisse",
-        animalNameSecond: "Misse"
+        animalNameSecond: "Misse",
+        favorites: null,
+        user: null
       }
+    },
+    created() {
+      this.favorites = JSON.parse(localStorage.getItem("favoritesStored"))
+      if (this.favorites) {
+        console.log(this.favorites[0])
+        const id = this.favorites[0]
+        getAnimal(id).then((animalData) => {
+          this.animal = animalData
+        })
+      }
+      getAuth().onAuthStateChanged((user) => {
+        this.user = user
+        console.log(user)
+      })
     }
   }
 </script>
 <template>
-  <main>
+  <div class="container">
     <h1>Mina sidor</h1>
     <div :id="firstcontainerinMinasidor">
       <section :id="MinaInfo">
-        <ul>
-          <li><span>Namn:</span> {{ firstName }}</li>
-          <li><span>Efternamn:</span> {{ lastName }}</li>
-          <li><span>E-post:</span> {{ eMail }}</li>
-          <li><span>Lösenord:</span> {{ passWord }}</li>
+        <ul v-if="user">
+          <li><span>Namn:</span> {{ user.displayName }}</li>
+          <li><span>E-post:</span> {{ user.email }}</li>
           <li>
             <RouterLink to="/RedigeraMinasidor">
-              <i class="icons bi-pencil-square" />Redigera</RouterLink
-            >
+              <i class="icons bi-pencil-square" />Redigera
+            </RouterLink>
           </li>
         </ul>
 
@@ -39,7 +56,12 @@
         <h2>Mina favoriter</h2>
         <section :class="animalBox">
           <ul>
-            <li><img src="/assets/animals.jpg" alt="animal" /></li>
+            <li>
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/cats-dogs-bird.appspot.com/o/Hebbe1.png?alt=media&token=0b45a92c-045b-4a99-9fac-77558fee9d52"
+                alt="animal"
+              />
+            </li>
             <li>{{ animalNameFirst }}</li>
             <li class="remove-favorite">Ta bort <i class="bi-x-lg" /></li>
           </ul>
@@ -53,7 +75,7 @@
         </section>
       </section>
     </div>
-  </main>
+  </div>
 </template>
 
 <style lang="scss" scoped>

@@ -5,7 +5,7 @@
         .then((response) => response.json())
         .then((json) => {
           this.json = json
-          console.log(json)
+          console.log(json.animals.cats.info)
         })
     },
     data() {
