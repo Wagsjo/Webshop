@@ -1,22 +1,57 @@
-<script></script>
+<script>
+  export default {
+    data() {
+      return {
+        input: {
+          username: "",
+          password: ""
+        }
+      }
+    },
+    methods: {
+      clickLogin() {
+        if (this.input.username != "" && this.input.password != "") {
+          if (this.input.username == "e" && this.input.password == "1") {
+            this.$router.push("/home")
+            console.log(this.input)
+          } else if (this.input.username == "r" && this.input.password == "2") {
+            console.log(this.input)
+          }
+        }
+      }
+    }
+  }
+</script>
 
 <template>
   <div id="loginsidan">
-    <RouterLink to="/"><i class="bi bi-x-lg" /></RouterLink>
+    <RouterLink to="/"><i class="bi-x-lg" /></RouterLink>
     <form id="loginForm">
       <h1>Logga in <span>på ditt konto</span></h1>
 
       <div class="form-group">
         <label for="Email">Epost</label>
-        <input type="text" class="form-control" />
+        <input
+          class="form-control"
+          name="username"
+          v-model="input.username"
+          placeholder="Username"
+          type="text"
+        />
       </div>
 
       <div class="form-group">
         <label for="Password">Lösenord</label>
-        <input type="text" class="form-control" />
+        <input
+          class="form-control"
+          name="password"
+          v-model="input.password"
+          placeholder="Password"
+          type="password"
+        />
       </div>
 
-      <button type="submit" class="btn btn-primary">Logga in</button>
+      <button @click="clickLogin()" class="btn-primary">Logga in</button>
       <br />
       <RouterLink to="/registering">Skapa ett konto hos oss</RouterLink>
     </form>
