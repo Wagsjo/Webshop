@@ -7,6 +7,7 @@ import {
   query,
   where,
   getDoc,
+  addDoc,
   doc
 } from "firebase/firestore/lite"
 
@@ -52,4 +53,35 @@ export async function getAnimal(id) {
   const animalData = animalSnapshot.data()
   console.log(animalData)
   return animalData
+}
+
+/**
+ * @typedef Animal
+ * @property {string} name
+ * @property {"dog"|"cat"|"bird"} type
+ * @property {[number]} age
+ */
+
+/**
+ * Add a new animal to the db
+ * @param {Animal} animalData
+ * @returns {Promise<DocumentReference<Animal>>}
+ */
+export async function addAnimal(animalData) {
+  if (!animalData || typeof animalData !== "object") {
+    throw new Error("Invalid data")
+  }
+  if (!animalData.name || animalData.name.length < 1) {
+    throw new Error("Invalid name")
+  }
+  if (!animalData.type || animalData.type.length < 1) {
+    throw new Error("Invalid type")
+  }
+  return addDoc(animals, animalData).then((ref) => getDoc(ref))
+}
+
+export default {
+  addAnimal,
+  getAnimal,
+  getAnimals
 }

@@ -43,7 +43,7 @@
     </form>
   </main>
 </template>
-<style>
+<style scoped>
   #RedigeraForm {
     padding-top: 5em;
     padding-bottom: 5em;
