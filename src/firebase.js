@@ -10,6 +10,7 @@ import {
   addDoc,
   doc
 } from "firebase/firestore/lite"
+import { getStorage, ref, getDownloadURL } from "firebase/storage"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -23,13 +24,17 @@ const firebaseConfig = {
   storageBucket: "cats-dogs-bird.appspot.com",
   messagingSenderId: "267886520586",
   appId: "1:267886520586:web:3a2adeefd1ee70fbd672f3",
-  measurementId: "G-TB3D0C89Y1"
+  measurementId: "G-TB3D0C89Y1",
+  databaseURL:
+    "https://cats-dogs-bird-default-rtdb.europe-west1.firebasedatabase.app/"
 }
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 const animals = collection(db, "animals")
+const storage = getStorage(app)
+const storageRef = ref(storage, "/svea-2.jpg")
 
 export async function getAnimals(type) {
   let animalQuery
@@ -51,6 +56,7 @@ export async function getAnimals(type) {
 export async function getAnimal(id) {
   const animalSnapshot = await getDoc(doc(db, `/animals/${id}`))
   const animalData = animalSnapshot.data()
+  animalData.id = animalSnapshot.id
   console.log(animalData)
   return animalData
 }
@@ -60,6 +66,11 @@ export async function getAnimal(id) {
  * @property {string} name
  * @property {"dog"|"cat"|"bird"} type
  * @property {[number]} age
+ * @property {[number]} height
+ * @property {[number]} weight
+ * @property {["male" | "female"]} sex
+ * @property {[boolean]} castrated
+ * @property {[string]} color
  */
 
 /**
@@ -77,9 +88,24 @@ export async function addAnimal(animalData) {
   if (!animalData.type || animalData.type.length < 1) {
     throw new Error("Invalid type")
   }
-  return addDoc(animals, animalData).then((ref) => getDoc(ref))
+  const animalObject = {
+    name: animalData.name,
+    type: animalData.type,
+    age: animalData.age,
+    height: animalData.height,
+    weight: animalData.weight,
+    sex: animalData.sex,
+    castrated: animalData.castrated,
+    color: animalData.color
+  }
+  return addDoc(animals, animalObject).then((ref) => getDoc(ref))
 }
 
+export async function checkStorage() {
+  console.log(getDownloadURL(storageRef))
+}
+
+checkStorage()
 export default {
   addAnimal,
   getAnimal,
