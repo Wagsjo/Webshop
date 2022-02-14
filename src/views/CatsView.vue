@@ -1,48 +1,53 @@
 <script>
+  import { getAnimals } from "../firebase"
   export default {
     created() {
-      fetch("public/animals.json")
-        .then((response) => response.json())
-        .then((json) => {
-          this.json = json
-          console.log(json.animals.cats.info)
-        })
+      getAnimals("cat").then((catList) => {
+        this.cats = catList
+        console.log(this.cats)
+      })
     },
     data() {
       return {
-        json: null
+        cats: null
+      }
+    },
+    methods: {
+      viewCat(catId) {
+        this.$router.push(`/cats/${catId}`)
       }
     }
   }
 </script>
 
 <template>
-  <main class="container-md mb-5 mt-5">
-    <h1 class="text-center mb-5">Katter</h1>
-    <ul
-      v-if="json !== null"
-      style="list-style: none"
-      class="list-unstyled card-columns"
-    >
-      <li
-        class="text-uppercase display-4 fs-2 mb-5 text-center"
-        v-for="value in json.animals.cats.info"
-        :key="value.name"
-      >
-        <!--Placeholder Bild-->
-        <img
-          class="kattBild mb-3"
-          @click="viewDog(dog.id)"
-          src="/assets/fox.jpeg"
-          alt="Bild"
-        />
-        <p>{{ value.name }}</p>
-      </li>
-    </ul>
+  <main class="container-fluid mb-5 mt-5">
+    <div>
+      <h1 class="text-center mb-5">Katter</h1>
+      <p v-if="loading">Laddar katter</p>
+      <p v-else-if="error">ERROR!!!1</p>
+      <ul style="list-style: none" class="card-columns">
+        <li class="fs-2 mb-5 text-center" v-for="cat in cats" :key="cat.id">
+          <img
+            class="kattBild mb-3 Katter"
+            @click="viewCat(cat.id)"
+            :src="cat.profileImage ?? '/assets/fox.jpeg'"
+            alt="Bild"
+          />
+          <p @click="viewCat(cat.id)" class="Katter text-uppercase display-4">
+            {{ cat.name ?? "Okänd" }}
+          </p>
+        </li>
+      </ul>
+    </div>
+    <RouterView />
   </main>
 </template>
 
 <style lang="sass" scoped>
+  .Katter:hover
+    color: blue
+    cursor: pointer
   .card-columns
     column-count: 2
   .kattBild

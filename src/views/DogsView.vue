@@ -24,7 +24,7 @@
     },
     methods: {
       viewDog(dogId) {
-        this.$router.push(`/animals/${dogId}`)
+        this.$router.push(`/dogs/${dogId}`)
       }
     }
   }
@@ -47,7 +47,6 @@
           />
           <p @click="viewDog(dog.id)" class="Hundar text-uppercase display-4">
             {{ dog.name ?? "Okänd" }}
-            hej
           </p>
         </li>
       </ul>
