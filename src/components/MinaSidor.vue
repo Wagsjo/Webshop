@@ -1,5 +1,6 @@
 <script>
   import { getAnimal } from "../firebase"
+  import { getAuth } from "firebase/auth"
 
   export default {
     data() {
@@ -14,29 +15,34 @@
         passWord: "********",
         animalNameFirst: "Nisse",
         animalNameSecond: "Misse",
-        favorites: null
+        favorites: null,
+        user: null
       }
     },
     created() {
       this.favorites = JSON.parse(localStorage.getItem("favoritesStored"))
-      console.log(this.favorites[0])
-      const id = this.favorites[0]
-      getAnimal(id).then((animalData) => {
-        this.animal = animalData
+      if (this.favorites) {
+        console.log(this.favorites[0])
+        const id = this.favorites[0]
+        getAnimal(id).then((animalData) => {
+          this.animal = animalData
+        })
+      }
+      getAuth().onAuthStateChanged((user) => {
+        this.user = user
+        console.log(user)
       })
     }
   }
 </script>
 <template>
-  <main>
+  <div class="container">
     <h1>Mina sidor</h1>
     <div :id="firstcontainerinMinasidor">
       <section :id="MinaInfo">
-        <ul>
-          <li><span>Namn:</span> {{ firstName }}</li>
-          <li><span>Efternamn:</span> {{ lastName }}</li>
-          <li><span>E-post:</span> {{ eMail }}</li>
-          <li><span>Lösenord:</span> {{ passWord }}</li>
+        <ul v-if="user">
+          <li><span>Namn:</span> {{ user.displayName }}</li>
+          <li><span>E-post:</span> {{ user.email }}</li>
           <li>
             <RouterLink to="/RedigeraMinasidor">
               <i class="icons bi-pencil-square" />Redigera
@@ -56,7 +62,7 @@
                 alt="animal"
               />
             </li>
-            <li>{{ animal.name }}</li>
+            <li>{{ animalNameFirst }}</li>
             <li class="remove-favorite">Ta bort <i class="bi-x-lg" /></li>
           </ul>
         </section>
@@ -69,7 +75,7 @@
         </section>
       </section>
     </div>
-  </main>
+  </div>
 </template>
 
 <style lang="scss" scoped>

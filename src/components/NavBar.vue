@@ -56,8 +56,11 @@
       </ul>
 
       <div class="d-flex align-items-center">
-        <RouterLink to="/login" class="nav-link">Logga in</RouterLink>
-        <RouterLink to="/minasidor" class="nav-link"
+        <RouterLink v-if="!user" to="/login" class="nav-link">
+          Logga in
+        </RouterLink>
+        <a v-else class="nav-link" @click="logout">Logga ut</a>
+        <RouterLink v-if="user" to="/minasidor" class="dropdown-item"
           ><i class="icons bi-person-fill"
         /></RouterLink>
       </div>
@@ -74,8 +77,11 @@
         <span class="navbar-toggler-icon" />
       </button>
       <div class="dropdown-menu" aria-labelledby="responsiveDropdown">
-        <RouterLink to="/login" class="dropdown-item">Logga in</RouterLink>
-        <RouterLink to="/minasidor" class="dropdown-item"
+        <RouterLink v-if="!user" to="/login" class="dropdown-item">
+          Logga in
+        </RouterLink>
+        <a v-else class="nav-link">Logga ut</a>
+        <RouterLink v-if="user" to="/minasidor" class="dropdown-item"
           >Mina sidor
         </RouterLink>
         <RouterLink to="/about" class="dropdown-item">Om</RouterLink>
@@ -88,8 +94,25 @@
   </nav>
 </template>
 <script>
+  import { getAuth } from "firebase/auth"
   export default {
-    name: "NavBar"
+    name: "NavBar",
+    data() {
+      return {
+        user: null
+      }
+    },
+    methods: {
+      logout() {
+        this.$router.push("/")
+        getAuth().signOut()
+      }
+    },
+    created() {
+      getAuth().onAuthStateChanged((user) => {
+        this.user = user
+      })
+    }
   }
 </script>
 
