@@ -5,16 +5,28 @@
       getAnimals("cat").then((catList) => {
         this.cats = catList
         console.log(this.cats)
-      })
+      }),
+        getAnimals("cat")
+          .then((catList) => {
+            this.cats = catList
+          })
+          .catch((error) => {
+            console.error(error)
+            this.error = true
+          })
+          .finally(() => (this.loading = false))
     },
     data() {
       return {
-        cats: null
+        cats: null,
+        loading: true,
+        error: false,
+        animal: null
       }
     },
     methods: {
       viewCat(catId) {
-        this.$router.push(`/cats/${catId}`)
+        this.$router.push(`/animals/${catId}`)
       }
     }
   }

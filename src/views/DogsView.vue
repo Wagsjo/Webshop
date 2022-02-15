@@ -6,7 +6,7 @@
       getAnimals("dog")
         .then((dogList) => {
           this.dogs = dogList
-          console.log(this.dogs[0])
+         /*  console.log(this.dogs[0]) */
         })
         .catch((error) => {
           console.error(error)
