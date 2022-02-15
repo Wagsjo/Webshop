@@ -12,6 +12,7 @@
         type="search"
         placeholder="Search"
         aria-label="Search"
+        v-model="search"
       />
       <button
         class="btn btn-outline-success my-2 my-sm-0 search-button"
@@ -92,14 +93,30 @@
       </div>
     </div>
   </nav>
+  <div v-for="names in searchArr" :key="names.name">{{ names }} {{ asdf }}</div>
 </template>
 <script>
   import { getAuth } from "firebase/auth"
+  import { getAnimals } from "../firebase"
   export default {
     name: "NavBar",
     data() {
       return {
-        user: null
+        user: null,
+        fullAnimalList: null,
+        search: "",
+        searchArr: []
+      }
+    },
+    computed: {
+      createArr() {
+        console.log(this.searchArr)
+        return this.fullAnimalList.forEach((element) => {
+          this.searchArr.push(element.name)
+        })
+      },
+      asdf() {
+        return this.searchArr.filter((x) => x.length > 1)
       }
     },
     methods: {
@@ -107,11 +124,33 @@
         this.$router.push("/")
         getAuth().signOut()
       }
+      /*       filtered(inp) {
+        this.fullAnimalList.forEach((element) => {
+          this.searchArr.push(element.name)
+          console.log(this.searchArr)
+        })
+        this.asdf()
+      } */
     },
+
+    /* filtered(asd) {
+        let arr = null
+        this.fullAnimalList.forEach((element) => {
+         console.log(asd, arr)
+        }
+      }
+      console.log(Object.values(this.fullAnimalList[0], asd))
+        this.fullAnimalList.filter((x) =>
+          x.includes(this.fullAnimalList[0].name)
+        ) */
     created() {
       getAuth().onAuthStateChanged((user) => {
         this.user = user
       })
+      getAnimals() /* .then((list) => console.log(list, this.fullAnimalList)) */
+        .then((list) => {
+          this.fullAnimalList = list
+        })
     }
   }
 </script>

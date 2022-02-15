@@ -31,6 +31,7 @@ const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 const animals = collection(db, "animals")
 
+
 export async function getAnimals(type) {
   let animalQuery
   if (type) {
