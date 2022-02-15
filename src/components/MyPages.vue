@@ -15,28 +15,45 @@
         passWord: "********",
         favorites: null,
         animals: [],
+        savedAnimalId: [],
         user: null
       }
     },
     created() {
-      this.favorites = JSON.parse(localStorage.getItem("favoritesStored"))
-
-      if (this.favorites !== null) {
-        for (let n = 0; n < this.favorites.length; n++) {
-          const id = this.favorites[n]
-          getAnimal(id).then((animalData) => {
-            this.animals.push({
-              img: animalData.profileImage,
-              name: animalData.name
-            })
-          })
-        }
-      }
-
+      this.getSavedAnimals()
       getAuth().onAuthStateChanged((user) => {
         this.user = user
         console.log(user)
       })
+    },
+    methods: {
+      getSavedAnimals() {
+        this.favorites = JSON.parse(localStorage.getItem("favoritesStored"))
+
+        if (this.favorites !== null) {
+          for (let n = 0; n < this.favorites.length; n++) {
+            const id = this.favorites[n]
+            getAnimal(id).then((animalData) => {
+              this.animals.push({
+                img: animalData.profileImage,
+                name: animalData.name,
+                id: animalData.id
+              })
+            })
+          }
+        }
+      },
+      removeOnClick(removeItem) {
+        this.savedAnimalId = JSON.parse(localStorage.getItem("favoritesStored"))
+        function filterById(item) {
+          return item !== removeItem.path[1].id
+        }
+        const filteredList = this.savedAnimalId.filter(filterById)
+        localStorage.setItem("favoritesStored", JSON.stringify(filteredList))
+
+        window.location.reload()
+        this.getSavedAnimals()
+      }
     }
   }
 </script>
@@ -54,8 +71,6 @@
             </RouterLink>
           </li>
         </ul>
-
-        <!-- <input type="button" value="Redigera" /> -->
       </section>
       <section :id="minaFavoriter">
         <h2>Mina favoriter</h2>
@@ -63,7 +78,9 @@
           <ul v-for="animal in animals" :key="animal.id">
             <li><img :src="animal.img" alt="animal" /></li>
             <li>{{ animal.name }}</li>
-            <li class="remove-favorite">Ta bort <i class="bi-x-lg" /></li>
+            <li @click="removeOnClick" class="remove-favorite" :id="animal.id">
+              Ta bort <i class="bi-x-lg" />
+            </li>
           </ul>
         </section>
         <section v-else>
