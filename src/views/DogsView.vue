@@ -6,7 +6,6 @@
       getAnimals("dog")
         .then((dogList) => {
           this.dogs = dogList
-         /*  console.log(this.dogs[0]) */
         })
         .catch((error) => {
           console.error(error)
@@ -54,7 +53,6 @@
     <RouterView />
   </main>
 </template>
-
 <style lang="sass" scoped>
   .card-columns
     column-count: 2
