@@ -6,7 +6,6 @@
       getAnimals("dog")
         .then((dogList) => {
           this.dogs = dogList
-          console.log(this.dogs[0])
         })
         .catch((error) => {
           console.error(error)
@@ -24,7 +23,7 @@
     },
     methods: {
       viewDog(dogId) {
-        this.$router.push(`/animals/${dogId}`)
+        this.$router.push(`/dogs/${dogId}`)
       }
     }
   }
@@ -54,7 +53,6 @@
     <RouterView />
   </main>
 </template>
-
 <style lang="sass" scoped>
   .card-columns
     column-count: 2
