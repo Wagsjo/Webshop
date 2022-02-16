@@ -13,25 +13,47 @@
         lastName: "Andersson",
         eMail: "anna.andersson@hotmail.com",
         passWord: "********",
-        animalNameFirst: "Nisse",
-        animalNameSecond: "Misse",
         favorites: null,
+        animals: [],
+        savedAnimalId: [],
         user: null
       }
     },
     created() {
-      this.favorites = JSON.parse(localStorage.getItem("favoritesStored"))
-      if (this.favorites) {
-        console.log(this.favorites[0])
-        const id = this.favorites[0]
-        getAnimal(id).then((animalData) => {
-          this.animal = animalData
-        })
-      }
+      this.getSavedAnimals()
       getAuth().onAuthStateChanged((user) => {
         this.user = user
         console.log(user)
       })
+    },
+    methods: {
+      getSavedAnimals() {
+        this.favorites = JSON.parse(localStorage.getItem("favoritesStored"))
+
+        if (this.favorites !== null) {
+          for (let n = 0; n < this.favorites.length; n++) {
+            const id = this.favorites[n]
+            getAnimal(id).then((animalData) => {
+              this.animals.push({
+                img: animalData.profileImage,
+                name: animalData.name,
+                id: animalData.id
+              })
+            })
+          }
+        }
+      },
+      removeOnClick(removeItem) {
+        this.savedAnimalId = JSON.parse(localStorage.getItem("favoritesStored"))
+        function filterById(item) {
+          return item !== removeItem.path[1].id
+        }
+        const filteredList = this.savedAnimalId.filter(filterById)
+        localStorage.setItem("favoritesStored", JSON.stringify(filteredList))
+
+        window.location.reload()
+        this.getSavedAnimals()
+      }
     }
   }
 </script>
@@ -43,35 +65,29 @@
         <ul v-if="user">
           <li><span>Namn:</span> {{ user.displayName }}</li>
           <li><span>E-post:</span> {{ user.email }}</li>
-          <li>
+          <li class="flex-item">
             <RouterLink to="/RedigeraMinasidor">
-              <i class="icons bi-pencil-square" />Redigera
+              <i class="icons bi-pencil-square" />
             </RouterLink>
           </li>
         </ul>
-
-        <!-- <input type="button" value="Redigera" /> -->
       </section>
       <section :id="minaFavoriter">
         <h2>Mina favoriter</h2>
-        <section :class="animalBox">
-          <ul>
-            <li>
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/cats-dogs-bird.appspot.com/o/Hebbe1.png?alt=media&token=0b45a92c-045b-4a99-9fac-77558fee9d52"
-                alt="animal"
-              />
+        <section :class="animalBox" v-if="this.favorites !== null">
+          <ul v-for="animal in animals" :key="animal.id">
+            <li><img :src="animal.img" alt="animal" /></li>
+            <li>{{ animal.name }}</li>
+            <li @click="removeOnClick" class="remove-favorite" :id="animal.id">
+              Ta bort <i class="bi-x-lg" />
             </li>
-            <li>{{ animalNameFirst }}</li>
-            <li class="remove-favorite">Ta bort <i class="bi-x-lg" /></li>
           </ul>
         </section>
-        <section :class="animalBox">
-          <ul>
-            <li><img src="/assets/fox.jpeg" alt="animal" /></li>
-            <li>{{ animalNameSecond }}</li>
-            <li class="remove-favorite">Ta bort <i class="bi-x-lg" /></li>
-          </ul>
+        <section v-else>
+          <p :class="animalBox">
+            Du har inga sparade favoriter ännu..
+            <i class="bi-heartbreak-fill" />
+          </p>
         </section>
       </section>
     </div>
@@ -85,6 +101,7 @@
 
   h1 {
     text-align: center;
+    margin: 3rem 0;
   }
 
   span {
@@ -96,8 +113,13 @@
   }
 
   .remove-favorite {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     color: #003fb9;
+    margin-top: 0.2rem;
+  }
+
+  .bi-x-lg {
+    margin-left: 0.3rem;
   }
 
   #MinaInfo {
@@ -106,11 +128,18 @@
 
     border-radius: 5px;
     padding: 2rem;
+    height: auto;
   }
 
   #MinaInfo > ul {
     list-style: none;
     margin: 1em;
+    display: flex;
+    flex-direction: column;
+
+    .flex-item {
+      margin-left: auto;
+    }
   }
 
   #MinaInfo > ul > li {
@@ -118,11 +147,11 @@
   }
 
   #minaFavoriter {
-    margin-top: 2em;
     background-color: rgba(196, 196, 196, 0.43);
     height: auto;
-    border-radius: 5px;
     padding: 2rem;
+    border-radius: 5px;
+
     h2 {
       text-align: center;
     }
@@ -132,7 +161,8 @@
     ul {
       background-color: #c4c4c4;
       list-style: none;
-      padding: 0;
+      padding: 20px;
+      border-radius: 5px;
 
       li {
         width: auto;
@@ -150,12 +180,12 @@
     width: 100px;
   }
 
-  @media (min-width: 820px) {
+  @media (min-width: 1000px) {
     #firstcontainerinMinasidor {
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-      height: 30em;
+      align-items: flex-start;
     }
 
     #MinaInfo {
@@ -163,39 +193,43 @@
       margin-left: auto;
       margin-right: auto;
       padding: 1em;
-      height: 20em;
+      height: max-content;
       max-width: 600px;
-      margin-top: 5em;
     }
 
     #minaFavoriter {
       width: 30%;
       margin-left: auto;
       margin-right: auto;
-      min-height: 500px;
+      height: max-content;
       margin-bottom: 2em;
+    }
+    .animalBox {
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 
-  @media (max-width: 820px) {
+  @media (max-width: 1000px) {
     #MinaInfo {
       width: 80%;
       margin-left: auto;
       margin-right: auto;
       padding: 1em;
-      max-width: 400px;
-      font-size: 12px;
+      overflow-wrap: break-word;
       ul {
         padding-left: 0;
       }
     }
 
     #minaFavoriter {
+      margin-top: 2em;
       width: 80%;
       margin-left: auto;
       margin-right: auto;
+      margin-bottom: 2em;
     }
-
     .animalBox {
       width: 50%;
       margin-left: auto;

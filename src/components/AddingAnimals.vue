@@ -4,6 +4,14 @@
       <div class="col col-lg-6 col-xl-4 col-xxl-3">
         <form @submit.prevent>
           <div class="mb-3">
+            <select class="form-select" @change="setType" :disabled="loading">
+              <option selected>Välj en typ</option>
+              <option v-for="t in types" :key="t.id" :value="t.id">
+                {{ t.name }}
+              </option>
+            </select>
+          </div>
+          <div class="mb-3">
             <label for="nameField" class="form-label">Namn</label>
             <input
               type="text"
@@ -26,6 +34,17 @@
             />
           </div>
           <div class="mb-3">
+            <label for="colorField" class="form-label">Färg</label>
+            <input
+              type="text"
+              class="form-control"
+              id="colorField"
+              required
+              v-model="animal.color"
+              :disabled="loading"
+            />
+          </div>
+          <div class="mb-3">
             <label for="breedField" class="form-label">Ras</label>
             <input
               type="text"
@@ -37,14 +56,45 @@
             />
           </div>
           <div class="mb-3">
-            <select class="form-select" @change="setType" :disabled="loading">
-              <option selected>Välj en typ</option>
-              <option v-for="t in types" :key="t.id" :value="t.id">
-                {{ t.name }}
-              </option>
+            <label for="weightField" class="form-label">Vikt</label>
+            <input
+              type="number"
+              class="form-control"
+              id="weightField"
+              required
+              v-model="animal.weight"
+              :disabled="loading"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="heightField" class="form-label">Mankhöjd</label>
+            <input
+              type="number"
+              class="form-control"
+              id="heightField"
+              required
+              v-model="animal.height"
+              :disabled="loading"
+            />
+          </div>
+          <div class="mb-3">
+            <select class="form-select" @change="setSex" :disabled="loading">
+              <option selected>Välj kön</option>
+              <option>Tik</option>
+              <option>Hane</option>
             </select>
           </div>
-
+          <div class="mb-3">
+            <select
+              class="form-select"
+              @change="setCastrated"
+              :disabled="loading"
+            >
+              <option selected>Kastrerad</option>
+              <option>Ja</option>
+              <option>Nej</option>
+            </select>
+          </div>
           <div class="row mb-3 px-2">
             <button
               v-if="!loading"
@@ -97,7 +147,12 @@
           name: null,
           age: null,
           breed: null,
-          type: null
+          type: null,
+          color: null,
+          height: null,
+          weight: null,
+          sex: null,
+          castrated: null
         },
         loading: false,
         error: false
@@ -123,6 +178,12 @@
       setType(event) {
         this.animal.type = event?.target?.value
       },
+      setSex(event) {
+        this.animal.sex = event?.target?.value
+      },
+      setCastrated(event) {
+        this.animal.castrated = event?.target?.value
+      },
       addAnimal: function () {
         this.loading = true
         this.error = false
@@ -146,16 +207,3 @@
 </script>
 
 <style scoped></style>
-
-<!--
-age: ageIn,
-breed: breedIn,
-castrated: castratedIn,
-color: colorIn,
-description: descriptionIn,
-height: heightIn,
-id: newId,
-name: nameIn,
-sex: sexIn,
-type: typeIn,
-weight: weightIn-->
