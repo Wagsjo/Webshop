@@ -36,15 +36,22 @@
       <p v-if="loading">Laddar hunden</p>
       <p v-else-if="error">ERROR!!!1</p>
       <ul style="list-style: none" class="card-columns">
-        <li class="fs-2 mb-5 text-center" v-for="dog in dogs" :key="dog.id">
-          <!--Placeholder Bild-->
+        <li
+          class="doge fs-2 mb-5 text-center"
+          v-for="dog in dogs"
+          :key="dog.id"
+        >
           <img
             class="hundBild mb-3"
             @click="viewDog(dog.id)"
             :src="dog.profileImage ?? '/assets/fox.jpeg'"
             alt="Bild"
           />
-          <p @click="viewDog(dog.id)" class="Hundar text-uppercase display-4">
+          <p
+            @click="viewDog(dog.id)"
+            class="Hundar text-uppercase display-4"
+            style="font-size: 1em"
+          >
             {{ dog.name ?? "Okänd" }}
           </p>
         </li>
@@ -56,7 +63,7 @@
 <style lang="sass" scoped>
   .card-columns
     column-count: 2
-  .Hundar:hover
+  .doge:hover
     color: blue
     cursor: pointer
   .hundBild
