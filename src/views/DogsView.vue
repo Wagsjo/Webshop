@@ -23,7 +23,7 @@
     },
     methods: {
       viewDog(dogId) {
-        this.$router.push(`/dogs/${dogId}`)
+        this.$router.push(`/animals/${dogId}`)
       }
     }
   }
