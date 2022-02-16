@@ -1,16 +1,16 @@
 <script>
-  import RedigeraMinasidor from "../components/RedigeraMinasidor.vue"
+  import EditMyPages from "../components/EditMyPages.vue"
 
   export default {
     components: {
-      RedigeraMinasidor
+      EditMyPages
     }
   }
 </script>
 
 <template>
   <main>
-    <RedigeraMinasidor />
+    <EditMyPages />
     <p />
   </main>
 </template>

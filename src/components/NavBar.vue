@@ -12,6 +12,7 @@
         type="search"
         placeholder="Search"
         aria-label="Search"
+        v-model="search"
       />
       <button
         class="btn btn-outline-success my-2 my-sm-0 search-button"
@@ -92,14 +93,32 @@
       </div>
     </div>
   </nav>
+  <div v-for="names in filtered" :key="names.name">
+    {{ names }}
+  </div>
 </template>
 <script>
   import { getAuth } from "firebase/auth"
+  import { getAnimals } from "../firebase"
   export default {
     name: "NavBar",
     data() {
       return {
-        user: null
+        user: null,
+        fullAnimalList: null,
+        search: "",
+        searchArr: []
+      }
+    },
+    computed: {
+      createArr() {
+        console.log(this.searchArr)
+        return this.fullAnimalList.forEach((element) => {
+          this.searchArr.push(element.name)
+        })
+      },
+      filtered() {
+        return this.searchArr.filter((x) => x.name.includes(this.search))
       }
     },
     methods: {
@@ -111,6 +130,9 @@
     created() {
       getAuth().onAuthStateChanged((user) => {
         this.user = user
+      })
+      getAnimals().then((list) => {
+        this.fullAnimalList = list
       })
     }
   }

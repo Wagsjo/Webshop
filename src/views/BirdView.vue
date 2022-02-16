@@ -26,12 +26,7 @@
         :key="value.name"
       >
         <!--Placeholder Bild-->
-        <img
-          class="birdBild mb-3"
-          @click="viewDog(dog.id)"
-          src="/assets/fox.jpeg"
-          alt="Bild"
-        />
+        <img class="birdBild mb-3" src="../../public/sven.jpg" alt="Sven" />
         <p>{{ value.name }}</p>
       </li>
     </ul>

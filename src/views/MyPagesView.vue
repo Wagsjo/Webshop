@@ -1,12 +1,12 @@
 <script>
-  import MinaSidor from "../components/MinaSidor.vue"
+  import MyPages from "../components/MyPages.vue"
 
   export default {
     components: {
-      MinaSidor
+      MyPages
     }
   }
 </script>
 <template>
-  <MinaSidor />
+  <MyPages />
 </template>
