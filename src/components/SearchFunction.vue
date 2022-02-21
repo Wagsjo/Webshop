@@ -6,6 +6,7 @@
     methods: {
       viewAni(aniId) {
         this.$router.push(`/animals/${aniId}`)
+        console.log(this.compare)
       }
     },
     data() {
@@ -19,12 +20,17 @@
       createArr() {
         return this.fullAnimalList.forEach((element) => {
           this.searchArr.push(element.name)
-          console.log(this.searchArr)
+          console.log(Object.entries(element))
         })
       },
       filtered() {
         return this.searchArr.filter((x) => x.includes(this.search))
       }
+    },
+    compare() {
+      return this.fullAnimalList.forEach((ele) => {
+        Object.entries(ele)
+      })
     },
     created() {
       getAnimals().then((list) => {
@@ -64,7 +70,7 @@
             class="dropdown-item"
             v-for="names in filtered"
             :key="names"
-            @click="viewAni(names.id)"
+            @click="viewAni(names)"
           >
             {{ names }}
           </li>
