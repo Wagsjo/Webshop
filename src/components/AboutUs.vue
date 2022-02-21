@@ -42,7 +42,8 @@
             <i class="bi-telephone-fill p-1" />
             <p class="p-1">073948573242</p>
           </div>
-          <div>
+          <div class="d-flex">
+            <i class="bi-house-door-fill p-1" />
             <p class="p-1">Skogsgatan 4b, 3374</p>
           </div>
 

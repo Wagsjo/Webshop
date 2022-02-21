@@ -1,49 +1,89 @@
+<script>
+  import { getAuth, updateProfile, sendPasswordResetEmail } from "firebase/auth"
+  const auth = getAuth()
+
+  export default {
+    data() {
+      return {
+        user: null,
+        nameChange: null,
+        newEmail: null,
+        password: null,
+        email: null
+      }
+    },
+    methods: {
+      // Change Name
+      submit: function () {
+        updateProfile(auth.currentUser, {
+          displayName: this.nameChange ?? auth.currentUser?.displayName
+        }).catch((error) => {
+          alert(error)
+        })
+      },
+
+      // Reset Password
+      resetPassword: function () {
+        let mailSent = document.getElementById("mailSent")
+        mailSent.style.display = "inline"
+        sendPasswordResetEmail(auth, auth.currentUser?.email)
+          .then(() => {
+            alert("Email Sent!")
+          })
+          .catch((error) => {
+            alert(error)
+          })
+      }
+    },
+    created() {
+      getAuth().onAuthStateChanged((user) => {
+        this.user = user
+        console.log(user)
+      })
+    }
+  }
+</script>
+
 <template>
   <main>
-    <h1>Mina Sidor</h1>
     <form id="RedigeraForm">
-      <h1>Redigera ditt profil</h1>
+      <h1>Redigera ditt konto</h1>
       <div class="form-group">
-        <label for="FirstName">förnamn</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Ditt nuvarande förnamn"
-        />
+        <label for="FirstName">Namn</label>
+        <input type="text" class="form-control" v-model="nameChange" />
       </div>
 
       <div class="form-group">
-        <label for="LastName">Efternamn</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Ditt nuvarande Efternamn"
-        />
+        <label for="Email">E-post</label>
+        <input type="text" class="form-control" v-model="newEmail" />
       </div>
 
-      <div class="form-group">
-        <label for="Email">Epost</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Ditt nuvarande E-post"
-        />
-      </div>
+      <button @click="submit" type="submit" class="btn btn-primary">
+        Ändra
+      </button>
 
-      <div class="form-group">
-        <label for="Password">Lösenord</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Ditt nuvarande Lösenord"
-        />
-      </div>
+      <button @click="resetPassword" type="submit" class="btn btn-primary">
+        Återställ lösenord
+      </button>
 
-      <button type="submit" class="btn btn-primary">Ändra</button>
+      <span id="mailSent" style="display: none"
+        ><p>Email var skickad till din e-post!</p></span
+      >
     </form>
   </main>
 </template>
+
 <style scoped>
+  #mailSent {
+    color: blue;
+    margin-top: 1em;
+  }
+  main button {
+    margin-left: 1em;
+  }
+  .form-group {
+    margin-top: 1em;
+  }
   #RedigeraForm {
     padding-top: 5em;
     padding-bottom: 5em;
