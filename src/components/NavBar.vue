@@ -53,7 +53,7 @@
             <RouterLink class="dropdown-item" :to="{ name: 'dogsMain' }"
               >Hundar</RouterLink
             >
-            <RouterLink class="dropdown-item" to="/cats">Katt</RouterLink>
+            <RouterLink class="dropdown-item" to="/cats">Katter</RouterLink>
             <RouterLink class="dropdown-item" to="/bird">Fågel</RouterLink>
           </div>
         </li>
