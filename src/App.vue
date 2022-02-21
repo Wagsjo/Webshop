@@ -5,7 +5,7 @@
   export default {
     components: {
       NavBar,
-      Footer
+      Footer,
     }
   }
 </script>

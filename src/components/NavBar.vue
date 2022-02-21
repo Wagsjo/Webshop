@@ -6,21 +6,57 @@
       ><img src="../../public/minisven.jpg" alt="Sven hittar inte hem"
     /></RouterLink>
 
-    <form class="form-inline">
-      <input
-        class="form-control mr-sm-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-        v-model="search"
-      />
-      <button
-        class="btn btn-outline-success my-2 my-sm-0 search-button"
-        type="submit"
-      >
-        Search
-      </button>
-    </form>
+    <!--     <div class="dropdown">
+      <form class="form-inline">
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          v-model="search"
+        />
+
+        <div v-if="search">
+          <button
+            class="btn btn-outline-success my-2 my-sm-0 dropdown-toggle"
+            type="button"
+            role="button"
+            id="dropdownMenuButton2"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Search
+          </button>
+          <ul
+            class="dropdown-menu dropdown"
+            aria-labelledby="dropdownMenuButton2"
+          >
+            <li
+              class="dropdown-item"
+              v-for="names in filtered"
+              :key="names"
+              @click="viewAni(names.id)"
+            >
+              {{ names }}
+            </li>
+          </ul>
+        </div>
+        <div v-else>
+          <button
+            class="btn btn-outline-success my-2 my-sm-0 dropdown-toggle"
+            type="button"
+            role="button"
+            id="dropdownMenuButton2"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Search
+          </button>
+        </div>
+      </form>
+    </div> -->
+    <SearchFunction />
+
     <div
       class="collapse navbar-collapse justify-content-between ml-3"
       id="navbarSupportedContent"
@@ -93,32 +129,20 @@
       </div>
     </div>
   </nav>
-  <div v-for="names in filtered" :key="names.name">
-    {{ names }}
-  </div>
 </template>
 <script>
   import { getAuth } from "firebase/auth"
-  import { getAnimals } from "../firebase"
+  /* import { getAnimals } from "../firebase" */
+  /*  import { getAnimal } from "../firebase" */
+  import SearchFunction from "./SearchFunction.vue"
   export default {
+    components: {
+      SearchFunction
+    },
     name: "NavBar",
     data() {
       return {
-        user: null,
-        fullAnimalList: null,
-        search: "",
-        searchArr: []
-      }
-    },
-    computed: {
-      createArr() {
-        console.log(this.searchArr)
-        return this.fullAnimalList.forEach((element) => {
-          this.searchArr.push(element.name)
-        })
-      },
-      filtered() {
-        return this.searchArr.filter((x) => x.name.includes(this.search))
+        user: null
       }
     },
     methods: {
@@ -130,9 +154,6 @@
     created() {
       getAuth().onAuthStateChanged((user) => {
         this.user = user
-      })
-      getAnimals().then((list) => {
-        this.fullAnimalList = list
       })
     }
   }
@@ -150,7 +171,7 @@
 
   .dropdown-menu {
     right: 0px;
-    left: auto;
+    left: 0px;
     top: auto;
   }
 
@@ -159,9 +180,6 @@
   }
 
   @media screen and (max-width: 502px) {
-    .navbar {
-      justify-content: center;
-    }
 
     form {
       min-width: 100%;
