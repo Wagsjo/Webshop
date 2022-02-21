@@ -3,60 +3,27 @@
     class="navbar navbar-expand-lg navbar-light bg-light bg-warning text-dark"
   >
     <RouterLink to="/" class="nav-link navbar-brand"
-      ><img src="../../public/minisven.jpg" alt="Sven hittar inte hem"
+      ><img
+        src="../../public/logo.png"
+        alt="Raining Cats and Dogs and Bird Logo"
     /></RouterLink>
 
-    <!--     <div class="dropdown">
-      <form class="form-inline">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          v-model="search"
-        />
-
-        <div v-if="search">
-          <button
-            class="btn btn-outline-success my-2 my-sm-0 dropdown-toggle"
-            type="button"
-            role="button"
-            id="dropdownMenuButton2"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Search
-          </button>
-          <ul
-            class="dropdown-menu dropdown"
-            aria-labelledby="dropdownMenuButton2"
-          >
-            <li
-              class="dropdown-item"
-              v-for="names in filtered"
-              :key="names"
-              @click="viewAni(names.id)"
-            >
-              {{ names }}
-            </li>
-          </ul>
-        </div>
-        <div v-else>
-          <button
-            class="btn btn-outline-success my-2 my-sm-0 dropdown-toggle"
-            type="button"
-            role="button"
-            id="dropdownMenuButton2"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Search
-          </button>
-        </div>
-      </form>
-    </div> -->
     <SearchFunction />
 
+    <form class="form-inline">
+      <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button
+        class="btn btn-outline-success my-2 my-sm-0 search-button"
+        type="submit"
+      >
+        Search
+      </button>
+    </form>
     <div
       class="collapse navbar-collapse justify-content-between ml-3"
       id="navbarSupportedContent"
@@ -132,8 +99,6 @@
 </template>
 <script>
   import { getAuth } from "firebase/auth"
-  /* import { getAnimals } from "../firebase" */
-  /*  import { getAnimal } from "../firebase" */
   import SearchFunction from "./SearchFunction.vue"
   export default {
     components: {
@@ -180,7 +145,6 @@
   }
 
   @media screen and (max-width: 502px) {
-
     form {
       min-width: 100%;
     }
