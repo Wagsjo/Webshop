@@ -3,7 +3,9 @@
     class="navbar navbar-expand-lg navbar-light bg-light bg-warning text-dark"
   >
     <RouterLink to="/" class="nav-link navbar-brand"
-      ><img src="../../public/minisven.jpg" alt="Sven hittar inte hem"
+      ><img
+        src="../../public/logo.png"
+        alt="Raining Cats and Dogs and Bird Logo"
     /></RouterLink>
 
     <form class="form-inline">
@@ -12,7 +14,6 @@
         type="search"
         placeholder="Search"
         aria-label="Search"
-        v-model="search"
       />
       <button
         class="btn btn-outline-success my-2 my-sm-0 search-button"
@@ -93,32 +94,14 @@
       </div>
     </div>
   </nav>
-  <div v-for="names in filtered" :key="names.name">
-    {{ names }}
-  </div>
 </template>
 <script>
   import { getAuth } from "firebase/auth"
-  import { getAnimals } from "../firebase"
   export default {
     name: "NavBar",
     data() {
       return {
-        user: null,
-        fullAnimalList: null,
-        search: "",
-        searchArr: []
-      }
-    },
-    computed: {
-      createArr() {
-        console.log(this.searchArr)
-        return this.fullAnimalList.forEach((element) => {
-          this.searchArr.push(element.name)
-        })
-      },
-      filtered() {
-        return this.searchArr.filter((x) => x.name.includes(this.search))
+        user: null
       }
     },
     methods: {
@@ -130,9 +113,6 @@
     created() {
       getAuth().onAuthStateChanged((user) => {
         this.user = user
-      })
-      getAnimals().then((list) => {
-        this.fullAnimalList = list
       })
     }
   }
