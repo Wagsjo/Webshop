@@ -18,7 +18,7 @@
     computed: {
       createArr() {
         return this.fullAnimalList.forEach((element) => {
-          this.searchArr.push(element.name, element.type, element.id)
+          this.searchArr.push(element.name)
           console.log(this.searchArr)
         })
       },
