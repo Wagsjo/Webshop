@@ -1,5 +1,13 @@
 <script>
-  import { getAuth, updateProfile, sendPasswordResetEmail } from "firebase/auth"
+  import {
+    getAuth,
+    updateProfile,
+    sendPasswordResetEmail,
+    reauthenticateWithCredential,
+    EmailAuthProvider,
+    updateEmail
+  } from "firebase/auth"
+
   const auth = getAuth()
 
   export default {
@@ -8,7 +16,7 @@
         user: null,
         nameChange: null,
         newEmail: null,
-        password: null,
+        currentPassword: null,
         email: null
       }
     },
@@ -32,6 +40,32 @@
           })
           .catch((error) => {
             alert(error)
+          })
+      },
+      reauthenticate(currentPassword) {
+        const user = auth.currentUser
+        const credential = EmailAuthProvider.credential(
+          user.email,
+          currentPassword
+        )
+        return reauthenticateWithCredential(user, credential)
+      },
+
+      changeEmail() {
+        this.reauthenticate(this.credential)
+          .then(() => {
+            alert("success")
+            console.log("success")
+            updateEmail(auth.currentUser, "ddn@partnerct.com")
+              .then(() => {
+                alert("email updated")
+              })
+              .catch((error) => {
+                console.log(error.message)
+              })
+          })
+          .catch((error) => {
+            console.log(error.message)
           })
       }
     },
@@ -64,6 +98,15 @@
 
       <button @click="resetPassword" type="submit" class="btn btn-primary">
         Återställ lösenord
+      </button>
+
+      <div class="form-group">
+        <label for="currentPass">Nuvarande Lösenord</label>
+        <input type="password" class="form-control" v-model="currentPassword" />
+      </div>
+
+      <button @click="changeEmail" type="submit" class="btn btn-primary">
+        Ändra E-postadress
       </button>
 
       <span id="mailSent" style="display: none"
