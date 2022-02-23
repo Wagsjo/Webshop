@@ -12,7 +12,7 @@ import DogsView from "./views/DogsView.vue"
 import CatsView from "./views/CatsView.vue"
 import BirdView from "./views/BirdView.vue"
 import AnimalDetailsView from "./views/AnimalDetailsView.vue"
-import CartView from "./views/CartView.vue"
+import ApplicationForm from "./views/ApplicationView.vue"
 import AddingAnimals from "./components/AddingAnimals.vue"
 
 export default createRouter({
@@ -67,7 +67,7 @@ export default createRouter({
       component: BirdView,
       path: "/bird"
     },
-    { component: CartView, path: "/cart" },
+    { component: ApplicationForm, path: "/application" },
     { component: AddingAnimals, path: "/adding" }
   ]
 })
