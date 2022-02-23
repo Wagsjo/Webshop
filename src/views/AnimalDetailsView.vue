@@ -107,7 +107,7 @@
               class="btn btn-outline-dark flex-fill"
               @click="addToFavorite"
             >
-              Lägg till i favoriter
+              {{ btnAdd }}
             </button>
           </div>
         </div>
@@ -131,7 +131,8 @@
         error: false,
         animal: null,
         animalId: null,
-        favorites: []
+        favorites: [],
+        btnAdd: "Lägg till i favoriter"
       }
     },
     created() {
@@ -139,6 +140,10 @@
       getAnimal(id).then((animalData) => {
         this.animal = animalData
         this.animalId = id
+
+        if (localStorage.getItem("favoritesStored").includes(id)) {
+          this.btnAdd = "Sparad"
+        }
       })
     },
     computed: {
@@ -183,6 +188,7 @@
     },
     methods: {
       addToFavorite() {
+        this.btnAdd = "Sparad"
         if (localStorage.getItem("favoritesStored") === null) {
           this.favorites.push(this.animalId)
           localStorage.setItem(

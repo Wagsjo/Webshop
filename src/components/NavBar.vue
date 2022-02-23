@@ -36,6 +36,9 @@
         <li class="nav-item">
           <RouterLink to="/about" class="nav-link">Om</RouterLink>
         </li>
+        <li class="nav-item">
+          <RouterLink to="/adoptions" class="nav-link">Adoptioner</RouterLink>
+        </li>
 
         <li class="nav-item dropdown">
           <a
