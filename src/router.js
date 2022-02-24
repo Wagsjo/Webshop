@@ -13,7 +13,10 @@ import CatsView from "./views/CatsView.vue"
 import BirdView from "./views/BirdView.vue"
 import AnimalDetailsView from "./views/AnimalDetailsView.vue"
 import ApplicationForm from "./views/ApplicationView.vue"
-import AddingAnimals from "./components/AddingAnimals.vue"
+import AddingAnimals from "./views/AddingAnimalsView.vue"
+import AdminPageView from "./views/AdminPageView.vue"
+import AdminMesseges from "./views/AdminMessegesView.vue"
+import AdminApplications from "./views/AdminApplicationsView.vue"
 
 export default createRouter({
   history: createWebHistory(),
@@ -67,7 +70,27 @@ export default createRouter({
       component: BirdView,
       path: "/bird"
     },
-    { component: ApplicationForm, path: "/application" },
-    { component: AddingAnimals, path: "/adding" }
+    {
+      component: AdminPageView,
+      path: "/admin",
+      children: [
+        {
+          path: "/adding",
+          component: AddingAnimals
+        },
+        {
+          path: "/messages",
+          component: AdminMesseges
+        },
+        {
+          path: "/applications",
+          component: AdminApplications
+        }
+      ]
+    },
+    {
+      component: ApplicationForm,
+      path: "/application"
+    }
   ]
 })
