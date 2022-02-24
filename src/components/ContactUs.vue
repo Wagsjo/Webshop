@@ -1,27 +1,46 @@
 <script>
+  import firebase from "../firebase"
   export default {
-    methods: {
-      handleMessage() {
-        const data = {
-          firstName: this.firstName,
-          lastName: this.lastName,
-          phoneNumber: this.phoneNumber,
-          email: this.email,
-          message: this.message
-        }
-        this.ourmessage =
-          "<p>Tack " + this.firstName + "! Ditt meddelande har skickats.!</p>"
-        console.log(data)
-      }
-    },
+    name: "AddingContact",
     data() {
       return {
-        firstName: null,
-        lastName: null,
-        email: null,
-        phoneNumber: this.phoneNumber,
-        message: null,
-        ourmessage: null
+        contact: {
+          firstName: null,
+          lastName: null,
+          email: null,
+          phoneNumber: Number,
+          message: null
+        },
+        loading: false,
+        error: false
+      }
+    },
+    computed: {
+      isValid() {
+        return this.validateForm(this.contact)
+      }
+    },
+    methods: {
+      validateForm(data) {
+        return data.email
+      },
+      addContact: function () {
+        this.loading = true
+        this.error = false
+
+        firebase
+          .addContact(this.contact)
+          .then((docRef) => {
+            console.log("addContact:", docRef.id, docRef.data())
+            this.$router.push(`/contact/${docRef.id}`)
+          })
+          .catch((err) => {
+            console.error(err)
+            this.error = true
+          })
+          .finally(() => {
+            this.loading = false
+          })
       }
     }
   }
@@ -29,41 +48,76 @@
 
 <template>
   <h1>Kontakta oss på raining cats and dogs and Bird</h1>
-  <form id="contactForm" @submit.prevent="handleMessage">
+  <form id="contactForm">
     <div class="form-group">
       <label for="FirstName">Förnamn</label>
-      <input type="text" class="form-control" v-model="firstName" />
+      <input
+        class="form-control"
+        type="text"
+        id="FirstName"
+        required
+        v-model.lazy="contact.firstName"
+        :disabled="loading"
+      />
     </div>
 
     <div class="form-group">
       <label for="LastName">Efternamn</label>
-      <input type="text" class="form-control" v-model="lastName" />
+      <input
+        class="form-control"
+        type="text"
+        id="LastName"
+        required
+        v-model.lazy="contact.lastName"
+        :disabled="loading"
+      />
     </div>
 
     <div class="form-group">
       <label for="Email">Epost</label>
-      <input type="text" class="form-control" v-model="email" />
+      <input
+        class="form-control"
+        type="text"
+        id="Email"
+        required
+        v-model.lazy="contact.email"
+        :disabled="loading"
+      />
     </div>
 
     <div class="form-group">
-      <label for="Email">Phone</label>
-      <input type="number" class="form-control" v-model="phoneNumber" />
+      <label for="Phone">Telefon</label>
+      <input
+        class="form-control"
+        type="number"
+        id="Phone"
+        required
+        v-model.lazy="contact.phoneNumber"
+        :disabled="loading"
+      />
     </div>
 
     <div class="form-group">
       <label for="message" />
       <textarea
-        type="text"
         class="form-control"
-        v-model="message"
+        type="text"
+        id="message"
+        required
+        v-model.lazy="contact.message"
+        :disabled="loading"
         placeholder="Skriv in ditt meddelande här"
       />
     </div>
 
-    <button type="submit" class="btn btn-primary">
+    <button
+      v-if="!loading"
+      class="btn btn-primary"
+      :disabled="loading"
+      @click="addContact"
+    >
       Skicka ditt meddelande
     </button>
-    <div v-html="ourmessage" />
   </form>
 </template>
 <style lang="scss" scoped>
