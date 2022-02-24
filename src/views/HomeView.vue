@@ -10,7 +10,7 @@
 
 <template>
   <SplashScreen />
-  <div class="intro container-sm p-2 my-3">
+  <div class="intro container-sm p-5 my-5">
     <h2>Vi ger djur kärleksfulla hem</h2>
     <p>
       Raining Cats and Dogs and Bird är en ideell förening som räddar och

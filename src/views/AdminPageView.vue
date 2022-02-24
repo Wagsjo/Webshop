@@ -1,12 +1,13 @@
 <script>
-  import MyPages from "../components/MyPages.vue"
+  import AdminPage from "../components/AdminPage.vue"
 
   export default {
     components: {
-      MyPages
+      AdminPage
     }
   }
 </script>
+
 <template>
-  <MyPages />
+  <AdminPage />
 </template>

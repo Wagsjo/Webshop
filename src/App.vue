@@ -11,15 +11,10 @@
 </script>
 
 <template>
-  <DogsViewVue />
   <nav>
     <NavBar />
   </nav>
   <div class="container-fluid p-0 d-flex flex-column min-vh-100">
-    <nav v-if="$route.path != '/login'">
-      <NavBar />
-    </nav>
-
     <main class="flex-grow-1">
       <RouterView />
     </main>

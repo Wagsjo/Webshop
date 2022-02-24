@@ -1,16 +1,16 @@
 <script>
-  import RegisteringForm from "../components/RegisteringForm.vue"
+  import RegistrationForm from "../components/RegistrationForm.vue"
 
   export default {
     components: {
-      RegisteringForm
+      RegistrationForm
     }
   }
 </script>
 
 <template>
   <main>
-    <RegisteringForm />
+    <RegistrationForm />
 
     <!-- <p>Har du redan ett konto <RouterLink to="/login">logga in</RouterLink></p> -->
     <button>

@@ -3,15 +3,20 @@ import { createRouter, createWebHistory } from "vue-router"
 import AboutView from "./views/AboutView.vue"
 import ContactView from "./views/ContactView.vue"
 import HomeView from "./views/HomeView.vue"
-import RegisteringView from "./views/RegisteringView.vue"
+import RegistrationView from "./views/RegistrationView.vue"
 import LoginView from "./views/LoginView.vue"
-import MinasidorView from "./views/MyPagesView.vue"
+import MyPagesView from "./views/MyPagesView.vue"
+import EditMyPagesView from "./views/EditMyPagesView.vue"
 import AdoptionsView from "./views/AdoptionsView.vue"
 import DogsView from "./views/DogsView.vue"
 import CatsView from "./views/CatsView.vue"
 import BirdView from "./views/BirdView.vue"
 import AnimalDetailsView from "./views/AnimalDetailsView.vue"
-import CartView from "./views/CartView.vue"
+import ApplicationForm from "./views/ApplicationView.vue"
+import AddingAnimals from "./views/AddingAnimalsView.vue"
+import AdminPageView from "./views/AdminPageView.vue"
+import AdminMesseges from "./views/AdminMessegesView.vue"
+import AdminApplications from "./views/AdminApplicationsView.vue"
 
 export default createRouter({
   history: createWebHistory(),
@@ -29,7 +34,7 @@ export default createRouter({
       path: "/"
     },
     {
-      component: RegisteringView,
+      component: RegistrationView,
       path: "/registering"
     },
     {
@@ -37,8 +42,12 @@ export default createRouter({
       path: "/login"
     },
     {
-      component: MinasidorView,
+      component: MyPagesView,
       path: "/minasidor"
+    },
+    {
+      component: EditMyPagesView,
+      path: "/RedigeraMinasidor"
     },
     {
       component: AdoptionsView,
@@ -51,7 +60,7 @@ export default createRouter({
     },
     {
       component: AnimalDetailsView,
-      path: "/dogs/:id"
+      path: "/animals/:id"
     },
     {
       component: CatsView,
@@ -61,6 +70,27 @@ export default createRouter({
       component: BirdView,
       path: "/bird"
     },
-    { component: CartView, path: "/cart" }
+    {
+      component: AdminPageView,
+      path: "/admin",
+      children: [
+        {
+          path: "/adding",
+          component: AddingAnimals
+        },
+        {
+          path: "/messages",
+          component: AdminMesseges
+        },
+        {
+          path: "/applications",
+          component: AdminApplications
+        }
+      ]
+    },
+    {
+      component: ApplicationForm,
+      path: "/application"
+    }
   ]
 })

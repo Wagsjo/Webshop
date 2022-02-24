@@ -3,20 +3,22 @@
     data() {
       return {
         input: {
-          username: "",
-          password: ""
+          username: null,
+          password: null
         }
       }
     },
     methods: {
       clickLogin() {
-        if (this.input.username != "" && this.input.password != "") {
-          if (this.input.username == "e" && this.input.password == "1") {
-            this.$router.push("/home")
-            console.log(this.input)
-          } else if (this.input.username == "r" && this.input.password == "2") {
-            console.log(this.input)
-          }
+        if (this.input.username == "e" && this.input.password == 1) {
+          this.$router.push("/home")
+          console.log(this.input)
+        } else if (this.input.username == null && this.input.password == null) {
+          console.log(this.input)
+          alert("Email and password is empty.")
+        } else if (this.input.username == "r" && this.input.password == 2) {
+          alert("Email or password is incorrect")
+          console.log("nooooo")
         }
       }
     }
@@ -32,26 +34,28 @@
       <div class="form-group">
         <label for="Email">Epost</label>
         <input
-          class="form-control"
+          type="text"
           name="username"
           v-model="input.username"
           placeholder="Username"
-          type="text"
+          class="form-control"
         />
       </div>
 
       <div class="form-group">
         <label for="Password">Lösenord</label>
         <input
-          class="form-control"
           name="password"
           v-model="input.password"
           placeholder="Password"
           type="password"
+          class="form-control"
         />
       </div>
 
-      <button @click="clickLogin()" class="btn-primary">Logga in</button>
+      <button @click="clickLogin()" type="button" class="btn btn-primary">
+        Logga in
+      </button>
       <br />
       <RouterLink to="/registering">Skapa ett konto hos oss</RouterLink>
     </form>

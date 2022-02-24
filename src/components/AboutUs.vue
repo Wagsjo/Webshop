@@ -11,9 +11,9 @@
     </div>
   </section>
 
-  <div class="container-lg">
+  <div class="container-lg my-5">
     <div class="row m-2">
-      <section class="intro container p-2 my-3 col-lg-6">
+      <section class="intro container p-3 my-3 col-lg-6">
         <h2>Vi ger djur kärleksfulla hem</h2>
         <p>
           Raining Cats and Dogs and Bird är en ideell förening som räddar och
@@ -42,7 +42,8 @@
             <i class="bi-telephone-fill p-1" />
             <p class="p-1">073948573242</p>
           </div>
-          <div>
+          <div class="d-flex">
+            <i class="bi-house-door-fill p-1" />
             <p class="p-1">Skogsgatan 4b, 3374</p>
           </div>
 
