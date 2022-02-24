@@ -1,4 +1,29 @@
-<script></script>
+<script>
+  export default {
+    data() {
+      return {
+        input: {
+          username: null,
+          password: null
+        }
+      }
+    },
+    methods: {
+      clickLogin() {
+        if (this.input.username == "e" && this.input.password == 1) {
+          this.$router.push("/home")
+          console.log(this.input)
+        } else if (this.input.username == null && this.input.password == null) {
+          console.log(this.input)
+          alert("Email and password is empty.")
+        } else if (this.input.username == "r" && this.input.password == 2) {
+          alert("Email or password is incorrect")
+          console.log("nooooo")
+        }
+      }
+    }
+  }
+</script>
 
 <template>
   <div id="loginsidan">
@@ -8,15 +33,29 @@
 
       <div class="form-group">
         <label for="Email">Epost</label>
-        <input type="text" class="form-control" />
+        <input
+          type="text"
+          name="username"
+          v-model="input.username"
+          placeholder="Username"
+          class="form-control"
+        />
       </div>
 
       <div class="form-group">
         <label for="Password">Lösenord</label>
-        <input type="text" class="form-control" />
+        <input
+          name="password"
+          v-model="input.password"
+          placeholder="Password"
+          type="password"
+          class="form-control"
+        />
       </div>
 
-      <button type="submit" class="btn btn-primary">Logga in</button>
+      <button @click="clickLogin()" type="button" class="btn btn-primary">
+        Logga in
+      </button>
       <br />
       <RouterLink to="/registering">Skapa ett konto hos oss</RouterLink>
     </form>
