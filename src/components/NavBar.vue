@@ -27,9 +27,9 @@
       id="navbarSupportedContent"
     >
       <ul class="navbar-nav">
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
+        </li>-->
         <li class="nav-item">
           <RouterLink to="/contact" class="nav-link">Kontakt</RouterLink>
         </li>

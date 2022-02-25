@@ -8,7 +8,7 @@
           firstName: null,
           lastName: null,
           email: null,
-          phoneNumber: Number,
+          phoneNumber: "",
           message: null
         },
         loading: false,
@@ -59,6 +59,7 @@
         v-model.lazy="contact.firstName"
         :disabled="loading"
       />
+      <span />
     </div>
 
     <div class="form-group">
@@ -71,30 +72,34 @@
         v-model.lazy="contact.lastName"
         :disabled="loading"
       />
+      <span />
     </div>
 
     <div class="form-group">
       <label for="Email">Epost</label>
       <input
         class="form-control"
-        type="text"
+        type="email"
         id="Email"
+        placeholder="user@example.com"
         required
         v-model.lazy="contact.email"
         :disabled="loading"
       />
+      <span />
     </div>
 
     <div class="form-group">
       <label for="Phone">Telefon</label>
       <input
         class="form-control"
-        type="number"
+        type="tel"
         id="Phone"
         required
         v-model.lazy="contact.phoneNumber"
         :disabled="loading"
       />
+      <span />
     </div>
 
     <div class="form-group">
@@ -108,6 +113,7 @@
         :disabled="loading"
         placeholder="Skriv in ditt meddelande här"
       />
+      <span />
     </div>
 
     <button
@@ -121,6 +127,29 @@
   </form>
 </template>
 <style lang="scss" scoped>
+  input + span {
+    position: relative;
+  }
+
+  input + span::before {
+    position: absolute;
+    right: -360px;
+    top: -45px;
+  }
+
+  input:invalid {
+    border: 2px solid red;
+  }
+
+  input:invalid + span::before {
+    content: "✖";
+    color: red;
+  }
+
+  input:valid + span::before {
+    content: "✓";
+    color: green;
+  }
   h1 {
     text-align: center;
   }
