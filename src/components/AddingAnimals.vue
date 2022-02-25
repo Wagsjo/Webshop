@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h2>Lägg till nya djur</h2>
     <div class="row">
       <div class="col col-lg-6 col-xl-4 col-xxl-3">
         <form @submit.prevent>
