@@ -4,7 +4,6 @@
   import { getAuth, EmailAuthProvider, GoogleAuthProvider } from "firebase/auth"
 
   export default {
-    components: {},
     mounted() {
       const ui = new auth.AuthUI(getAuth())
       ui.start("#firebaseui-auth-container", {
