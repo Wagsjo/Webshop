@@ -5,6 +5,7 @@
       <li><RouterLink to="/messages">Meddelanden</RouterLink></li>
       <li><RouterLink to="/applications">Intresseanmälningar</RouterLink></li>
       <li><RouterLink to="/adding">Lägg till djur</RouterLink></li>
+      <li><RouterLink to="/removing">Ta bort till djur</RouterLink></li>
     </ul>
   </nav>
 
