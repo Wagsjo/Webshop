@@ -5,7 +5,7 @@
   export default {
     components: {
       NavBar,
-      Footer,
+      Footer
     }
   }
 </script>
@@ -14,13 +14,9 @@
   <nav>
     <NavBar />
   </nav>
-  <div class="container-fluid p-0 d-flex flex-column min-vh-100">
-    <main class="flex-grow-1">
-      <RouterView />
-    </main>
+  <RouterView />
 
-    <footer v-if="$route.path != '/login'">
-      <Footer />
-    </footer>
-  </div>
+  <footer v-if="$route.path != '/bird'">
+    <Footer />
+  </footer>
 </template>

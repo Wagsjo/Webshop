@@ -9,21 +9,6 @@
     /></RouterLink>
 
     <SearchFunction />
-
-    <form class="form-inline">
-      <input
-        class="form-control mr-sm-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
-      <button
-        class="btn btn-outline-success my-2 my-sm-0 search-button"
-        type="submit"
-      >
-        Search
-      </button>
-    </form>
     <div
       class="collapse navbar-collapse justify-content-between ml-3"
       id="navbarSupportedContent"
