@@ -98,7 +98,19 @@
         </div>
         <div class="row gy-2 animal-details-view__bottom__buttons">
           <div class="col-12 col-md-6 d-inline-flex">
-            <button class="btn btn-secondary flex-fill">
+            <button
+              class="btn btn-secondary flex-fill"
+              v-if="user === null"
+              @click="checkAuth"
+            >
+              Ge {{ animal.name }} ett hem
+            </button>
+            <button
+              class="btn btn-secondary flex-fill"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              v-if="user !== null"
+            >
               Ge {{ animal.name }} ett hem
             </button>
           </div>
@@ -118,10 +130,100 @@
       <div v-else-if="error" class="col-12 col-md-4">Error</div>
     </div>
   </div>
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Ansökningsformulär för {{ animal.name }}
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          />
+        </div>
+        <div class="modal-body">
+          <form class="row g-3">
+            <div class="col-md-6 mt-3">
+              <label for="firstName" class="form-label">Förnamn</label>
+              <input type="text" class="form-control" id="firstName" required />
+            </div>
+            <div class="col-md-6 mt-3">
+              <label for="lastName" class="form-label">Efternamn</label>
+              <input type="text" class="form-control" id="lastName" required />
+            </div>
+            <div class="col-md-8">
+              <label for="adressInfo" class="form-label">Adress</label>
+              <input
+                type="text"
+                class="form-control"
+                id="adressInfo"
+                required
+              />
+            </div>
+            <div class="class col-md-4">
+              <label for="postCode" class="form-label">Postnummer</label>
+              <input type="text" class="form-control" id="postCode" required />
+            </div>
+            <div class="col-md-8">
+              <label for="emailInfo" class="form-label">E-Mail</label>
+              <input
+                type="email"
+                class="form-control"
+                id="emailInfo"
+                required
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="phoneNumber" class="form-label">Telefonnummer</label>
+              <input
+                type="text"
+                class="form-control"
+                id="phoneNumber"
+                placeholder="+46"
+                required
+              />
+            </div>
+
+            <div class="col-md-12">
+              <label for="comments" class="form-label"
+                >Berätta lite om varför just du skall få bli ägare</label
+              >
+              <textarea class="form-control" id="comments" rows="3" />
+            </div>
+            <!-- <div class="col-md-12">
+              <button type="submit" class="btn btn-primary btn-lg mb-2">
+                Skicka din ansökan
+              </button>
+            </div> -->
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Stäng
+          </button>
+          <button type="button" class="btn btn-primary">Skicka ansökan</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
   import { getAnimal } from "../firebase"
+  import { getAuth } from "firebase/auth"
 
   export default {
     name: "AnimalDetailsView",
@@ -132,10 +234,19 @@
         animal: null,
         animalId: null,
         favorites: [],
-        btnAdd: "Lägg till i favoriter"
+        btnAdd: "Lägg till i favoriter",
+        user: null
+
+
       }
     },
     created() {
+      getAuth().onAuthStateChanged((user) => {
+        if (user) {
+          this.user = user
+        }
+        console.log(user)
+      })
       const id = this.$route.params.id
       getAnimal(id).then((animalData) => {
         this.animal = animalData
@@ -187,6 +298,9 @@
       }
     },
     methods: {
+      checkAuth() {
+        this.$router.push("/login")
+      },
       addToFavorite() {
         this.btnAdd = "Sparad"
         if (localStorage.getItem("favoritesStored") === null) {
