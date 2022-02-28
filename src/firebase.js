@@ -99,15 +99,41 @@ export async function addContact(contactData) {
     throw new Error("Invalid data")
   }
   if (!contactData.firstName || contactData.email == null) {
-    alert("Write an email adress!")
+    alert("You need to type in a email adress, and a firstname!")
     throw new Error("Invalid name")
   }
   return addDoc(contact, contactData).then((ref) => getDoc(ref))
 }
 
+export async function getContacts(type) {
+  let contactQuery
+  if (type) {
+    contactQuery = query(contact, where("type", "==", type))
+  } else {
+    contactQuery = query(contact)
+  }
+  const contactSnapshot = await getDocs(contactQuery)
+  let contactList = contactSnapshot.docs.map((doc) => {
+    const contact = doc.data()
+    contact.id = doc.id
+    return contact
+  })
+  console.log(contactList)
+  return contactList
+}
+
+/*export async function getContact(id) {
+  const contactSnapshot = await getDoc(doc(db, `/contact/${id}`))
+  const contactData = contactSnapshot.data()
+  console.log(contactData)
+  return contactData
+}*/
+
 export default {
   addAnimal,
   getAnimal,
   getAnimals,
-  addContact
+  addContact,
+  getContacts
+  //getContact
 }

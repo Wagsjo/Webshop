@@ -104,13 +104,13 @@
             currentPasswordInput.style.borderColor = "red"
             wrongPasswordError.style.display = "inline"
           })
+      },
+      created() {
+        getAuth().onAuthStateChanged((user) => {
+          this.user = user
+          console.log(user)
+        })
       }
-    },
-    created() {
-      getAuth().onAuthStateChanged((user) => {
-        this.user = user
-        console.log(user)
-      })
     }
   }
 </script>
