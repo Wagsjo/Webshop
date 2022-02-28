@@ -52,7 +52,12 @@
         >
           Logga in
         </RouterLink>
-        <a v-if="user && !isAdmin" class="nav-link" @click="logout">Logga ut</a>
+        <a
+          v-if="user && !isAdmin"
+          class="nav-link dropdown-item"
+          @click="logout"
+          >Logga ut</a
+        >
         <RouterLink
           v-if="user && !isAdmin"
           to="/minasidor"
@@ -66,7 +71,7 @@
           v-if="!user && isAdmin"
           @click="adminLogout"
           to="/"
-          class="dropdown-item"
+          class="nav-link dropdown-item"
           >Logga ut</RouterLink
         >
       </div>
