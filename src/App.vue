@@ -20,7 +20,6 @@
     <NavBar />
   </nav>
   <RouterView />
-
   <footer v-if="condition">
     <Footer />
   </footer>
