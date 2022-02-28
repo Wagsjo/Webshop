@@ -35,6 +35,7 @@
         if (this.isPlaying === false) {
           this.discoPlayer.play()
           this.isPlaying = true
+          this.randNum()
         } else {
           this.discoPlayer.pause()
           this.isPlaying = false
@@ -57,39 +58,65 @@
           this.allsangPlayer.pause()
           this.isVan = false
         }
+      },
+      randNum() {
+        setInterval(function () {
+          Math.floor(Math.random() * 10)
+        }, 1000)
       }
     }
   }
 </script>
 
 <template>
-  <div class="blink-bg">
+  <div :class="{ blinkbg: isPlaying }">
     <div class="container">
-      <input type="button" value="Play" @click="play" />
-      <input type="button" value="Stop" @click="svenPratar" />
-      <input type="button" value="Asd" @click="minVan" />
+      <button type="button" class="btn btn-success" @click="play">hej</button>
+      <button type="button" class="btn btn-success" @click="svenPratar">
+        hej
+      </button>
+      <button type="button" class="btn btn-success" @click="minVan">hej</button>
     </div>
-    <!--     <audio controls src="../../assets/disco.mp3" />
-    <audio controls src="../../assets/SvenIsKing.mp3" /> -->
-    <div class="hanger" />
-    <div class="discoball">
+    <div class="discoball" v-if="isPlaying">
       <img
         src="https://drive.google.com/uc?id=0B7QrEBMF4GTGQ3lfRzV0cU5rNHM"
         alt=""
       />
     </div>
     <main>
-      <h1 class="text-center mb-5 mt-5">Fågel</h1>
+      <h1 class="text-center mb-5 mt-5" v-if="!isPlaying">Fågel</h1>
       <ul style="list-style: none" class="card-columns">
-        <li class="fs-2 mb-5 text-center" v-for="bird in bird" :key="bird.id">
+        <li
+          class="fs-2 mb-5 text-center"
+          v-for="birdie in bird"
+          :key="birdie.id"
+        >
+          <img
+            v-if="isPlaying"
+            src="/assets/snoop-dogg-rap.gif"
+            alt=""
+            style="height: 300px"
+          />
+
           <img
             class="bild mb-3"
-            @click="viewBird(bird.id)"
-            :src="bird.profileImage ?? '/assets/fox.jpeg'"
+            :class="{ transPic: isPlaying }"
+            @click="viewBird(birdie.id)"
+            :src="birdie.profileImage ?? '/assets/fox.jpeg'"
             alt="Sven"
           />
-          <p @click="viewBird(bird.id)" class="name text-uppercase display-4">
-            {{ bird.name ?? "Okänd" }}
+          <img
+            v-if="isPlaying"
+            src="/assets/snoop-dogg-rap.gif"
+            alt=""
+            style="height: 300px"
+          />
+          <p
+            v-if="!isPlaying"
+            @click="viewBird(birdie.id)"
+            class="name text-uppercase display-4"
+          >
+            {{ birdie.name ?? "Okänd" }}
           </p>
         </li>
       </ul>
@@ -100,24 +127,24 @@
 </template>
 
 <style lang="scss" scoped>
-  .blink-bg {
+  .blinkbg {
     background: #bf3978;
     padding: 10px;
     display: inline-block;
     border-radius: 5px;
-    /* animation: blinkingBackground 2s infinite; */
+    animation: blinkingBackground 2s infinite;
     width: 100%;
   }
-  .blink-bg::after {
+  .blinkbg::after {
     content: "";
     display: block;
     width: 100%;
-    height: 200px;
+    height: 500px;
     background-color: #bf3978;
     padding: 10px;
     display: inline-block;
     border-radius: 5px;
-    /* animation: blinkingBackground 2s infinite; */
+    animation: blinkingBackground 2s infinite;
   }
   @keyframes blinkingBackground {
     0% {
@@ -130,7 +157,7 @@
       background-color: #ef0a1a;
     }
     75% {
-      background-color: #254878;
+      background-color: #c9c618;
     }
     100% {
       background-color: #04a1d5;
@@ -154,7 +181,6 @@
 
     background: lightgrey;
     border-radius: 200px;
-    /*border: 0px solid #fff;*/
     height: 200px;
     width: 200px;
     box-shadow: 0 3px 200px -3px #fff;
@@ -165,26 +191,34 @@
     height: 200px;
     width: 200px;
   }
-  .hanger {
-    background: #eee;
-    width: 1px;
-    border-left: 2px solid #fff;
-    border-right: 2px solid #fff;
-    height: 60px;
-    position: absolute;
-    top: 0;
-    left: 50%;
-  }
-
-  /*   .blink-bg::after {
-      content: "";
-    } */
-
   .name:hover {
     color: blue;
     cursor: pointer;
   }
-
+  .transPic {
+    transition: transform 1s;
+    animation: dancing-sven 4s infinite alternate;
+  }
+  @keyframes dancing-sven {
+    0% {
+      transform: translate(0) rotate(0deg);
+    }
+    20% {
+      transform: translate(-50%, 250%) rotate(90deg);
+    }
+    40% {
+      transform: translate(140%, -90%) rotate(-90deg);
+    }
+    60% {
+      transform: translate(-200%, 300%) rotate(90deg);
+    }
+    80% {
+      transform: translate(30%, -250%) rotate(-90deg);
+    }
+    100% {
+      transform: translate(250%, 40%) rotate(90deg);
+    }
+  }
   .bild {
     border-radius: 100%;
     width: 5em;
