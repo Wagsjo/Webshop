@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <h2>Lägg till nya djur</h2>
-    <div class="row">
+  <div class="container-sm">
+    <h2 style="display: flex; justify-content: center">Lägg till nya djur</h2>
+    <div class="row" style="justify-content: center">
       <div class="col col-lg-6 col-xl-4 col-xxl-3">
         <form @submit.prevent>
           <div class="mb-3">
@@ -207,4 +207,10 @@
   }
 </script>
 
-<style scoped></style>
+<style scoped>
+  @media screen and (max-width: 768px) {
+    .container {
+      max-width: none;
+    }
+  }
+</style>

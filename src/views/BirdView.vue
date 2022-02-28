@@ -70,13 +70,6 @@
 
 <template>
   <div :class="{ blinkbg: isPlaying }">
-    <div class="container">
-      <button type="button" class="btn btn-success" @click="play">hej</button>
-      <button type="button" class="btn btn-success" @click="svenPratar">
-        hej
-      </button>
-      <button type="button" class="btn btn-success" @click="minVan">hej</button>
-    </div>
     <div class="discoball" v-if="isPlaying">
       <img
         src="https://drive.google.com/uc?id=0B7QrEBMF4GTGQ3lfRzV0cU5rNHM"
@@ -120,6 +113,49 @@
           </p>
         </li>
       </ul>
+      <div
+        class="btn-group dropup"
+        style="position: absolute; bottom: 1em; left: 1em"
+      >
+        <button
+          type="button"
+          class="btn btn-secondary dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Ljudklipp
+        </button>
+        <ul class="dropdown-menu">
+          <div class="card" style="width: 12rem">
+            <div class="card-body">
+              <h4 class="card-title">Svens raketer</h4>
+              <div class="card-text">
+                Här kan man festa med Sven, få en varm hälsning direkt från Sven
+                och sjunga med i allskön allsång med Svens vänner
+              </div>
+              <button
+                type="button"
+                class="btn btn-outline-info"
+                @click="svenPratar"
+                style="margin: 3px"
+              >
+                God dag
+              </button>
+              <button type="button" class="btn btn-outline-info" @click="play">
+                Party
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-info"
+                @click="minVan"
+              >
+                Allsång
+              </button>
+            </div>
+            <img src="/assets/sven-music.jpg" alt="" />
+          </div>
+        </ul>
+      </div>
 
       <RouterView />
     </main>
