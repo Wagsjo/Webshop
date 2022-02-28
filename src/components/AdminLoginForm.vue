@@ -4,14 +4,15 @@
       return {
         input: {
           username: null,
-          password: null
+          password: null,
+          isAdmin: false
         }
       }
     },
     methods: {
       clickLogin() {
         if (this.input.username == "e" && this.input.password == 1) {
-          this.$router.push("/home")
+          /* this.$router.push("/home") */
           console.log(this.input)
         } else if (this.input.username == null && this.input.password == null) {
           console.log(this.input)
@@ -19,9 +20,23 @@
         } else if (this.input.username == "r" && this.input.password == 2) {
           alert("Email or password is incorrect")
           console.log("nooooo")
+        } else {
+          this.isAdmin = true
+          this.$emit("adminstatus", this.isAdmin)
+
+          localStorage.setItem(
+            "admin",
+            JSON.stringify({
+              adminStatus: this.isAdmin,
+              user: this.input.username,
+              password: this.input.password
+            })
+          )
+          window.location.reload()
         }
       }
-    }
+    },
+    emits: ["adminstatus"]
   }
 </script>
 
@@ -29,7 +44,7 @@
   <div id="loginsidan">
     <RouterLink to="/"><i class="bi-x-lg" /></RouterLink>
     <form id="loginForm">
-      <h1>Logga in <span>på ditt konto</span></h1>
+      <h1>Logga in <span>som administratör</span></h1>
 
       <div class="form-group">
         <label for="Email">Epost</label>
@@ -50,6 +65,7 @@
           placeholder="Password"
           type="password"
           class="form-control"
+          autocomplete="on"
         />
       </div>
 
@@ -57,7 +73,7 @@
         Logga in
       </button>
       <br />
-      <RouterLink to="/registering">Skapa ett konto hos oss</RouterLink>
+      <!-- <RouterLink to="/registering">Skapa ett konto hos oss</RouterLink> -->
     </form>
   </div>
 </template>

@@ -1,11 +1,13 @@
 <script>
-  import contact from "../components/ContactUs.vue"
+  import AdminPage from "../components/AdminPage.vue"
+
   export default {
     components: {
-      contact
+      AdminPage
     }
   }
 </script>
+
 <template>
-  <contact />
+  <AdminPage />
 </template>

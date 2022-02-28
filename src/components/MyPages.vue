@@ -13,11 +13,14 @@
         lastName: "Andersson",
         eMail: "anna.andersson@hotmail.com",
         passWord: "********",
-        favorites: null,
+        favorites: [],
         animals: [],
         savedAnimalId: [],
         user: null
       }
+    },
+    mounted() {
+      console.log(this.animals)
     },
     created() {
       this.getSavedAnimals()
@@ -31,6 +34,7 @@
         this.favorites = JSON.parse(localStorage.getItem("favoritesStored"))
 
         if (this.favorites !== null) {
+          this.animals = []
           for (let n = 0; n < this.favorites.length; n++) {
             const id = this.favorites[n]
             getAnimal(id).then((animalData) => {
@@ -51,7 +55,6 @@
         const filteredList = this.savedAnimalId.filter(filterById)
         localStorage.setItem("favoritesStored", JSON.stringify(filteredList))
 
-        window.location.reload()
         this.getSavedAnimals()
       }
     }
@@ -74,20 +77,24 @@
       </section>
       <section :id="minaFavoriter">
         <h2>Mina favoriter</h2>
-        <section :class="animalBox" v-if="this.favorites !== null">
+        <section v-if="this.favorites.length <= 0">
+          <p :class="animalBox">
+            Du har inga sparade djur ännu..
+            <i class="bi-heartbreak-fill icons" />
+          </p>
+        </section>
+        <section :class="animalBox" v-else>
           <ul v-for="animal in animals" :key="animal.id">
             <li><img :src="animal.img" alt="animal" /></li>
             <li>{{ animal.name }}</li>
-            <li @click="removeOnClick" class="remove-favorite" :id="animal.id">
+            <li
+              @click.once="removeOnClick"
+              class="remove-favorite"
+              :id="animal.id"
+            >
               Ta bort <i class="bi-x-lg" />
             </li>
           </ul>
-        </section>
-        <section v-else>
-          <p :class="animalBox">
-            Du har inga sparade favoriter ännu..
-            <i class="bi-heartbreak-fill" />
-          </p>
         </section>
       </section>
     </div>

@@ -13,6 +13,7 @@ import CatsView from "./views/CatsView.vue"
 import BirdView from "./views/BirdView.vue"
 import AnimalDetailsView from "./views/AnimalDetailsView.vue"
 import AddingAnimals from "./views/AddingAnimalsView.vue"
+import RemovingAnimals from "./views/RemovingAnimalsView.vue"
 import AdminPageView from "./views/AdminPageView.vue"
 import AdminMesseges from "./views/AdminMessegesView.vue"
 import AdminApplications from "./views/AdminApplicationsView.vue"
@@ -75,6 +76,12 @@ export default createRouter({
       path: "/admin",
       children: [
         {
+
+          path: "/removing",
+          component: RemovingAnimals
+        },
+        {
+
           path: "/adding",
           component: AddingAnimals
         },
@@ -87,6 +94,7 @@ export default createRouter({
           component: AdminApplications
         }
       ]
+
     }
   ]
 })
