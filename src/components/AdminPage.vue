@@ -38,11 +38,6 @@
               >Meddelanden</RouterLink
             >
           </li>
-          <!--  <li class="nav-item mx-3">
-            <RouterLink class="nav-link" to="/applications"
-              >Intresseanmälningar</RouterLink
-            >
-          </li> -->
           <li class="nav-item mx-3">
             <RouterLink class="nav-link" aria-current="page" to="/adding"
               >Lägg till djur</RouterLink
@@ -50,7 +45,7 @@
           </li>
           <li class="nav-item mx-3">
             <RouterLink class="nav-link" to="/removing"
-              >Ta bort till djur</RouterLink
+              >Ta bort djur</RouterLink
             >
           </li>
         </ul>

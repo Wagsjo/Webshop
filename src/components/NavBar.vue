@@ -16,6 +16,9 @@
         Search
       </button>
     </form>
+
+    <SearchFunction />
+
     <div
       class="collapse navbar-collapse justify-content-between ml-3"
       id="navbarSupportedContent"
@@ -127,6 +130,7 @@
 <script>
   import searchBar from "./SearchBar.vue"
   import { getAuth } from "firebase/auth"
+
   export default {
     name: "NavBar",
     components: {
@@ -174,7 +178,7 @@
 
   .dropdown-menu {
     right: 0px;
-    left: auto;
+    left: 0px;
     top: auto;
   }
 
@@ -183,10 +187,6 @@
   }
 
   @media screen and (max-width: 502px) {
-    .navbar {
-      justify-content: center;
-    }
-
     form {
       min-width: 100%;
     }
