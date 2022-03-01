@@ -9,7 +9,7 @@
     },
     computed: {
       condition() {
-        return this.$route.path != "/bird" || this.$route.path != "/bird"
+        return this.$route.path != "/bird" || this.$route.path != "/login"
       }
     }
   }
