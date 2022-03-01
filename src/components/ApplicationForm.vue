@@ -1,5 +1,6 @@
 <template>
   <h2>Ansökningsformulär</h2>
+  <!-- <h2>För {{ this.animal.name }}</h2> -->
   <div class="container mt-3">
     <form class="row g-3">
       <div class="col-md-6 mt-3">
@@ -40,15 +41,81 @@
         <textarea class="form-control" id="comments" rows="3" />
       </div>
       <div class="col-md-12">
-        <button type="submit" class="btn btn-primary btn-lg mb-2">
+        <button
+          type="submit"
+          class="btn btn-primary btn-lg mb-2"
+          @click="addToApplicationspage"
+        >
           Skicka din ansökan
         </button>
+        <!-- @click="addToApplications" -->
+        <!-- lade till click funktionen -->
       </div>
     </form>
   </div>
 </template>
 
-<script></script>
+<script>
+  //
+  import { getAnimal } from "../firebase"
+
+  export default {
+    data() {
+      return {
+        animal: null,
+        animalId: null,
+        applications: [],
+        IntendedAnimals: []
+      }
+    },
+    created() {
+      if (this.applications !== null) {
+        this.applications = JSON.parse(
+          localStorage.getItem("applicationsStored")
+        )
+
+        const IntendedAnimal = this.applications[this.applications.length - 1]
+        console.log(IntendedAnimal)
+
+        this.animaltree = []
+        console.log(this.applications)
+
+        const id = IntendedAnimal
+        getAnimal(id).then((animalData) => {
+          console.log((this.animal = animalData))
+          console.log((this.animalId = id))
+          console.log(this.animal.name)
+        })
+      }
+    },
+
+    methods: {
+      addToApplicationspage() {
+        if (localStorage.getItem("submittedApplication") === null) {
+          this.IntendedAnimals.push(this.animalId)
+          localStorage.setItem(
+            "submittedApplication",
+            JSON.stringify(this.IntendedAnimals)
+          )
+        } else if (
+          !localStorage.getItem("submittedApplication").includes(this.animalId)
+        ) {
+          this.IntendedAnimals = JSON.parse(
+            localStorage.getItem("submittedApplication")
+          )
+          this.IntendedAnimals.push(this.animalId)
+          localStorage.setItem(
+            "submittedApplication",
+            JSON.stringify(this.IntendedAnimals)
+          )
+        }
+        // alert()
+        // localStorage.clear()
+      }
+    }
+  }
+  //
+</script>
 
 <style lang="scss" scoped>
   h2 {

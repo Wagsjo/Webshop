@@ -98,8 +98,16 @@
         </div>
         <div class="row gy-2 animal-details-view__bottom__buttons">
           <div class="col-12 col-md-6 d-inline-flex">
-            <button class="btn btn-secondary flex-fill">
-              Ge {{ animal.name }} ett hem
+            <button
+              class="btn btn-secondary flex-fill"
+              @click="addToApplications"
+            >
+              <!-- @click="addToApplications" -->
+              <!-- lade till click funktionen -->
+              <!-- lade till router -->
+              <RouterLink to="/application">
+                Ge {{ animal.name }} ett hem
+              </RouterLink>
             </button>
           </div>
           <div class="col-12 col-md-6 d-inline-flex">
@@ -132,7 +140,9 @@
         animal: null,
         animalId: null,
         favorites: [],
-        btnAdd: "Lägg till i favoriter"
+        btnAdd: "Lägg till i favoriter",
+        applications: []
+        // // lade till applications huss
       }
     },
     created() {
@@ -205,7 +215,31 @@
             JSON.stringify(this.favorites)
           )
         }
+      },
+      // // addToApplications
+      addToApplications() {
+        console.log(this.animalId)
+
+        if (localStorage.getItem("applicationsStored") === null) {
+          this.applications.push(this.animalId)
+          localStorage.setItem(
+            "applicationsStored",
+            JSON.stringify(this.applications)
+          )
+        } else if (
+          !localStorage.getItem("applicationsStored").includes(this.animalId)
+        ) {
+          this.applications = JSON.parse(
+            localStorage.getItem("applicationsStored")
+          )
+          this.applications.push(this.animalId)
+          localStorage.setItem(
+            "applicationsStored",
+            JSON.stringify(this.applications)
+          )
+        }
       }
+      // // addtoapplications
     }
   }
 </script>
