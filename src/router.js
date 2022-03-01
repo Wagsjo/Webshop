@@ -76,12 +76,10 @@ export default createRouter({
       path: "/admin",
       children: [
         {
-
           path: "/removing",
           component: RemovingAnimals
         },
         {
-
           path: "/adding",
           component: AddingAnimals
         },
@@ -94,7 +92,6 @@ export default createRouter({
           component: AdminApplications
         }
       ]
-
     }
   ]
 })
