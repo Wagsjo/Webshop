@@ -14,6 +14,7 @@ import BirdView from "./views/BirdView.vue"
 import AnimalDetailsView from "./views/AnimalDetailsView.vue"
 import CartView from "./views/CartView.vue"
 import AddingAnimals from "./components/AddingAnimals.vue"
+import SearchBar from "./components/SearchBar.vue"
 
 export default createRouter({
   history: createWebHistory(),
@@ -68,6 +69,10 @@ export default createRouter({
       path: "/bird"
     },
     { component: CartView, path: "/cart" },
-    { component: AddingAnimals, path: "/adding" }
+    { component: AddingAnimals, path: "/adding" },
+    {
+      component: SearchBar,
+      path: "/searchbar"
+    }
   ]
 })

@@ -7,14 +7,8 @@
         src="../../public/logo.png"
         alt="Raining Cats and Dogs and Bird Logo"
     /></RouterLink>
-
     <form class="form-inline">
-      <input
-        class="form-control mr-sm-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
+      <searchBar class="col-3" />
       <button
         class="btn btn-outline-success my-2 my-sm-0 search-button"
         type="submit"
@@ -96,9 +90,13 @@
   </nav>
 </template>
 <script>
+  import searchBar from "./SearchBar.vue"
   import { getAuth } from "firebase/auth"
   export default {
     name: "NavBar",
+    components: {
+      searchBar
+    },
     data() {
       return {
         user: null
