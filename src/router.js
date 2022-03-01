@@ -18,7 +18,7 @@ import AddingAnimals from "./components/AddingAnimals.vue"
 import SearchBar from "./components/SearchBar.vue"
 import RemovingAnimals from "./views/RemovingAnimalsView.vue"
 import AdminPageView from "./views/AdminPageView.vue"
-import AdminMesseges from "./views/AdminMessegesView.vue"
+import AdminMessages from "./views/AdminMessagesView.vue"
 import AdminApplications from "./views/AdminApplicationsView.vue"
 
 export default createRouter({
@@ -93,7 +93,7 @@ export default createRouter({
         },
         {
           path: "/messages",
-          component: AdminMesseges
+          component: AdminMessages
         },
         {
           path: "/applications",

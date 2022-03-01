@@ -236,8 +236,6 @@
         favorites: [],
         btnAdd: "Lägg till i favoriter",
         user: null
-
-
       }
     },
     created() {

@@ -5,7 +5,7 @@
     v-model="searchInput"
     @TextChange="searchResults"
   />
-  <ul>
+  <ul v-if="searchInput.length > 1">
     <li v-for="animal in searchResults" :key="animal.id">
       <img
         width="40"

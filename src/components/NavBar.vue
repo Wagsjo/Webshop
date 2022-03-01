@@ -8,7 +8,7 @@
         alt="Raining Cats and Dogs and Bird Logo"
     /></RouterLink>
     <form class="form-inline">
-      <searchBar class="col-3" />
+      <searchBar />
       <button
         class="btn btn-outline-success my-2 my-sm-0 search-button"
         type="submit"
