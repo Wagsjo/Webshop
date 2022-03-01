@@ -43,7 +43,7 @@
 
     <div class="form-group">
       <label for="Password">Lösenord</label>
-      <input type="text" class="form-control" v-model="password" />
+      <input type="password" class="form-control" v-model="password" />
     </div>
 
     <button type="submit" class="btn btn-primary">Skapa profil</button>

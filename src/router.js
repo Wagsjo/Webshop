@@ -12,9 +12,14 @@ import DogsView from "./views/DogsView.vue"
 import CatsView from "./views/CatsView.vue"
 import BirdView from "./views/BirdView.vue"
 import AnimalDetailsView from "./views/AnimalDetailsView.vue"
+
 import CartView from "./views/CartView.vue"
 import AddingAnimals from "./components/AddingAnimals.vue"
 import SearchBar from "./components/SearchBar.vue"
+import RemovingAnimals from "./views/RemovingAnimalsView.vue"
+import AdminPageView from "./views/AdminPageView.vue"
+import AdminMesseges from "./views/AdminMessegesView.vue"
+import AdminApplications from "./views/AdminApplicationsView.vue"
 
 export default createRouter({
   history: createWebHistory(),
@@ -73,6 +78,28 @@ export default createRouter({
     {
       component: SearchBar,
       path: "/searchbar"
+    },
+    {
+      component: AdminPageView,
+      path: "/admin",
+      children: [
+        {
+          path: "/removing",
+          component: RemovingAnimals
+        },
+        {
+          path: "/adding",
+          component: AddingAnimals
+        },
+        {
+          path: "/messages",
+          component: AdminMesseges
+        },
+        {
+          path: "/applications",
+          component: AdminApplications
+        }
+      ]
     }
   ]
 })

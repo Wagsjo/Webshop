@@ -22,13 +22,13 @@
     >
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-        <li class="nav-item">
           <RouterLink to="/contact" class="nav-link">Kontakt</RouterLink>
         </li>
         <li class="nav-item">
           <RouterLink to="/about" class="nav-link">Om</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink to="/adoptions" class="nav-link">Adoptioner</RouterLink>
         </li>
 
         <li class="nav-item dropdown">
@@ -52,13 +52,35 @@
       </ul>
 
       <div class="d-flex align-items-center">
-        <RouterLink v-if="!user" to="/login" class="nav-link">
+        <RouterLink
+          v-if="!user && !isAdmin"
+          to="/login"
+          class="nav-link dropdown-item"
+        >
           Logga in
         </RouterLink>
-        <a v-else class="nav-link" @click="logout">Logga ut</a>
-        <RouterLink v-if="user" to="/minasidor" class="dropdown-item"
+        <a
+          v-if="user && !isAdmin"
+          class="nav-link dropdown-item"
+          @click="logout"
+          >Logga ut</a
+        >
+        <RouterLink
+          v-if="user && !isAdmin"
+          to="/minasidor"
+          class="dropdown-item"
           ><i class="icons bi-person-fill"
         /></RouterLink>
+        <RouterLink v-if="!user" to="/admin" class="dropdown-item"
+          >Admin</RouterLink
+        >
+        <RouterLink
+          v-if="!user && isAdmin"
+          @click="adminLogout"
+          to="/"
+          class="nav-link dropdown-item"
+          >Logga ut</RouterLink
+        >
       </div>
     </div>
     <div class="nav-item dropright">
@@ -73,13 +95,26 @@
         <span class="navbar-toggler-icon" />
       </button>
       <div class="dropdown-menu" aria-labelledby="responsiveDropdown">
-        <RouterLink v-if="!user" to="/login" class="dropdown-item">
+        <RouterLink v-if="!user && !isAdmin" to="/login" class="nav-link">
           Logga in
         </RouterLink>
-        <a v-else class="nav-link">Logga ut</a>
-        <RouterLink v-if="user" to="/minasidor" class="dropdown-item"
+        <a v-if="user && !isAdmin" @click="logout" class="nav-link">Logga ut</a>
+        <RouterLink
+          v-if="user && !isAdmin"
+          to="/minasidor"
+          class="dropdown-item"
           >Mina sidor
         </RouterLink>
+        <RouterLink
+          v-if="!user && isAdmin"
+          @click="adminLogout"
+          to="/"
+          class="nav-link"
+          >Logga ut</RouterLink
+        >
+        <RouterLink v-if="!user" to="/admin" class="dropdown-item"
+          >Admin</RouterLink
+        >
         <RouterLink to="/about" class="dropdown-item">Om</RouterLink>
         <RouterLink to="/contact" class="dropdown-item">Kontakt</RouterLink>
         <RouterLink to="/adoptions" class="dropdown-item"
@@ -99,19 +134,30 @@
     },
     data() {
       return {
-        user: null
+        user: null,
+        isAdmin: false
       }
     },
     methods: {
       logout() {
         this.$router.push("/")
         getAuth().signOut()
+      },
+      adminLogout() {
+        localStorage.setItem("admin", JSON.stringify(null))
+        this.isAdmin = false
       }
     },
     created() {
       getAuth().onAuthStateChanged((user) => {
         this.user = user
       })
+
+      if (JSON.parse(localStorage.getItem("admin")) !== null) {
+        this.isAdmin = true
+      } else {
+        this.isAdmin = false
+      }
     }
   }
 </script>
