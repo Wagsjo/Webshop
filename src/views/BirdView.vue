@@ -115,7 +115,7 @@
       </ul>
       <div
         class="btn-group dropup"
-        style="position: absolute; bottom: 1em; left: 1em"
+        style="position: absolute; bottom: 10em; left: 1em"
       >
         <button
           type="button"

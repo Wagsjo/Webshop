@@ -45,7 +45,7 @@
           </li>
           <li class="nav-item mx-3">
             <RouterLink class="nav-link" to="/removing"
-              >Ta bort till djur</RouterLink
+              >Ta bort djur</RouterLink
             >
           </li>
         </ul>
