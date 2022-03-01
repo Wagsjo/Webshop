@@ -9,7 +9,7 @@
     },
     computed: {
       condition() {
-        return this.$route.path != "/bird" && this.$route.path != "/login"
+        return this.$route.path != "/bird" || this.$route.path != "/bird"
       }
     }
   }
@@ -19,8 +19,12 @@
   <nav>
     <NavBar />
   </nav>
-  <RouterView />
-  <footer v-if="condition">
-    <Footer />
-  </footer>
+  <div class="container-fluid p-0 d-flex flex-column min-vh-100">
+    <main class="flex-grow-1">
+      <RouterView />
+    </main>
+    <footer v-if="condition">
+      <Footer />
+    </footer>
+  </div>
 </template>
