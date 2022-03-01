@@ -106,6 +106,7 @@
               Ge {{ animal.name }} ett hem
             </button>
             <button
+              @click="modalTrueOrFalseFunc"
               class="btn btn-secondary flex-fill"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
@@ -140,7 +141,11 @@
     <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">
+          <h5
+            class="modal-title"
+            id="exampleModalLabel"
+            v-if="modalTrueOrFalse"
+          >
             Ansökningsformulär för {{ animal.name }}
           </h5>
           <button
@@ -199,11 +204,6 @@
               >
               <textarea class="form-control" id="comments" rows="3" />
             </div>
-            <!-- <div class="col-md-12">
-              <button type="submit" class="btn btn-primary btn-lg mb-2">
-                Skicka din ansökan
-              </button>
-            </div> -->
           </form>
         </div>
         <div class="modal-footer">
@@ -235,9 +235,8 @@
         animalId: null,
         favorites: [],
         btnAdd: "Lägg till i favoriter",
-        user: null
-
-
+        user: null,
+        modalTrueOrFalse: false
       }
     },
     created() {
@@ -245,16 +244,15 @@
         if (user) {
           this.user = user
         }
-        console.log(user)
       })
       const id = this.$route.params.id
       getAnimal(id).then((animalData) => {
         this.animal = animalData
         this.animalId = id
 
-        if (localStorage.getItem("favoritesStored").includes(id)) {
+        /*         if (localStorage.getItem("favoritesStored").includes(id)) {
           this.btnAdd = "Sparad"
-        }
+        } */
       })
     },
     computed: {
@@ -319,6 +317,9 @@
             JSON.stringify(this.favorites)
           )
         }
+      },
+      modalTrueOrFalseFunc() {
+        this.modalTrueOrFalse = true
       }
     }
   }

@@ -6,6 +6,11 @@
     components: {
       NavBar,
       Footer
+    },
+    computed: {
+      condition() {
+        return this.$route.path != "/bird" || this.$route.path != "/login"
+      }
     }
   }
 </script>
@@ -18,8 +23,7 @@
     <main class="flex-grow-1">
       <RouterView />
     </main>
-
-    <footer v-if="$route.path != '/login'">
+    <footer v-if="condition">
       <Footer />
     </footer>
   </div>

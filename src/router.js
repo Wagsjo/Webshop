@@ -16,7 +16,6 @@ import AddingAnimals from "./views/AddingAnimalsView.vue"
 import RemovingAnimals from "./views/RemovingAnimalsView.vue"
 import AdminPageView from "./views/AdminPageView.vue"
 import AdminMesseges from "./views/AdminMessegesView.vue"
-import AdminApplications from "./views/AdminApplicationsView.vue"
 
 export default createRouter({
   history: createWebHistory(),
@@ -86,10 +85,6 @@ export default createRouter({
         {
           path: "/messages",
           component: AdminMesseges
-        },
-        {
-          path: "/applications",
-          component: AdminApplications
         }
       ]
     }

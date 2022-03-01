@@ -77,7 +77,7 @@
       </section>
       <section :id="minaFavoriter">
         <h2>Mina favoriter</h2>
-        <section v-if="this.favorites.length <= 0">
+        <section v-if="this.favorites == null">
           <p :class="animalBox">
             Du har inga sparade djur ännu..
             <i class="bi-heartbreak-fill icons" />
