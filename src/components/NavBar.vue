@@ -17,8 +17,6 @@
       </button>
     </form>
 
-    <SearchFunction />
-
     <div
       class="collapse navbar-collapse justify-content-between ml-3"
       id="navbarSupportedContent"

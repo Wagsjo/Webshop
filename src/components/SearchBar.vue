@@ -1,22 +1,34 @@
 <template>
-  <input
-    type="text"
-    placeholder="sök bror sök.."
-    v-model="searchInput"
-    @TextChange="searchResults"
-  />
-  <ul v-if="searchInput.length > 1">
-    <li v-for="animal in searchResults" :key="animal.id">
-      <img
-        width="40"
-        height="40"
-        :src="animal.profileImage ?? '/assets/fox.jpeg'"
-        @click="viewAnimal(animal.id)"
-        alt="Bild"
+  <div class="card position-relative">
+    <div class="card-header">
+      <input
+        type="text"
+        placeholder="sök bror sök.."
+        v-model="searchInput"
+        @TextChange="searchResults"
       />
-      <p>{{ animal.name }}</p>
-    </li>
-  </ul>
+    </div>
+
+    <ul
+      class="list-group list-group-flush position-absolute"
+      v-if="searchInput"
+    >
+      <li
+        class="list-group-item"
+        v-for="animal in searchResults"
+        :key="animal.id"
+      >
+        <img
+          width="40"
+          height="40"
+          :src="animal.profileImage ?? '/assets/fox.jpeg'"
+          @click="viewAnimal(animal.id)"
+          alt="Bild"
+        />
+        {{ animal.name }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -63,6 +75,10 @@
   }
 </script>
 <style scoped>
+  .list-group {
+    top: 3rem;
+    z-index: 1000;
+  }
   li {
     list-style: none;
   }
