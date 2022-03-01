@@ -44,6 +44,8 @@
   $footer-heading: #002dcb;
 
   .footer {
+    position: sticky;
+    bottom: 0;
     background-color: $footer-primary;
     color: $footer-text;
 

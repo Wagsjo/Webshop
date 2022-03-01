@@ -236,8 +236,6 @@
         favorites: [],
         btnAdd: "Lägg till i favoriter",
         user: null
-
-
       }
     },
     created() {
@@ -249,6 +247,7 @@
       })
       const id = this.$route.params.id
       getAnimal(id).then((animalData) => {
+        console.log(animalData)
         this.animal = animalData
         this.animalId = id
 

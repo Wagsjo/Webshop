@@ -8,20 +8,7 @@
         alt="Raining Cats and Dogs and Bird Logo"
     /></RouterLink>
 
-    <form class="form-inline">
-      <input
-        class="form-control mr-sm-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
-      <button
-        class="btn btn-outline-success my-2 my-sm-0 search-button"
-        type="submit"
-      >
-        Search
-      </button>
-    </form>
+    <SearchFunction />
     <div
       class="collapse navbar-collapse justify-content-between ml-3"
       id="navbarSupportedContent"
@@ -132,7 +119,11 @@
 </template>
 <script>
   import { getAuth } from "firebase/auth"
+  import SearchFunction from "./SearchFunction.vue"
   export default {
+    components: {
+      SearchFunction
+    },
     name: "NavBar",
     data() {
       return {
@@ -176,7 +167,7 @@
 
   .dropdown-menu {
     right: 0px;
-    left: auto;
+    left: 0px;
     top: auto;
   }
 
@@ -185,10 +176,6 @@
   }
 
   @media screen and (max-width: 502px) {
-    .navbar {
-      justify-content: center;
-    }
-
     form {
       min-width: 100%;
     }
