@@ -38,7 +38,7 @@
           <i class="bi bi-person-fill" /><b>Förnamn:</b> {{ con.firstName }}
           <br /><i class="bi bi-person-fill" /><b>Efternamn:</b>
           {{ con.lastName }} <br />
-          <i class="bi bi-mailbox2" /><b> Epost-adress:</b> {{ con.email }}
+          <i class="bi bi-mailbox2" /><b> E-postadress:</b> {{ con.email }}
           <br />
           <i class="bi bi-telephone-fill" /><b> Mobilnummer:</b>
           {{ con.phoneNumber }} <br />
