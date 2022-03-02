@@ -99,7 +99,7 @@
                 })
             }
 
-            if (this.newPassword == null && this.newEmail == null) {
+            if (this.newPassword === "" && this.newEmail === "") {
               newEmailInput.style.borderColor = "red"
               newPasswordInput.style.borderColor = "red"
               noChangesError.style.display = "inline"
