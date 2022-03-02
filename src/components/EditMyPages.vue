@@ -23,20 +23,20 @@
     },
     methods: {
       submit: function ($event) {
+        let noNameError = document.getElementById("noNameError")
+        let newNameInput = document.getElementById("newNameInput")
         $event.preventDefault()
         if (this.nameChange != null) {
+          newNameInput.style.borderColor = "green"
+          noNameError.style.display = "none"
           updateProfile(auth.currentUser, {
             displayName: this.nameChange ?? auth.currentUser?.displayName
           }).catch((error) => {
             console.log("ERROR :" + error)
           })
-          this.$router.push("/minasidor")
         } else {
-          let noNameError = document.getElementById("noNameError")
-          let newNameInput = document.getElementById("newNameInput")
           newNameInput.style.borderColor = "red"
           noNameError.style.display = "inline"
-
           console.log("ERROR: You need to write down a new name")
         }
       },
@@ -49,14 +49,26 @@
         return reauthenticateWithCredential(user, credential)
       },
       changeEmail($event) {
+        let wrongPasswordError = document.getElementById("wrongPasswordError")
+        let currentPasswordInput = document.getElementById(
+          "currentPasswordInput"
+        )
+        let noChangesError = document.getElementById("noChangesError")
+        let newEmailInput = document.getElementById("newEmailInput")
+        let newPasswordInput = document.getElementById("newPasswordInput")
         $event.preventDefault()
         this.reauthenticate(this.currentPassword)
           .then(() => {
             console.log("User is re-authenticated!")
+            wrongPasswordError.style.display = "none"
+            currentPasswordInput.style.borderColor = "green"
             if (this.newEmail != null && this.newEmail != "") {
               updateEmail(auth.currentUser, this.newEmail)
                 .then(() => {
                   console.log("Email address is updated!")
+                  newEmailInput.style.borderColor = "green"
+                  newPasswordInput.style.borderColor = "red"
+                  noChangesError.style.display = "none"
                 })
                 .catch((error) => {
                   console.log("ERROR :" + error)
@@ -71,6 +83,9 @@
               updatePassword(auth.currentUser, this.newPassword)
                 .then(() => {
                   console.log("Password is updated!")
+                  newEmailInput.style.borderColor = "red"
+                  newPasswordInput.style.borderColor = "green"
+                  noChangesError.style.display = "none"
                 })
                 .catch((error) => {
                   console.log("ERROR :" + error)
@@ -84,11 +99,7 @@
                 })
             }
 
-            if (this.newPassword.length < 1 && this.newEmail.length < 1) {
-              let noChangesError = document.getElementById("noChangesError")
-              let newEmailInput = document.getElementById("newEmailInput")
-              let newPasswordInput = document.getElementById("newPasswordInput")
-
+            if (this.newPassword == null && this.newEmail == null) {
               newEmailInput.style.borderColor = "red"
               newPasswordInput.style.borderColor = "red"
               noChangesError.style.display = "inline"
@@ -96,11 +107,6 @@
           })
           .catch((error) => {
             console.log("ERROR :" + error)
-            let wrongPasswordError =
-              document.getElementById("wrongPasswordError")
-            let currentPasswordInput = document.getElementById(
-              "currentPasswordInput"
-            )
             currentPasswordInput.style.borderColor = "red"
             wrongPasswordError.style.display = "inline"
           })
@@ -185,7 +191,7 @@
 
       <span id="wrongPasswordError" class="errorMessage" style="display: none">
         <i class="bi bi-exclamation-diamond-fill" />
-        Lösenordet är felaktigt</span
+        Obligatorisk</span
       >
 
       <button @click="changeEmail" type="submit" class="btn btn-primary">
@@ -196,6 +202,11 @@
 </template>
 
 <style scoped>
+  main {
+    background-color: rgba(196, 196, 196, 0.43);
+    height: 100%;
+    border-radius: 10px;
+  }
   .errorMessage {
     color: red;
     white-space: nowrap;
@@ -207,8 +218,8 @@
     margin-top: 1em;
   }
   #redigeraForm {
-    padding-top: 5em;
-    padding-bottom: 5em;
+    padding-top: 3em;
+    padding-bottom: 3em;
     max-width: 300px;
     margin-left: auto;
     margin-right: auto;
@@ -220,6 +231,10 @@
     background-color: #babfda;
   }
 
-  @media (max-width: 700px) {
+  @media (min-width: 700px) {
+    main {
+      margin: 1% 30%;
+      height: 100%;
+    }
   }
 </style>
