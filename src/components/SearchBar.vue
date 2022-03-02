@@ -9,20 +9,17 @@
       />
     </div>
 
-    <ul
-      class="list-group list-group-flush position-absolute"
-      v-if="searchInput"
-    >
+    <ul class="list-group position-absolute" v-if="searchInput">
       <li
         class="list-group-item"
         v-for="animal in searchResults"
         :key="animal.id"
+        @click="viewAnimal(animal.id)"
       >
         <img
           width="40"
           height="40"
           :src="animal.profileImage ?? '/assets/fox.jpeg'"
-          @click="viewAnimal(animal.id)"
           alt="Bild"
         />
         {{ animal.name }}
@@ -70,6 +67,7 @@
     methods: {
       viewAnimal(animalId) {
         this.$router.push(`/animals/${animalId}`)
+        this.searchInput = ""
       }
     }
   }
@@ -80,7 +78,13 @@
     z-index: 1000;
     width: 100%;
   }
+
   .list-group-item {
     background-color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+  }
+
+  .list-group :hover {
+    border: solid 1.5px rgba(0, 0, 0, 0.2);
   }
 </style>
