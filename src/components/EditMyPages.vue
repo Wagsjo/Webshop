@@ -204,7 +204,6 @@
 <style scoped>
   main {
     background-color: rgba(196, 196, 196, 0.43);
-    margin: 1% 30%;
     height: 100%;
     border-radius: 10px;
   }
@@ -232,6 +231,10 @@
     background-color: #babfda;
   }
 
-  @media (max-width: 700px) {
+  @media (min-width: 700px) {
+    main {
+      margin: 1% 30%;
+      height: 100%;
+    }
   }
 </style>
