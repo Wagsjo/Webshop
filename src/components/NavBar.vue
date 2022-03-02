@@ -7,8 +7,16 @@
         src="../../public/logo.png"
         alt="Raining Cats and Dogs and Bird Logo"
     /></RouterLink>
+    <form class="form-inline">
+      <searchBar />
+      <button
+        class="btn btn-outline-success my-2 my-sm-0 search-button"
+        type="submit"
+      >
+        Search
+      </button>
+    </form>
 
-    <SearchFunction />
     <div
       class="collapse navbar-collapse justify-content-between ml-3"
       id="navbarSupportedContent"
@@ -118,13 +126,14 @@
   </nav>
 </template>
 <script>
+  import searchBar from "./SearchBar.vue"
   import { getAuth } from "firebase/auth"
-  import SearchFunction from "./SearchFunction.vue"
+
   export default {
-    components: {
-      SearchFunction
-    },
     name: "NavBar",
+    components: {
+      searchBar
+    },
     data() {
       return {
         user: null,
