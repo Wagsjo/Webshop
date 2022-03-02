@@ -67,7 +67,6 @@
                 .then(() => {
                   console.log("Email address is updated!")
                   newEmailInput.style.borderColor = "green"
-                  newPasswordInput.style.borderColor = "red"
                   noChangesError.style.display = "none"
                 })
                 .catch((error) => {
@@ -83,7 +82,6 @@
               updatePassword(auth.currentUser, this.newPassword)
                 .then(() => {
                   console.log("Password is updated!")
-                  newEmailInput.style.borderColor = "red"
                   newPasswordInput.style.borderColor = "green"
                   noChangesError.style.display = "none"
                 })
