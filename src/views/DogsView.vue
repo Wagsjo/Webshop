@@ -6,7 +6,6 @@
       getAnimals("dog")
         .then((dogList) => {
           this.dogs = dogList
-          console.log(this.dogs)
         })
         .catch((error) => {
           console.error(error)
@@ -96,11 +95,7 @@
               :src="dog.profileImage ?? '/assets/fox.jpeg'"
               alt="Bild"
             />
-            <p
-              @click="viewDog(dog.id)"
-              class="Hundar text-uppercase display-4"
-              style="font-size: 1em"
-            >
+            <p @click="viewDog(dog.id)" class="Hundar text-uppercase display-4">
               {{ dog.name ?? "Okänd" }}
             </p>
           </li>

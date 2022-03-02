@@ -100,14 +100,19 @@
           <div class="col-12 col-md-6 d-inline-flex">
             <button
               class="btn btn-secondary flex-fill"
-              @click="addToApplications"
+              v-if="user === null"
+              @click="checkAuth"
             >
-              <!-- @click="addToApplications" -->
-              <!-- lade till click funktionen -->
-              <!-- lade till router -->
-              <RouterLink to="/application">
-                Ge {{ animal.name }} ett hem
-              </RouterLink>
+              Ge {{ animal.name }} ett hem
+            </button>
+            <button
+              @click="modalTrueOrFalseFunc"
+              class="btn btn-secondary flex-fill"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              v-if="user !== null"
+            >
+              Ge {{ animal.name }} ett hem
             </button>
           </div>
           <div class="col-12 col-md-6 d-inline-flex">
@@ -126,10 +131,105 @@
       <div v-else-if="error" class="col-12 col-md-4">Error</div>
     </div>
   </div>
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5
+            class="modal-title"
+            id="exampleModalLabel"
+            v-if="modalTrueOrFalse"
+          >
+            Ansökningsformulär för {{ animal.name }}
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          />
+        </div>
+        <div class="modal-body">
+          <form class="row g-3">
+            <div class="col-md-6 mt-3">
+              <label for="firstName" class="form-label">Förnamn</label>
+              <input type="text" class="form-control" id="firstName" required />
+            </div>
+            <div class="col-md-6 mt-3">
+              <label for="lastName" class="form-label">Efternamn</label>
+              <input type="text" class="form-control" id="lastName" required />
+            </div>
+            <div class="col-md-8">
+              <label for="adressInfo" class="form-label">Adress</label>
+              <input
+                type="text"
+                class="form-control"
+                id="adressInfo"
+                required
+              />
+            </div>
+            <div class="class col-md-4">
+              <label for="postCode" class="form-label">Postnummer</label>
+              <input type="text" class="form-control" id="postCode" required />
+            </div>
+            <div class="col-md-8">
+              <label for="emailInfo" class="form-label">E-Mail</label>
+              <input
+                type="email"
+                class="form-control"
+                id="emailInfo"
+                required
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="phoneNumber" class="form-label">Telefonnummer</label>
+              <input
+                type="text"
+                class="form-control"
+                id="phoneNumber"
+                placeholder="+46"
+                required
+              />
+            </div>
+
+            <div class="col-md-12">
+              <label for="comments" class="form-label"
+                >Berätta lite om varför just du skall få bli ägare</label
+              >
+              <textarea class="form-control" id="comments" rows="3" />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Stäng
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            @click="addToApplications"
+          >
+            Skicka ansökan
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
   import { getAnimal } from "../firebase"
+  import { getAuth } from "firebase/auth"
 
   export default {
     name: "AnimalDetailsView",
@@ -141,19 +241,26 @@
         animalId: null,
         favorites: [],
         btnAdd: "Lägg till i favoriter",
-        applications: []
-        // // lade till applications huss
+        applications: [],
+
+        user: null,
+        modalTrueOrFalse: false
       }
     },
     created() {
+      getAuth().onAuthStateChanged((user) => {
+        if (user) {
+          this.user = user
+        }
+      })
       const id = this.$route.params.id
       getAnimal(id).then((animalData) => {
         this.animal = animalData
         this.animalId = id
 
-        if (localStorage.getItem("favoritesStored").includes(id)) {
+        /*         if (localStorage.getItem("favoritesStored").includes(id)) {
           this.btnAdd = "Sparad"
-        }
+        } */
       })
     },
     computed: {
@@ -197,6 +304,9 @@
       }
     },
     methods: {
+      checkAuth() {
+        this.$router.push("/login")
+      },
       addToFavorite() {
         this.btnAdd = "Sparad"
         if (localStorage.getItem("favoritesStored") === null) {
@@ -220,24 +330,29 @@
       addToApplications() {
         console.log(this.animalId)
 
-        if (localStorage.getItem("applicationsStored") === null) {
+        if (localStorage.getItem("submittedApplication") === null) {
           this.applications.push(this.animalId)
           localStorage.setItem(
-            "applicationsStored",
+            "submittedApplication",
             JSON.stringify(this.applications)
           )
         } else if (
-          !localStorage.getItem("applicationsStored").includes(this.animalId)
+          !localStorage.getItem("submittedApplication").includes(this.animalId)
         ) {
           this.applications = JSON.parse(
-            localStorage.getItem("applicationsStored")
+            localStorage.getItem("submittedApplication")
           )
           this.applications.push(this.animalId)
           localStorage.setItem(
-            "applicationsStored",
+            "submittedApplication",
             JSON.stringify(this.applications)
           )
         }
+        // alert()
+        // localStorage.clear()
+      },
+      modalTrueOrFalseFunc() {
+        this.modalTrueOrFalse = true
       }
       // // addtoapplications
     }

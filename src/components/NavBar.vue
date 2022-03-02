@@ -7,14 +7,8 @@
         src="../../public/logo.png"
         alt="Raining Cats and Dogs and Bird Logo"
     /></RouterLink>
-
     <form class="form-inline">
-      <input
-        class="form-control mr-sm-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
+      <searchBar />
       <button
         class="btn btn-outline-success my-2 my-sm-0 search-button"
         type="submit"
@@ -22,6 +16,7 @@
         Search
       </button>
     </form>
+
     <div
       class="collapse navbar-collapse justify-content-between ml-3"
       id="navbarSupportedContent"
@@ -65,7 +60,12 @@
         >
           Logga in
         </RouterLink>
-        <a v-if="user && !isAdmin" class="nav-link" @click="logout">Logga ut</a>
+        <a
+          v-if="user && !isAdmin"
+          class="nav-link dropdown-item"
+          @click="logout"
+          >Logga ut</a
+        >
         <RouterLink
           v-if="user && !isAdmin"
           to="/minasidor"
@@ -79,7 +79,7 @@
           v-if="!user && isAdmin"
           @click="adminLogout"
           to="/"
-          class="dropdown-item"
+          class="nav-link dropdown-item"
           >Logga ut</RouterLink
         >
       </div>
@@ -126,9 +126,14 @@
   </nav>
 </template>
 <script>
+  import searchBar from "./SearchBar.vue"
   import { getAuth } from "firebase/auth"
+
   export default {
     name: "NavBar",
+    components: {
+      searchBar
+    },
     data() {
       return {
         user: null,
@@ -171,7 +176,7 @@
 
   .dropdown-menu {
     right: 0px;
-    left: auto;
+    left: 0px;
     top: auto;
   }
 
@@ -180,10 +185,6 @@
   }
 
   @media screen and (max-width: 502px) {
-    .navbar {
-      justify-content: center;
-    }
-
     form {
       min-width: 100%;
     }
