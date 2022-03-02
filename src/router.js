@@ -74,7 +74,6 @@ export default createRouter({
       path: "/bird"
     },
     { component: CartView, path: "/cart" },
-    { component: AddingAnimals, path: "/adding" },
     {
       component: SearchBar,
       path: "/searchbar"
