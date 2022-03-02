@@ -78,8 +78,9 @@
   .list-group {
     top: 3rem;
     z-index: 1000;
+    width: 100%;
   }
-  li {
-    list-style: none;
+  .list-group-item {
+    background-color: rgba(255, 255, 255, 0.6);
   }
 </style>
