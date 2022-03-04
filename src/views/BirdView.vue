@@ -1,7 +1,8 @@
 <script>
   import { getAnimals } from "../firebase"
-
+  /* import booked from "AnimalDetailsView.vue" */
   export default {
+    /* components: { booked }, */
     created() {
       this.discoPlayer.src = this.stayingAlive
       this.svenPlayer.src = this.svenSpeaking

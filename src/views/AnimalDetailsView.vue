@@ -214,7 +214,9 @@
           >
             Stäng
           </button>
-          <button type="button" class="btn btn-primary">Skicka ansökan</button>
+          <button type="button" class="btn btn-primary" @click="booked">
+            Skicka ansökan
+          </button>
         </div>
       </div>
     </div>
@@ -249,10 +251,6 @@
       getAnimal(id).then((animalData) => {
         this.animal = animalData
         this.animalId = id
-
-        /*         if (localStorage.getItem("favoritesStored").includes(id)) {
-          this.btnAdd = "Sparad"
-        } */
       })
     },
     computed: {
@@ -320,6 +318,9 @@
       },
       modalTrueOrFalseFunc() {
         this.modalTrueOrFalse = true
+      },
+      booked() {
+        this.$emit('booked-animal')
       }
     }
   }

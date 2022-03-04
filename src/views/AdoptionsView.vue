@@ -16,7 +16,11 @@
       </li>
       <li style="grid-area: bird" class="animal">
         <RouterLink class="adoptionLink" to="/bird">
-          <img class="djurBild mb-3" src="../../public/sven.jpg" alt="Bild" />
+          <img
+            class="djurBild mb-3"
+            src="../../assets/svenHead.png"
+            alt="Bild"
+          />
           <p class="text text-uppercase">Fågel</p></RouterLink
         >
       </li>

@@ -8,7 +8,8 @@ import {
   where,
   getDoc,
   addDoc,
-  doc
+  doc,
+  setDoc
 } from "firebase/firestore/lite"
 import { getStorage, ref } from "firebase/storage"
 
