@@ -252,7 +252,13 @@
         this.animal = animalData
         this.animalId = id
       })
+      this.getAnimalById(id)
     },
+
+    beforeRouteUpdate(route) {
+      this.getAnimalById(route.params.id)
+    },
+
     computed: {
       realAge() {
         if (this.animal.age == null) {
@@ -294,6 +300,13 @@
       }
     },
     methods: {
+      getAnimalById(id) {
+        getAnimal(id).then((animalData) => {
+          this.animal = animalData
+          this.animalId = id
+        })
+      },
+
       checkAuth() {
         this.$router.push("/login")
       },

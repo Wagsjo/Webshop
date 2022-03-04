@@ -34,10 +34,10 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="/assets/cats.png" class="d-block w-100" alt="animal" />
+        <img src="/assets/Cat-HD.jpg" class="d-block w-100" alt="animal" />
       </div>
       <div class="carousel-item">
-        <img src="/assets/dogs.jpg" class="d-block w-100" alt="animal" />
+        <img src="/assets/dogs-HD.jpg" class="d-block w-100" alt="animal" />
       </div>
       <div class="carousel-item">
         <img src="/assets/animals.jpg" class="d-block w-100" alt="animal" />

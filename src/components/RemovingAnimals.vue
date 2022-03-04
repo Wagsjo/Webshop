@@ -20,9 +20,6 @@
     },
     methods: {
       removeAnimal(animalID) {
-        let animal = document.getElementById("#animal")
-        console.log(animalID)
-        animal.style.backgroundColor = "grey"
         deleteDoc(doc(db, "animals", animalID))
         console.log("The animal list is updated!")
       }
@@ -53,12 +50,27 @@
 </template>
 
 <style scoped>
+  @media (max-width: 800px) {
+    main {
+      padding: 1em;
+    }
+  }
   ul {
     column-count: 2;
   }
 
+  @media (min-width: 800px) {
+    main {
+      margin: 1% 30%;
+    }
+  }
+
   main {
-    margin-bottom: 3em;
+    background-color: #c4c4c4;
+    display: flex;
+    flex-grow: 1;
+    padding: 1em;
+    border-radius: 10px;
   }
   h1 {
     font-size: 36px;
