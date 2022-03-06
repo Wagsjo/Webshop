@@ -19,7 +19,9 @@
             <div v-if="bookedOrNot" class="text-center" style="color: red">
               Bokad
             </div>
-            <div v-else class="text-center" style="color: green">Tillgänglig</div>
+            <div v-else class="text-center" style="color: green">
+              Tillgänglig
+            </div>
           </div>
         </div>
       </div>

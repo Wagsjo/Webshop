@@ -1,5 +1,4 @@
 // Import the functions you need from the SDKs you need
-import { async } from "@firebase/util"
 import { initializeApp } from "firebase/app"
 import {
   getFirestore,
@@ -36,14 +35,14 @@ const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 const animals = collection(db, "animals")
 const contact = collection(db, "contact")
-/* const storage = getStorage()
-const imagesRef = ref(storage, "images") */
+const storage = getStorage()
+const imagesRef = ref(storage, "images")
 
-/* export async function checkStorage() {
+export async function checkStorage() {
   console.log(imagesRef)
 }
 checkStorage()
- */
+
 export async function getAnimals(type) {
   let animalQuery
   if (type) {
