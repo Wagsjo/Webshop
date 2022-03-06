@@ -1,4 +1,5 @@
 // Import the functions you need from the SDKs you need
+import { async } from "@firebase/util"
 import { initializeApp } from "firebase/app"
 import {
   getFirestore,
@@ -9,7 +10,7 @@ import {
   getDoc,
   addDoc,
   doc,
-  setDoc
+  updateDoc
 } from "firebase/firestore/lite"
 import { getStorage, ref } from "firebase/storage"
 
@@ -35,14 +36,14 @@ const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 const animals = collection(db, "animals")
 const contact = collection(db, "contact")
-const storage = getStorage()
-const imagesRef = ref(storage, "images")
+/* const storage = getStorage()
+const imagesRef = ref(storage, "images") */
 
-export async function checkStorage() {
+/* export async function checkStorage() {
   console.log(imagesRef)
 }
 checkStorage()
-
+ */
 export async function getAnimals(type) {
   let animalQuery
   if (type) {
@@ -56,14 +57,25 @@ export async function getAnimals(type) {
     animal.id = doc.id
     return animal
   })
-  console.log(animalList)
   return animalList
 }
 
+export async function getBooked(id) {
+  const animal = doc(db, "animals", id)
+  const boo = await getDoc(animal)
+  const snap = boo.data()
+  return snap.booked
+}
+
+export async function update(id) {
+  const animal = doc(db, "animals", id)
+  updateDoc(animal, {
+    booked: true
+  })
+}
 export async function getAnimal(id) {
   const animalSnapshot = await getDoc(doc(db, `/animals/${id}`))
   const animalData = animalSnapshot.data()
-  console.log(animalData)
   return animalData
 }
 
@@ -135,6 +147,8 @@ export default {
   getAnimal,
   getAnimals,
   addContact,
-  getContacts
+  getContacts,
+  update,
+  getBooked
   //getContact
 }

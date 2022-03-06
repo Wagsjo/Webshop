@@ -16,6 +16,10 @@
               class="img rounded-circle animal-details-view__profile__image"
               alt="svea"
             />
+            <div v-if="bookedOrNot" class="text-center" style="color: red">
+              Bokad
+            </div>
+            <div v-else class="text-center" style="color: green">Tillgänglig</div>
           </div>
         </div>
       </div>
@@ -214,7 +218,13 @@
           >
             Stäng
           </button>
-          <button type="button" class="btn btn-primary" @click="booked">
+          <button
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            type="button"
+            class="btn btn-primary"
+            @click="booked"
+          >
             Skicka ansökan
           </button>
         </div>
@@ -224,7 +234,7 @@
 </template>
 
 <script>
-  import { getAnimal } from "../firebase"
+  import { getAnimal, update, getBooked } from "../firebase"
   import { getAuth } from "firebase/auth"
 
   export default {
@@ -238,7 +248,8 @@
         favorites: [],
         btnAdd: "Lägg till i favoriter",
         user: null,
-        modalTrueOrFalse: false
+        modalTrueOrFalse: false,
+        bookedOrNot: false
       }
     },
     created() {
@@ -253,6 +264,7 @@
         this.animalId = id
       })
       this.getAnimalById(id)
+      this.isBooked()
     },
 
     beforeRouteUpdate(route) {
@@ -333,7 +345,14 @@
         this.modalTrueOrFalse = true
       },
       booked() {
-        this.$emit('booked-animal')
+        const id = this.$route.params.id
+        update(id)
+      },
+      isBooked() {
+        const id = this.$route.params.id
+        getBooked(id).then((booked) => {
+          this.bookedOrNot = booked
+        })
       }
     }
   }
