@@ -8,7 +8,8 @@ import {
   where,
   getDoc,
   addDoc,
-  doc
+  doc,
+  updateDoc
 } from "firebase/firestore/lite"
 import { getStorage, ref } from "firebase/storage"
 
@@ -55,14 +56,25 @@ export async function getAnimals(type) {
     animal.id = doc.id
     return animal
   })
-  console.log(animalList)
   return animalList
 }
 
+export async function getBooked(id) {
+  const animal = doc(db, "animals", id)
+  const boo = await getDoc(animal)
+  const snap = boo.data()
+  return snap.booked
+}
+
+export async function update(id) {
+  const animal = doc(db, "animals", id)
+  updateDoc(animal, {
+    booked: true
+  })
+}
 export async function getAnimal(id) {
   const animalSnapshot = await getDoc(doc(db, `/animals/${id}`))
   const animalData = animalSnapshot.data()
-  console.log(animalData)
   return animalData
 }
 
@@ -134,6 +146,8 @@ export default {
   getAnimal,
   getAnimals,
   addContact,
-  getContacts
+  getContacts,
+  update,
+  getBooked
   //getContact
 }
