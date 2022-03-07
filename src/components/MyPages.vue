@@ -8,13 +8,18 @@
         MinaInfo: "MinaInfo",
         animalBox: "animalBox",
         minaFavoriter: "minaFavoriter",
+        minaAnsökningar: "minaAnsökningar",
+        applicationBox: "applicationBox",
         firstcontainerinMinasidor: "firstcontainerinMinasidor",
         firstName: "Anna",
         lastName: "Andersson",
         eMail: "anna.andersson@hotmail.com",
         passWord: "********",
         favorites: [],
+        applications: [],
+        // lade till applications: [], huss
         animals: [],
+        animalsTwo: [],
         savedAnimalId: [],
         user: null
       }
@@ -28,7 +33,9 @@
         this.user = user
         console.log(user)
       })
+      this.getSavedApplications()
     },
+
     methods: {
       getSavedAnimals() {
         this.favorites = JSON.parse(localStorage.getItem("favoritesStored"))
@@ -47,6 +54,31 @@
           }
         }
       },
+      // lade till funktionen som lägger till djur i  minaAnsökningar
+      getSavedApplications() {
+        this.applications = JSON.parse(
+          localStorage.getItem("submittedApplication")
+        )
+
+        if (this.applications !== null) {
+          this.animalsTwo = []
+          // console.log(this.animalsTwo)
+          // console.log(this.applications)
+
+          for (let n = 0; n < this.applications.length; n++) {
+            const id = this.applications[n]
+            getAnimal(id).then((animalData) => {
+              this.animalsTwo.push({
+                img: animalData.profileImage,
+                name: animalData.name,
+                id: animalData.id
+              })
+            })
+          }
+        }
+      },
+      // lade till funktionen som lägger till djur i  minaAnsökningar.end
+
       removeOnClick(removeItem) {
         this.savedAnimalId = JSON.parse(localStorage.getItem("favoritesStored"))
         function filterById(item) {
@@ -56,6 +88,8 @@
         localStorage.setItem("favoritesStored", JSON.stringify(filteredList))
 
         this.getSavedAnimals()
+        this.getSavedApplications()
+        //lade till this.getSavedApplications()
       }
     }
   }
@@ -97,6 +131,22 @@
           </ul>
         </section>
       </section>
+      <!--  -->
+      <section :id="minaAnsökningar">
+        <h2>Mina Ansökningar</h2>
+        <!-- Om det fanns inget ansökningar visa detta -->
+        <section v-if="this.applications.length <= 0">
+          <p :class="applicationBox">Du har inga sparade djur ännu..</p>
+        </section>
+        <!-- Om det finns någon ansökning visa detta -->
+        <section :class="applicationBox" v-else>
+          <ul v-for="animal in animalsTwo" :key="animal.id">
+            <li><img :src="animal.img" alt="animal" /></li>
+            <li>{{ animal.name }}</li>
+          </ul>
+        </section>
+      </section>
+      <!--  -->
     </div>
   </div>
 </template>
@@ -187,16 +237,40 @@
     width: 100px;
   }
 
+  #minaAnsökningar {
+    background-color: rgba(196, 196, 196, 0.43);
+    height: auto;
+    padding: 2rem;
+    border-radius: 5px;
+  }
+
+  .applicationBox {
+    ul {
+      background-color: #c4c4c4;
+      list-style: none;
+      padding: 20px;
+      border-radius: 5px;
+
+      li {
+        width: auto;
+        display: flex;
+        justify-content: center;
+
+        padding-left: 0;
+      }
+    }
+  }
+
   @media (min-width: 1000px) {
     #firstcontainerinMinasidor {
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
-      align-items: flex-start;
+      justify-content: space-between;
+      // align-items: flex-start;
     }
 
     #MinaInfo {
-      width: 40%;
+      width: 35%;
       margin-left: auto;
       margin-right: auto;
       padding: 1em;
@@ -205,6 +279,13 @@
     }
 
     #minaFavoriter {
+      width: 30%;
+      margin-left: auto;
+      margin-right: auto;
+      height: max-content;
+      margin-bottom: 2em;
+    }
+    #minaAnsökningar {
       width: 30%;
       margin-left: auto;
       margin-right: auto;
@@ -241,6 +322,12 @@
       width: 50%;
       margin-left: auto;
       margin-right: auto;
+    }
+    #minaAnsökningar {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 2em;
     }
   }
 </style>

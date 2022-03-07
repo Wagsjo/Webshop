@@ -214,7 +214,13 @@
           >
             Stäng
           </button>
-          <button type="button" class="btn btn-primary">Skicka ansökan</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            @click="addToApplications"
+          >
+            Skicka ansökan
+          </button>
         </div>
       </div>
     </div>
@@ -235,6 +241,8 @@
         animalId: null,
         favorites: [],
         btnAdd: "Lägg till i favoriter",
+        applications: [],
+
         user: null,
         modalTrueOrFalse: false
       }
@@ -323,9 +331,35 @@
           )
         }
       },
+      // // addToApplications
+      addToApplications() {
+        console.log(this.animalId)
+
+        if (localStorage.getItem("submittedApplication") === null) {
+          this.applications.push(this.animalId)
+          localStorage.setItem(
+            "submittedApplication",
+            JSON.stringify(this.applications)
+          )
+        } else if (
+          !localStorage.getItem("submittedApplication").includes(this.animalId)
+        ) {
+          this.applications = JSON.parse(
+            localStorage.getItem("submittedApplication")
+          )
+          this.applications.push(this.animalId)
+          localStorage.setItem(
+            "submittedApplication",
+            JSON.stringify(this.applications)
+          )
+        }
+        // alert()
+        // localStorage.clear()
+      },
       modalTrueOrFalseFunc() {
         this.modalTrueOrFalse = true
       }
+      // // addtoapplications
     }
   }
 </script>
